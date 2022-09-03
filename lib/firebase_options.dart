@@ -45,39 +45,43 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCrnoPJg1-VZivI2-NXyPdIHmDsT-AOfdE',
-    appId: '1:204345871873:web:04e38b788217e1c222fa00',
+    appId: '1:204345871873:web:6790596fcc4c72d222fa00',
     messagingSenderId: '204345871873',
     projectId: 'bg4102-med-device-deign',
     authDomain: 'bg4102-med-device-deign.firebaseapp.com',
+    databaseURL: 'https://bg4102-med-device-deign-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'bg4102-med-device-deign.appspot.com',
-    measurementId: 'G-JY0497KC2E',
+    measurementId: 'G-RW5XWX6TWW',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDCmFwb0e20Oc2K7JSac0tfj3pGuk7-W4k',
-    appId: '1:204345871873:android:d8c5e41ebd5e0e8222fa00',
+    appId: '1:204345871873:android:87a60e7486a035dd22fa00',
     messagingSenderId: '204345871873',
     projectId: 'bg4102-med-device-deign',
+    databaseURL: 'https://bg4102-med-device-deign-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'bg4102-med-device-deign.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyA90WE6Sv-eKIXNLKN9IMueZTP18E2siLg',
-    appId: '1:204345871873:ios:ca84c991d8ba6b1822fa00',
+    appId: '1:204345871873:ios:cb720d0044d1380322fa00',
     messagingSenderId: '204345871873',
     projectId: 'bg4102-med-device-deign',
+    databaseURL: 'https://bg4102-med-device-deign-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'bg4102-med-device-deign.appspot.com',
     iosClientId: '204345871873-b96229kmtb6bg90q6vlej3dtljbv3g4d.apps.googleusercontent.com',
-    iosBundleId: 'bg4102-med-device-deign.appspot.com',
+    iosBundleId: 'com.example.nigelFlutterbasic',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyA90WE6Sv-eKIXNLKN9IMueZTP18E2siLg',
-    appId: '1:204345871873:ios:ca84c991d8ba6b1822fa00',
+    appId: '1:204345871873:ios:cb720d0044d1380322fa00',
     messagingSenderId: '204345871873',
     projectId: 'bg4102-med-device-deign',
+    databaseURL: 'https://bg4102-med-device-deign-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'bg4102-med-device-deign.appspot.com',
     iosClientId: '204345871873-b96229kmtb6bg90q6vlej3dtljbv3g4d.apps.googleusercontent.com',
-    iosBundleId: 'bg4102-med-device-deign.appspot.com',
+    iosBundleId: 'com.example.nigelFlutterbasic',
   );
 }

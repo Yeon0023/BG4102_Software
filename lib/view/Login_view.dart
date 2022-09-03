@@ -45,7 +45,6 @@ class _LoginViewState extends State<LoginView> {
         titleTextStyle: GoogleFonts.lobster(fontSize: 37),
         centerTitle: true,
       ),
-
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -66,7 +65,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                 ),
-          
+
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 25.0,
@@ -90,7 +89,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                 ),
-          
+
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 25.0,
@@ -116,13 +115,13 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                 ),
-          
+
                 //Login Button
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.white, side: const BorderSide(color: Colors.white, width: 0.8),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 145.5, vertical: 17),
+                    foregroundColor: Colors.white,
+                    side: const BorderSide(color: Colors.white, width: 0.8),
+                    padding: const EdgeInsets.symmetric(horizontal: 155),
                     textStyle: GoogleFonts.lobster(fontSize: 17),
                   ),
                   onPressed: () async {
@@ -168,7 +167,7 @@ class _LoginViewState extends State<LoginView> {
                   },
                   child: const Text("Sign In!"),
                 ),
-          
+
                 // Register redirect button
                 TextButton(
                   onPressed: () {
@@ -178,7 +177,8 @@ class _LoginViewState extends State<LoginView> {
                     );
                   },
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.white, textStyle: GoogleFonts.lobster(fontSize: 16),
+                    foregroundColor: Colors.white,
+                    textStyle: GoogleFonts.lobster(fontSize: 16),
                   ),
                   child: const Text('Not registered yet? Register here!'),
                 )
