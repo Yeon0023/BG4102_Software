@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "204345871873",
+    "firebase_url": "https://bg4102-med-device-deign-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bg4102-med-device-deign",
+    "storage_bucket": "bg4102-med-device-deign.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204345871873:android:87a60e7486a035dd22fa00",
+        "android_client_info": {
+          "package_name": "com.MedicalDesign.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204345871873-aupd8nfdctimj63bag2k8flk0c691iqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCmFwb0e20Oc2K7JSac0tfj3pGuk7-W4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204345871873-aupd8nfdctimj63bag2k8flk0c691iqn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "204345871873-b96229kmtb6bg90q6vlej3dtljbv3g4d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nigelFlutterbasic"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
