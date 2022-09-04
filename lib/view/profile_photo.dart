@@ -15,26 +15,25 @@ class ProfilePhoto extends StatefulWidget {
 class _ProfilePhotoState extends State<ProfilePhoto> {
   File? image;
 
-
   //Access Gallery for photo
   Future<File?> _pickImageGallery() async {
-        PickedFile? pickedFile =
-            // ignore: invalid_use_of_visible_for_testing_member
-            await ImagePicker.platform.pickImage(source: ImageSource.gallery);
-        if (pickedFile == null) {
-          return null;
-        }
-        final File file = File(pickedFile.path);
-        final Directory directory = await getApplicationDocumentsDirectory();
-        final path = directory.path;
-        final String fileName = basename(pickedFile.path);
-  // final String fileExtension = extension(image.path);
-        File newImage = await file.copy('$path/$fileName');
-        setState(() {
-          image = newImage;
-        });
-        return null;
+    PickedFile? pickedFile =
+        // ignore: invalid_use_of_visible_for_testing_member
+        await ImagePicker.platform.pickImage(source: ImageSource.gallery);
+    if (pickedFile == null) {
+      return null;
     }
+    final File file = File(pickedFile.path);
+    final Directory directory = await getApplicationDocumentsDirectory();
+    final path = directory.path;
+    final String fileName = basename(pickedFile.path);
+    // final String fileExtension = extension(image.path);
+    File newImage = await file.copy('$path/$fileName');
+    setState(() {
+      image = newImage;
+    });
+    return null;
+  }
 
   //Access camera to take photo for profile.
   void _pickImageCamera() async {
@@ -66,7 +65,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
             clipBehavior: Clip.none,
             children: [
               const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/Profile Image.png'),
+                backgroundImage: AssetImage('assets/images/Profile_Image.png'),
               ),
               Positioned(
                 bottom: 0,
@@ -144,7 +143,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                         },
                       );
                     },
-                    child: SvgPicture.asset('assets/icons/Camera Icon.svg'),
+                    child: SvgPicture.asset('assets/icons/Camera_Icon.svg'),
                   ),
                 ),
               )
