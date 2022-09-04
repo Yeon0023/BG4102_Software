@@ -27,7 +27,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
     final Directory directory = await getApplicationDocumentsDirectory();
     final path = directory.path;
     final String fileName = basename(pickedFile.path);
-    // final String fileExtension = extension(image.path);
+    //final String fileExtension = extension(image.path);
     File newImage = await file.copy('$path/$fileName');
     setState(() {
       image = newImage;
