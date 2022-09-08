@@ -15,43 +15,54 @@ class ProfilePhoto extends StatefulWidget {
 class _ProfilePhotoState extends State<ProfilePhoto> {
   File? image;
 
-  //Access Gallery for photo
-  Future<File?> _pickImageGallery() async {
-    PickedFile? pickedFile =
-        // ignore: invalid_use_of_visible_for_testing_member
-        await ImagePicker.platform.pickImage(source: ImageSource.gallery);
-    if (pickedFile == null) {
-      return null;
-    }
-    final File file = File(pickedFile.path);
-    final Directory directory = await getApplicationDocumentsDirectory();
-    final path = directory.path;
-    final String fileName = basename(pickedFile.path);
-    //final String fileExtension = extension(image.path);
-    File newImage = await file.copy('$path/$fileName');
+  void _pickImageGallery() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(
+      source: ImageSource.gallery,
+    );
+    final pickedImageFile = File(pickedImage!.path);
     setState(() {
-      image = newImage;
+      image = pickedImageFile;
     });
-    return null;
   }
+
+  //Access Gallery for photo
+  // Future<File?> _pickImageGallery() async {
+  //   PickedFile? pickedFile =
+  //       await ImagePicker.platform.pickImage(source: ImageSource.gallery);
+  //   if (pickedFile == null) {
+  //     return null;
+  //   }
+  //   final File file = File(pickedFile.path);
+  //   final Directory directory = await getApplicationDocumentsDirectory();
+  //   final path = directory.path;
+  //   final String fileName = basename(pickedFile.path);
+  //   //final String fileExtension = extension(image.path);
+  //   File newImage = await file.copy('$path/$fileName');
+  //   setState(() {
+  //     image = newImage;
+  //   });
+  //   return null;
+  // }
 
   //Access camera to take photo for profile.
-  void _pickImageCamera() async {
-    final picker = ImagePicker();
-    XFile? pickedImage = await picker.pickImage(source: ImageSource.camera);
-    final imageTemp = File(pickedImage!.path);
-    setState(() => image = imageTemp);
-    // ignore: use_build_context_synchronously
-    // Navigator.pop(context);
-  }
+  // void _pickImageCamera() async {
+  //   final picker = ImagePicker();
+  //   XFile? pickedImage = await picker.pickImage(source: ImageSource.camera);
+  //   final imageTemp = File(pickedImage!.path);
+  //   setState(() => image = imageTemp);
+  //   // ignore: use_build_context_synchronously
+  //   // Navigator.pop(context);
+  // }
 
-  void _remove() {
-    setState(() {
-      image = null;
-    });
-    // ignore: use_build_context_synchronously
-    // Navigator.pop(context);
-  }
+  //Remove Photo from avatar
+  // void _remove() {
+  //   setState(() {
+  //     image = null;
+  //   });
+  //   // ignore: use_build_context_synchronously
+  //   // Navigator.pop(context);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +107,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                               child: ListBody(
                                 children: [
                                   InkWell(
-                                    onTap: _pickImageCamera,
+                                    // onTap: _pickImageCamera,
                                     child: Row(
                                       children: const [
                                         Padding(
@@ -124,7 +135,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: _remove,
+                                    // onTap: _remove,
                                     child: Row(
                                       children: const [
                                         Padding(
