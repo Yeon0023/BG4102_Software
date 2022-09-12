@@ -1,4 +1,6 @@
+import 'package:bg4102_software/Utilities/Show_error_dialog.dart';
 import 'package:bg4102_software/constats/routes.dart';
+import 'package:bg4102_software/service/auth/auth_exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -96,16 +98,19 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               final email = _email.text;
               try {
                 await AuthService.firebase().sendPasswordResetEmail(
+                  //await FirebaseAuth.instance.sendPasswordResetEmail(
                   email: email,
                 );
-              } on FirebaseAuthException catch (e) {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        content: Text(e.message.toString()),
-                      );
-                    });
+              } on UserNotFoundAuthException {
+                await showErrorDialog(
+                  context,
+                  'User not found',
+                );
+              } on InvalidEmailAuthException {
+                await showErrorDialog(
+                  context,
+                  'This is an Invalid Email Address!',
+                );
               }
             },
             child: Text(
@@ -123,3 +128,13 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
     );
   }
 }
+
+
+// showDialog(
+//                     context: context,
+//                     builder: (context) {
+//                       return const AlertDialog(
+//                         content: Text(
+//                             'Please check your email to reset your password'),
+//                       );
+//                     });

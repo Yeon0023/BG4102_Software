@@ -83,8 +83,6 @@ class FirebaseAuthProvider implements AuthProvider {
       } else {
         throw GenericAuthException();
       }
-    } catch (_) {
-      throw GenericAuthException();
     }
   }
 
@@ -109,21 +107,9 @@ class FirebaseAuthProvider implements AuthProvider {
   }
 
   @override
-  Future<AuthUser> sendPasswordResetEmail({
+  Future<void> sendPasswordResetEmail({
     required String email,
   }) async {
-    try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(
-        email: email,
-      );
-      final user = currentUser;
-      if (user != null) {
-        return user;
-      } else {
-        throw UserNotFoundAuthException();
-      }
-    } catch (_) {
-      throw GenericAuthException();
-    }
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
   }
 }
