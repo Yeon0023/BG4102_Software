@@ -101,6 +101,15 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                   //await FirebaseAuth.instance.sendPasswordResetEmail(
                   email: email,
                 );
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const AlertDialog(
+                        content: Text(
+                          'Please check your email to reset your password',
+                        ),
+                      );
+                    });
               } on UserNotFoundAuthException {
                 await showErrorDialog(
                   context,
@@ -128,13 +137,3 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
     );
   }
 }
-
-
-// showDialog(
-//                     context: context,
-//                     builder: (context) {
-//                       return const AlertDialog(
-//                         content: Text(
-//                             'Please check your email to reset your password'),
-//                       );
-//                     });
