@@ -127,16 +127,3 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 }
-
-
-  // Future<void> passwordReset({
-  //   required String email,
-  // }) async {
-  //   try {
-  //     await FirebaseAuth.instance.sendPasswordResetEmail(
-  //       email: email,
-  //     );
-  //   } on FirebaseAuthException catch (e) {
-  //     showDialog(context: context, builder: builder);
-  //   }
-  // }

@@ -128,12 +128,12 @@ class _LoginViewState extends State<LoginView> {
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).pushNamedAndRemoveUntil(
-                      forgetPasswordRoute,
-                      (route) => false,
-                    );
+                            forgetPasswordRoute,
+                            (route) => false,
+                          );
                         },
                         child: Text(
-                          'Forgot Password?',
+                          'Forgot Password ?',
                           style: GoogleFonts.lobster(
                             textStyle: const TextStyle(
                               color: Colors.white,
