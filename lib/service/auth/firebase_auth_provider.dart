@@ -5,16 +5,18 @@ import 'package:bg4102_software/service/auth/auth_user.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart'
     show FirebaseAuth, FirebaseAuthException;
+import 'package:flutter/material.dart';
+import 'package:path/path.dart' as Path;
 
-    
+class FirebaseAuthProvider implements AuthProvider {
+  // get context => null;
 
-class FirebaseAuthProvider implements AuthProvider { 
   @override
   Future<void> initialize() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-  } 
+  }
 
   @override
   Future<AuthUser> createUser({
@@ -105,4 +107,36 @@ class FirebaseAuthProvider implements AuthProvider {
       throw UserNotLoggedInAuthException();
     }
   }
+
+  @override
+  Future<AuthUser> sendPasswordResetEmail({
+    required String email,
+  }) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: email,
+      );
+      final user = currentUser;
+      if (user != null) {
+        return user;
+      } else {
+        throw UserNotFoundAuthException();
+      }
+    } catch (_) {
+      throw GenericAuthException();
+    }
+  }
 }
+
+
+  // Future<void> passwordReset({
+  //   required String email,
+  // }) async {
+  //   try {
+  //     await FirebaseAuth.instance.sendPasswordResetEmail(
+  //       email: email,
+  //     );
+  //   } on FirebaseAuthException catch (e) {
+  //     showDialog(context: context, builder: builder);
+  //   }
+  // }

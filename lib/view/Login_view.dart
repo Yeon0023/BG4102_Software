@@ -116,6 +116,40 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
 
+                const SizedBox(
+                  height: 10,
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                      forgetPasswordRoute,
+                      (route) => false,
+                    );
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: GoogleFonts.lobster(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 10,
+                ),
+
                 //Login Button
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
