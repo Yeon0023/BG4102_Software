@@ -1,3 +1,4 @@
+import 'package:bg4102_software/Utilities/glassmorphism.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_exception.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
@@ -16,6 +17,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  bool _isBlur = false;
 
   @override
   void initState() {
@@ -151,13 +153,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
 
                 //Login Button
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    side: const BorderSide(color: Colors.white, width: 0.8),
-                    padding: const EdgeInsets.symmetric(horizontal: 155),
-                    textStyle: GoogleFonts.lobster(fontSize: 17),
-                  ),
+                TextButton(
                   onPressed: () async {
                     final email = _email.text;
                     final password = _password.text;
@@ -198,8 +194,28 @@ class _LoginViewState extends State<LoginView> {
                         'Authentication Error',
                       );
                     }
+                    setState(() {
+                      _isBlur = !_isBlur;
+                    });
                   },
-                  child: const Text("Sign In!"),
+                  child: GlassMorphism(
+                    blur: _isBlur ? 20 : 0,
+                    opacity: 0.25,
+                    child: SizedBox(
+                      height: 45,
+                      width: 360,
+                      child: Center(
+                        child: Text(
+                          "Sign In!",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lobster(
+                            color: Colors.white,
+                            fontSize: 17,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
 
                 // Register redirect button
