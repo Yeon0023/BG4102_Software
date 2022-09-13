@@ -203,7 +203,7 @@ class _LoginViewState extends State<LoginView> {
                     opacity: 0.25,
                     child: SizedBox(
                       height: 45,
-                      width: 360,
+                      width: 355,
                       child: Center(
                         child: Text(
                           "Sign In!",
