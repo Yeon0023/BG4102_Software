@@ -1,10 +1,8 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 class TestResultView extends StatefulWidget {
   const TestResultView({Key? key}) : super(key: key);
