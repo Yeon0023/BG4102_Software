@@ -2,6 +2,7 @@ import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
 import 'package:bg4102_software/view/Login_view.dart';
 import 'package:bg4102_software/view/Register_view.dart';
+import 'package:bg4102_software/view/TestResult_view.dart';
 import 'package:bg4102_software/view/Verify_email_view.dart';
 import 'package:bg4102_software/view/forget_pw.dart';
 import 'package:bg4102_software/view/note_view.dart';
@@ -16,7 +17,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: const HomePage(),
-      home: const LoginView(),
+      home: const TestResultView(),
       theme: ThemeData(
         primaryColor: Colors.teal[900],
       ),
@@ -27,6 +28,7 @@ void main() {
         noteRoute: (context) => const NoteView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
+        testResultRoute: (context) => const TestResultView(),
       },
     ),
   );

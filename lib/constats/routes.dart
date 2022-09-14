@@ -4,4 +4,5 @@ const noteRoute = '/note/';
 const verifyEmailRoute = '/verify-email/';
 const profileRoute = '/profile/';
 const forgetPasswordRoute = '/forgetpassword/';
+const testResultRoute = '/testResult/';
 
