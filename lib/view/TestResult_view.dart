@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 class TestResultView extends StatefulWidget {
   const TestResultView({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _TestResultViewState extends State<TestResultView> {
     Location location = Location();
     location.getLocation().then((location) {
       currentLocation = location;
+      // print(location);
     });
   }
 
@@ -47,8 +49,27 @@ class _TestResultViewState extends State<TestResultView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            // ignore: sized_box_for_whitespace
+            SizedBox(
+              height: 230,
+              width: 230,
+              child: LiquidCircularProgressIndicator(
+                value: 0.25, // Defaults to 0.5.
+                valueColor: const AlwaysStoppedAnimation(Colors
+                    .deepOrangeAccent), // Defaults to the current Theme's accentColor.
+                backgroundColor: Colors
+                    .white, // Defaults to the current Theme's backgroundColor.
+                borderColor: const Color.fromARGB(255, 29, 93, 128),
+                borderWidth: 5.0,
+                direction: Axis
+                    .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                center: const Text("Loading..."),
+              ),
+            ),
             Container(
+              height: 50, //this is added as a spacer bwt map and indicator.
+            ),
+            // Map showing User Location.
+            SizedBox(
               height: 380,
               width: 500,
               child: currentLocation == null
