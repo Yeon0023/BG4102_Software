@@ -2,8 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 
 class ProfilePhoto extends StatefulWidget {
   const ProfilePhoto({Key? key}) : super(key: key);
@@ -13,56 +11,30 @@ class ProfilePhoto extends StatefulWidget {
 }
 
 class _ProfilePhotoState extends State<ProfilePhoto> {
-  File? image;
+  File? _pickedImage;
 
   void _pickImageGallery() async {
-    final picker = ImagePicker();
-    final pickedImage = await picker.pickImage(
-      source: ImageSource.gallery,
-    );
-    final pickedImageFile = File(pickedImage!.path);
-    setState(() {
-      image = pickedImageFile;
-    });
+    XFile? pickedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedImage == null) return;
+    final imageTemp = File(pickedImage.path);
+    setState(() => _pickedImage = imageTemp);
   }
 
-  //Access Gallery for photo
-  // Future<File?> _pickImageGallery() async {
-  //   PickedFile? pickedFile =
-  //       await ImagePicker.platform.pickImage(source: ImageSource.gallery);
-  //   if (pickedFile == null) {
-  //     return null;
-  //   }
-  //   final File file = File(pickedFile.path);
-  //   final Directory directory = await getApplicationDocumentsDirectory();
-  //   final path = directory.path;
-  //   final String fileName = basename(pickedFile.path);
-  //   //final String fileExtension = extension(image.path);
-  //   File newImage = await file.copy('$path/$fileName');
-  //   setState(() {
-  //     image = newImage;
-  //   });
-  //   return null;
-  // }
-
   //Access camera to take photo for profile.
-  // void _pickImageCamera() async {
-  //   final picker = ImagePicker();
-  //   XFile? pickedImage = await picker.pickImage(source: ImageSource.camera);
-  //   final imageTemp = File(pickedImage!.path);
-  //   setState(() => image = imageTemp);
-  //   // ignore: use_build_context_synchronously
-  //   // Navigator.pop(context);
-  // }
+  void _pickImageCamera() async {
+    final picker = ImagePicker();
+    XFile? pickedImage = await picker.pickImage(source: ImageSource.camera);
+    final imageTemp = File(pickedImage!.path);
+    setState(() => _pickedImage = imageTemp);
+  }
 
   //Remove Photo from avatar
-  // void _remove() {
-  //   setState(() {
-  //     image = null;
-  //   });
-  //   // ignore: use_build_context_synchronously
-  //   // Navigator.pop(context);
-  // }
+  void _remove() {
+    setState(() {
+      _pickedImage = null;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +47,20 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
             fit: StackFit.expand,
             clipBehavior: Clip.none,
             children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/Profile_Image.png'),
+              Container(
+                margin: const EdgeInsets.symmetric(
+                  vertical: 1,
+                  horizontal: 1,
+                ),
+                child: CircleAvatar(
+                  backgroundColor: Colors.blueGrey[700],
+                  child: CircleAvatar(
+                      radius: 52,
+                      backgroundColor: Colors.white,
+                      backgroundImage: _pickedImage == null
+                          ? null
+                          : FileImage(_pickedImage!)),
+                ),
               ),
               Positioned(
                 bottom: 0,
@@ -89,7 +73,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40),
-                          side: const BorderSide(color: Colors.white),
+                          side: const BorderSide(color: Colors.black38),
                         ),
                       ),
                       backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -107,7 +91,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                               child: ListBody(
                                 children: [
                                   InkWell(
-                                    // onTap: _pickImageCamera,
+                                    onTap: _pickImageCamera,
                                     child: Row(
                                       children: const [
                                         Padding(
@@ -135,7 +119,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                                     ),
                                   ),
                                   InkWell(
-                                    // onTap: _remove,
+                                    onTap: _remove,
                                     child: Row(
                                       children: const [
                                         Padding(

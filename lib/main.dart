@@ -16,7 +16,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: const HomePage(),
-      home: const HomePage(),
+      home: const ProfileView(),
       theme: ThemeData(
         primaryColor: Colors.teal[900],
       ),
