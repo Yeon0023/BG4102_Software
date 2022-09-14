@@ -16,7 +16,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: const HomePage(),
-      home: const ProfileView(),
+      home: const LoginView(),
       theme: ThemeData(
         primaryColor: Colors.teal[900],
       ),
@@ -27,7 +27,6 @@ void main() {
         noteRoute: (context) => const NoteView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
-
       },
     ),
   );

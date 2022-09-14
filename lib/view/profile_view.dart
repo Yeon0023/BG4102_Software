@@ -1,4 +1,4 @@
-import 'package:bg4102_software/view/profile_photo.dart';
+import 'package:bg4102_software/Utilities/profile_photo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
