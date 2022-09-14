@@ -12,6 +12,8 @@ class ProfilePhoto extends StatefulWidget {
 
 class _ProfilePhotoState extends State<ProfilePhoto> {
   File? _pickedImage;
+  final _profileDefaultPhoto =
+      Image.asset('assets/images/Profile_Image.png').image;
 
   void _pickImageGallery() async {
     XFile? pickedImage =
@@ -55,11 +57,13 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                 child: CircleAvatar(
                   backgroundColor: Colors.blueGrey[700],
                   child: CircleAvatar(
-                      radius: 52,
-                      backgroundColor: Colors.white,
-                      backgroundImage: _pickedImage == null
-                          ? null
-                          : FileImage(_pickedImage!)),
+                    radius: 52,
+                    //backgroundColor: Colors.white,
+                    // backgroundImage: AssetImage('assets/images/Profile_Image.png')
+                    backgroundImage: _pickedImage == null
+                        ? _profileDefaultPhoto
+                        : FileImage(_pickedImage!),
+                  ),
                 ),
               ),
               Positioned(
