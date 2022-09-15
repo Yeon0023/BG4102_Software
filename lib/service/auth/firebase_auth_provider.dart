@@ -6,13 +6,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart'
     show FirebaseAuth, FirebaseAuthException;
 import 'package:flutter/material.dart';
-import 'package:path/path.dart' as Path;
+
 
 class FirebaseAuthProvider implements AuthProvider {
   // get context => null;
 
   @override
   Future<void> initialize() async {
+    WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );

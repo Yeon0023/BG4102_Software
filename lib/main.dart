@@ -6,7 +6,9 @@ import 'package:bg4102_software/view/TestResult_view.dart';
 import 'package:bg4102_software/view/Verify_email_view.dart';
 import 'package:bg4102_software/view/forget_pw.dart';
 import 'package:bg4102_software/view/note_view.dart';
+import 'package:bg4102_software/view/pair_view.dart';
 import 'package:bg4102_software/view/profile_view.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +19,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: const HomePage(),
-      home: const TestResultView(),
+      home: const LoginView(),
       theme: ThemeData(
         primaryColor: Colors.teal[900],
       ),
@@ -29,6 +31,7 @@ void main() {
         verifyEmailRoute: (context) => const VerifyEmailView(),
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
         testResultRoute: (context) => const TestResultView(),
+        pairRoute: (context) => const PairView(),
       },
     ),
   );
