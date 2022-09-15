@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-15:/values-ml/values-ml.xml",
+            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-16:/values-ml/values-ml.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\ac639a1306ab02fbca8ae901a1c68789\\transformed\\core-1.8.0\\res\\values-ml\\values-ml.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "24",
-                        "startColumns": "4",
-                        "startOffsets": "2843",
-                        "endColumns": "100",
-                        "endOffsets": "2939"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\e3277ef01d8def06b7681d3bc72af836\\transformed\\jetified-play-services-base-18.0.1\\res\\values-ml\\values.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\36cc38428ec5cc4eb7f201d1f0307824\\transformed\\jetified-play-services-base-18.0.1\\res\\values-ml\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\d7f3b1e333fe4bfb8376bc01d4f389a4\\transformed\\browser-1.4.0\\res\\values-ml\\values-ml.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\da7269e952f97c3065bc2f0c2ad95c68\\transformed\\jetified-play-services-basement-18.0.0\\res\\values-ml\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "155",
+                        "endOffsets": "350"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1113",
+                        "endColumns": "159",
+                        "endOffsets": "1268"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\1d7df45d43dcfd694aad0469afcca77c\\transformed\\browser-1.4.0\\res\\values-ml\\values-ml.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -55,20 +55,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\1da47740d95b84e970f8c22766e168aa\\transformed\\jetified-play-services-basement-18.0.0\\res\\values-ml\\values.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\86a4e56308fd46f17a51ac454c392b41\\transformed\\core-1.8.0\\res\\values-ml\\values-ml.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "155",
-                        "endOffsets": "350"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "10",
+                        "startLines": "24",
                         "startColumns": "4",
-                        "startOffsets": "1113",
-                        "endColumns": "159",
-                        "endOffsets": "1268"
+                        "startOffsets": "2843",
+                        "endColumns": "100",
+                        "endOffsets": "2939"
                     }
                 }
             ]

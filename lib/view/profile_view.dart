@@ -1,4 +1,5 @@
 import 'package:bg4102_software/Utilities/profile_photo.dart';
+import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +12,62 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[900],
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 3, 227, 126),
+              ),
+              child: Text('Breathalyzer'),
+            ),
+            ListTile(
+              title: const Text('Home'),
+              onTap: () {
+                //Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileView()));
+              },
+            ),
+            ListTile(
+                title: const Text('Profile'),
+                onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    profileRoute,
+                    (route) => false,
+                  );
+                }),
+            ListTile(
+              title: const Text('Test Result'),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  testResultRoute,
+                  (route) => false,
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('History'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Paring'),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  noteRoute,
+                  (route) => false,
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       //App Bar
       appBar: AppBar(
         title: const Text('Your Profile'),

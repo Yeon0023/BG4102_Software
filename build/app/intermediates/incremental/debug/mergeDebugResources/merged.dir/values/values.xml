@@ -125,9 +125,17 @@
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="copy_toast_msg">Link copied to clipboard</string>
+    <string name="default_web_client_id" translatable="false">204345871873-aupd8nfdctimj63bag2k8flk0c691iqn.apps.googleusercontent.com</string>
     <string name="fallback_menu_item_copy_link">Copy link</string>
     <string name="fallback_menu_item_open_in_browser">Open in browser</string>
     <string name="fallback_menu_item_share_link">Share link</string>
+    <string name="firebase_database_url" translatable="false">https://bg4102-med-device-deign-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">204345871873</string>
+    <string name="google_api_key" translatable="false">AIzaSyDCmFwb0e20Oc2K7JSac0tfj3pGuk7-W4k</string>
+    <string name="google_app_id" translatable="false">1:204345871873:android:87a60e7486a035dd22fa00</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDCmFwb0e20Oc2K7JSac0tfj3pGuk7-W4k</string>
+    <string name="google_storage_bucket" translatable="false">bg4102-med-device-deign.appspot.com</string>
+    <string name="project_id" translatable="false">bg4102-med-device-deign</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         

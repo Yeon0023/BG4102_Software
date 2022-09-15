@@ -61,7 +61,7 @@ class _PairViewState extends State<PairView> {
           Center(
             child: Image(
               image: AssetImage(
-                  'images/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png'),
+                  'assets/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png'),
             ),
           ),
           Container(
@@ -100,119 +100,6 @@ class _PairViewState extends State<PairView> {
     );
   }
 }
-/*body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: ReusableCard(
-              colour: Colors.green,
-              cardChild: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  SpinKitFadingCircle(
-                    color: Color.fromARGB(255, 72, 69, 69),
-                    size: 30,
-                    duration: Duration(milliseconds: 3000),
-                  ),
-                  SizedBox(width: 20.0),
-                  Text(
-                    'Pairing',
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Icon(
-            Icons.more_vert_outlined,
-            size: 50,
-            color: Color(0xFF5F6368),
-          ),
-          Container(
-            child: ReusableCard(
-              colour: Colors.green,
-              cardChild: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  SpinKitFadingCircle(
-                    color: Color.fromARGB(255, 72, 69, 69),
-                    size: 30,
-                    duration: Duration(milliseconds: 3000),
-                  ),
-                  SizedBox(width: 20.0),
-                  Text(
-                    'Connecting',
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Icon(
-            Icons.more_vert_outlined,
-            size: 50,
-            color: Color(0xFF5F6368),
-          ),
-          Container(
-            child: ReusableCard(
-              colour: Colors.green,
-              cardChild: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  SpinKitFadingCircle(
-                    color: Color.fromARGB(255, 72, 69, 69),
-                    size: 30,
-                    duration: Duration(milliseconds: 3000),
-                  ),
-                  SizedBox(width: 20.0),
-                  Text(
-                    'Waiting for setup',
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Icon(
-            Icons.more_vert_outlined,
-            size: 50,
-            color: Color(0xFF5F6368),
-          ),
-          Container(
-            child: ReusableCard(
-              colour: Colors.green,
-              cardChild: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  SpinKitFadingCircle(
-                    color: Color.fromARGB(255, 72, 69, 69),
-                    size: 30,
-                    duration: Duration(milliseconds: 3000),
-                  ),
-                  SizedBox(width: 20.0),
-                  Text(
-                    'Blow for 5 seconds',
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),*/
 
 Future<bool> showLogOutDialog(BuildContext context) {
   return showDialog<bool>(
