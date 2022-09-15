@@ -92,6 +92,10 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
 
+                const SizedBox(
+                  height: 12,
+                ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 25.0,
@@ -203,7 +207,7 @@ class _LoginViewState extends State<LoginView> {
                     opacity: 0.25,
                     child: SizedBox(
                       height: 45,
-                      width: 355,
+                      width: 345,
                       child: Center(
                         child: Text(
                           "Sign In!",

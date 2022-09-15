@@ -1,5 +1,4 @@
 import 'package:bg4102_software/constats/routes.dart';
-import 'package:bg4102_software/view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,13 +49,7 @@ class _TestResultViewState extends State<TestResultView> {
             ListTile(
               title: const Text('Home'),
               onTap: () {
-                //Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ProfileView(),
-                  ),
-                );
+                Navigator.pop(context);
               },
             ),
             ListTile(

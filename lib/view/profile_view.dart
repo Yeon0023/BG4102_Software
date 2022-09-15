@@ -26,11 +26,7 @@ class ProfileView extends StatelessWidget {
             ListTile(
               title: const Text('Home'),
               onTap: () {
-                //Navigator.pop(context);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ProfileView()));
+                Navigator.pop(context);
               },
             ),
             ListTile(
