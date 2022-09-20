@@ -1,7 +1,6 @@
 import 'package:bg4102_software/Utilities/Show_error_dialog.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_exception.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';

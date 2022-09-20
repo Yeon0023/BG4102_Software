@@ -1,46 +1,50 @@
 [
     {
-        "merged": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-merged_res-23:\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-main-16:\\mipmap-xhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "com.MedicalDesign.project.app-merged_res-23:/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "com.MedicalDesign.project.app-main-16:/mipmap-xxhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "com.MedicalDesign.project.app-merged_res-23:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.MedicalDesign.project.app-main-16:/mipmap-mdpi/ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-merged_res-23:\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-main-16:\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-merged_res-23:\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-main-16:\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "com.MedicalDesign.project.app-merged_res-23:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.MedicalDesign.project.app-main-16:/mipmap-xxxhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-merged_res-23:\\drawable-v21_launch_background.xml.flat",
-        "source": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-main-16:\\drawable-v21\\launch_background.xml"
-    },
-    {
-        "merged": "com.MedicalDesign.project.app-merged_res-23:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.MedicalDesign.project.app-main-16:/mipmap-hdpi/ic_launcher.png"
     },
     {
         "merged": "com.MedicalDesign.project.app-merged_res-23:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.MedicalDesign.project.app-main-16:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-merged_res-23:\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-main-16:\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/drawable-xxhdpi_splash.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/drawable-xxhdpi/splash.png"
     },
     {
-        "merged": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-merged_res-23:\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\yeoni\\.gradle\\daemon\\7.4\\com.MedicalDesign.project.app-main-16:\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/drawable-v21_background.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/drawable-v21/background.png"
+    },
+    {
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/drawable-v21_launch_background.xml.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/drawable-hdpi_splash.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/drawable-hdpi/splash.png"
+    },
+    {
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/drawable-mdpi_splash.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/drawable-mdpi/splash.png"
+    },
+    {
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/drawable-xhdpi_splash.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/drawable-xhdpi/splash.png"
+    },
+    {
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/drawable-xxxhdpi_splash.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/drawable-xxxhdpi/splash.png"
+    },
+    {
+        "merged": "com.MedicalDesign.project.app-merged_res-23:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.MedicalDesign.project.app-main-16:/mipmap-hdpi/ic_launcher.png"
     }
 ]

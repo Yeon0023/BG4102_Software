@@ -37,18 +37,18 @@
 24-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:7:5-108
 25        android:name="android.permission.ACCESS_COARSE_LOCATION"
 25-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:7:22-78
-26        android:maxSdkVersion="30" /> <!-- required for API 18 - 30 -->
+26        android:maxSdkVersion="30" />
 26-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:7:79-105
 27    <uses-permission
-27-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-12:38
+27-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-68
 28        android:name="android.permission.BLUETOOTH"
-28-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-52
+28-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-65
 29        android:maxSdkVersion="30" />
 29-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-35
 30    <uses-permission
-30-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-15:38
+30-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-74
 31        android:name="android.permission.BLUETOOTH_ADMIN"
-31-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-58
+31-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-71
 32        android:maxSdkVersion="30" /> <!-- required for API 23 - 30 -->
 32-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-35
 33    <uses-permission-sdk-23
