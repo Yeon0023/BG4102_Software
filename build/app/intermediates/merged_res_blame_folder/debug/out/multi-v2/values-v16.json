@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-16:/values-v16/values-v16.xml",
+            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-21:/values-v16/values-v16.xml",
             "map": [
                 {
                     "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\86a4e56308fd46f17a51ac454c392b41\\transformed\\core-1.8.0\\res\\values-v16\\values-v16.xml",
@@ -11,6 +11,25 @@
                         "startOffsets": "55",
                         "endColumns": "65",
                         "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\e583ef6a2dfbc2788063e063186cba7e\\transformed\\appcompat-1.3.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
                     }
                 }
             ]

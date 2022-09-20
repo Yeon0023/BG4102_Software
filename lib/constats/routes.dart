@@ -6,4 +6,5 @@ const profileRoute = '/profile/';
 const forgetPasswordRoute = '/forgetpassword/';
 const testResultRoute = '/testResult/';
 const pairRoute = '/pair/';
+const blueToothRoute = '/blueTooth/';
 
