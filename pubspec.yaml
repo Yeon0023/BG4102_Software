@@ -52,7 +52,8 @@ dependencies:
   flutter_native_splash: ^2.2.9
 
 flutter_native_splash:
-  color: "#004D40"
+  text: "hihi"
+  color: "#DB4437"
   image:  assets/icons8-beers-600.png
   
 dev_dependencies:
