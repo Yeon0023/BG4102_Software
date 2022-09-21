@@ -17,17 +17,23 @@ class ProfileView extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 3, 227, 126),
+                color: Colors.teal[700],
               ),
-              child: Text('Breathalyzer'),
+              child: Text('Breathalyzer',style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    color: Colors.white),),
             ),
             ListTile(
               title: const Text('Home'),
               onTap: () {
-                Navigator.pop(context);
-              },
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    noteRoute,
+                    (route) => false,
+                  );
+                }
             ),
             ListTile(
                 title: const Text('Profile'),
@@ -37,30 +43,29 @@ class ProfileView extends StatelessWidget {
                     (route) => false,
                   );
                 }),
+            // ListTile(
+            //   title: const Text('Test Result'),
+            //   onTap: () {
+            //     Navigator.of(context).pushNamedAndRemoveUntil(
+            //       testResultRoute,
+            //       (route) => false,
+            //     );
+            //   },
+            // ),
+            // ListTile(
+            //   title: const Text('History'),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
             ListTile(
-              title: const Text('Test Result'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  testResultRoute,
-                  (route) => false,
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('History'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Paring'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  noteRoute,
-                  (route) => false,
-                );
-              },
-            ),
+                title: const Text('Pairing'),
+                onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    pairRoute,
+                    (route) => false,
+                  );
+                }),
           ],
         ),
       ),
