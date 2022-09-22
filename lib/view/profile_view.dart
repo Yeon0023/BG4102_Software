@@ -21,20 +21,22 @@ class ProfileView extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.teal[700],
               ),
-              child: Text('Breathalyzer',style: TextStyle(
+              child: const Text(
+                'Breathalyzer',
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    color: Colors.white),),
+                    color: Colors.white),
+              ),
             ),
             ListTile(
-              title: const Text('Home'),
-              onTap: () {
+                title: const Text('Home'),
+                onTap: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     noteRoute,
                     (route) => false,
                   );
-                }
-            ),
+                }),
             ListTile(
                 title: const Text('Profile'),
                 onTap: () {
@@ -43,15 +45,15 @@ class ProfileView extends StatelessWidget {
                     (route) => false,
                   );
                 }),
-            // ListTile(
-            //   title: const Text('Test Result'),
-            //   onTap: () {
-            //     Navigator.of(context).pushNamedAndRemoveUntil(
-            //       testResultRoute,
-            //       (route) => false,
-            //     );
-            //   },
-            // ),
+            ListTile(
+              title: const Text('Test Result'),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  testResultRoute,
+                  (route) => false,
+                );
+              },
+            ),
             // ListTile(
             //   title: const Text('History'),
             //   onTap: () {

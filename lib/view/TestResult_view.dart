@@ -14,15 +14,30 @@ class TestResultView extends StatefulWidget {
 }
 
 class _TestResultViewState extends State<TestResultView> {
-  // final Completer<GoogleMapController> _controller = Completer();
-  // static const LatLng setLocation = LatLng(1.342834, 103.681757);
+  var location = Location();
+  bool? serviceEnabled;
+  PermissionStatus? _permissionGranted;
   LocationData? currentLocation;
 
-  void getCurrentLocation() {
-    Location location = Location();
+  void getCurrentLocation() async {
+    var serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
     location.getLocation().then((location) {
       currentLocation = location;
-      // print(location);
+      print(currentLocation);
     });
   }
 
@@ -40,18 +55,26 @@ class _TestResultViewState extends State<TestResultView> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 3, 227, 126),
+                color: Colors.teal[700],
               ),
-              child: Text('Breathalyzer'),
+              child: const Text(
+                'Breathalyzer',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    color: Colors.white),
+              ),
             ),
             ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+                title: const Text('Home'),
+                onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    noteRoute,
+                    (route) => false,
+                  );
+                }),
             ListTile(
                 title: const Text('Profile'),
                 onTap: () {
@@ -69,21 +92,20 @@ class _TestResultViewState extends State<TestResultView> {
                 );
               },
             ),
+            // ListTile(
+            //   title: const Text('History'),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
             ListTile(
-              title: const Text('History'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Paring'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  noteRoute,
-                  (route) => false,
-                );
-              },
-            ),
+                title: const Text('Pairing'),
+                onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    pairRoute,
+                    (route) => false,
+                  );
+                }),
           ],
         ),
       ),
@@ -101,28 +123,28 @@ class _TestResultViewState extends State<TestResultView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            SizedBox(
-              height: 230,
-              width: 230,
-              child: LiquidCircularProgressIndicator(
-                value: 0.25, // Defaults to 0.5.
-                valueColor: const AlwaysStoppedAnimation(Colors
-                    .deepOrangeAccent), // Defaults to the current Theme's accentColor.
-                backgroundColor: Colors
-                    .white, // Defaults to the current Theme's backgroundColor.
-                borderColor: const Color.fromARGB(255, 29, 93, 128),
-                borderWidth: 5.0,
-                direction: Axis
-                    .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                center: const Text("Loading..."),
-              ),
-            ),
-            Container(
-              height: 50, //this is added as a spacer bwt map and indicator.
-            ),
+            // SizedBox(
+            //   height: 230,
+            //   width: 230,
+            //   child: LiquidCircularProgressIndicator(
+            //     value: 0.25, // Defaults to 0.5.
+            //     valueColor: const AlwaysStoppedAnimation(Colors
+            //         .deepOrangeAccent), // Defaults to the current Theme's accentColor.
+            //     backgroundColor: Colors
+            //         .white, // Defaults to the current Theme's backgroundColor.
+            //     borderColor: const Color.fromARGB(255, 29, 93, 128),
+            //     borderWidth: 5.0,
+            //     direction: Axis
+            //         .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+            //     center: const Text("Loading..."),
+            //   ),
+            // ),
+            // Container(
+            //   height: 50, //this is added as a spacer bwt map and indicator.
+            // ),
             // Map showing User Location.
             SizedBox(
-              height: 380,
+              height: 500,
               width: 500,
               child: currentLocation == null
                   ? const Text(
@@ -131,9 +153,7 @@ class _TestResultViewState extends State<TestResultView> {
                       textAlign: TextAlign.center,
                     )
                   : GoogleMap(
-                      compassEnabled: false,
-                      mapToolbarEnabled: false,
-                      zoomControlsEnabled: false,
+                      mapType: MapType.normal,
                       initialCameraPosition: CameraPosition(
                         target: LatLng(
                           currentLocation!.latitude!,
@@ -142,19 +162,16 @@ class _TestResultViewState extends State<TestResultView> {
                         zoom: 15,
                       ),
                       markers: {
-                          Marker(
-                            markerId: const MarkerId('CurrentLocation'),
-                            position: LatLng(
-                              currentLocation!.latitude!,
-                              currentLocation!.longitude!,
-                            ),
+                        Marker(
+                          // ignore: prefer_const_constructors
+                          markerId: MarkerId('CurrentLocation'),
+                          position: LatLng(
+                            currentLocation!.latitude!,
+                            currentLocation!.longitude!,
                           ),
-                          //This is for testing only
-                          // const Marker(
-                          //   markerId: MarkerId('SetLocation'),
-                          //   position: setLocation,
-                          // ),
-                        }),
+                        ),
+                      },
+                    ),
             ),
           ],
         ),

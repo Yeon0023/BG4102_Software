@@ -1,5 +1,7 @@
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 import 'package:bg4102_software/view/Login_view.dart';
 import 'package:bg4102_software/view/Register_view.dart';
 import 'package:bg4102_software/view/TestResult_view.dart';
@@ -16,12 +18,17 @@ void main() async {
   //This is to connect device app to firebase server.
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // Require Hybrid Composition mode on Android.
+  final GoogleMapsFlutterPlatform mapsImplementation = GoogleMapsFlutterPlatform.instance;
+  if (mapsImplementation is GoogleMapsFlutterAndroid) {
+    mapsImplementation.useAndroidViewSurface = true;
+  }
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: const HomePage(),
-      home: const LoginView(),
+      home: const ProfileView(),
       theme: ThemeData(
         primaryColor: Colors.teal[900],
       ),

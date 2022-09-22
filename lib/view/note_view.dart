@@ -51,15 +51,15 @@ class _NoteViewState extends State<NoteView> {
                     (route) => false,
                   );
                 }),
-            // ListTile(
-            //   title: const Text('Test Result'),
-            //   onTap: () {
-            //     Navigator.of(context).pushNamedAndRemoveUntil(
-            //       testResultRoute,
-            //       (route) => false,
-            //     );
-            //   },
-            // ),
+            ListTile(
+              title: const Text('Test Result'),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  testResultRoute,
+                  (route) => false,
+                );
+              },
+            ),
             // ListTile(
             //   title: const Text('History'),
             //   onTap: () {
