@@ -14,9 +14,14 @@ class TestResultView extends StatefulWidget {
 }
 
 class _TestResultViewState extends State<TestResultView> {
+  // final Completer<GoogleMapController> _controller = Completer();
+  // static const LatLng setLocation = LatLng(1.342834, 103.681757);
+
+
   var location = Location();
   bool? serviceEnabled;
   PermissionStatus? _permissionGranted;
+  LocationData? locationData;
   LocationData? currentLocation;
 
   void getCurrentLocation() async {
@@ -35,9 +40,9 @@ class _TestResultViewState extends State<TestResultView> {
       }
     }
 
-    location.getLocation().then((location) {
+     await location.getLocation().then((location) {
       currentLocation = location;
-      print(currentLocation);
+      print(location);
     });
   }
 
@@ -55,26 +60,18 @@ class _TestResultViewState extends State<TestResultView> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.teal[700],
+                color: Color.fromARGB(255, 3, 227, 126),
               ),
-              child: const Text(
-                'Breathalyzer',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Colors.white),
-              ),
+              child: Text('Breathalyzer'),
             ),
             ListTile(
-                title: const Text('Home'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    noteRoute,
-                    (route) => false,
-                  );
-                }),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
             ListTile(
                 title: const Text('Profile'),
                 onTap: () {
@@ -92,20 +89,21 @@ class _TestResultViewState extends State<TestResultView> {
                 );
               },
             ),
-            // ListTile(
-            //   title: const Text('History'),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
             ListTile(
-                title: const Text('Pairing'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    pairRoute,
-                    (route) => false,
-                  );
-                }),
+              title: const Text('History'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Paring'),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  noteRoute,
+                  (route) => false,
+                );
+              },
+            ),
           ],
         ),
       ),
@@ -123,28 +121,28 @@ class _TestResultViewState extends State<TestResultView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            // SizedBox(
-            //   height: 230,
-            //   width: 230,
-            //   child: LiquidCircularProgressIndicator(
-            //     value: 0.25, // Defaults to 0.5.
-            //     valueColor: const AlwaysStoppedAnimation(Colors
-            //         .deepOrangeAccent), // Defaults to the current Theme's accentColor.
-            //     backgroundColor: Colors
-            //         .white, // Defaults to the current Theme's backgroundColor.
-            //     borderColor: const Color.fromARGB(255, 29, 93, 128),
-            //     borderWidth: 5.0,
-            //     direction: Axis
-            //         .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-            //     center: const Text("Loading..."),
-            //   ),
-            // ),
-            // Container(
-            //   height: 50, //this is added as a spacer bwt map and indicator.
-            // ),
+            SizedBox(
+              height: 230,
+              width: 230,
+              child: LiquidCircularProgressIndicator(
+                value: 0.25, // Defaults to 0.5.
+                valueColor: const AlwaysStoppedAnimation(Colors
+                    .deepOrangeAccent), // Defaults to the current Theme's accentColor.
+                backgroundColor: Colors
+                    .white, // Defaults to the current Theme's backgroundColor.
+                borderColor: const Color.fromARGB(255, 29, 93, 128),
+                borderWidth: 5.0,
+                direction: Axis
+                    .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                center: const Text("Loading..."),
+              ),
+            ),
+            Container(
+              height: 50, //this is added as a spacer bwt map and indicator.
+            ),
             // Map showing User Location.
             SizedBox(
-              height: 500,
+              height: 300,
               width: 500,
               child: currentLocation == null
                   ? const Text(
@@ -153,7 +151,9 @@ class _TestResultViewState extends State<TestResultView> {
                       textAlign: TextAlign.center,
                     )
                   : GoogleMap(
-                      mapType: MapType.normal,
+                      compassEnabled: false,
+                      mapToolbarEnabled: false,
+                      zoomControlsEnabled: false,
                       initialCameraPosition: CameraPosition(
                         target: LatLng(
                           currentLocation!.latitude!,
@@ -162,16 +162,19 @@ class _TestResultViewState extends State<TestResultView> {
                         zoom: 15,
                       ),
                       markers: {
-                        Marker(
-                          // ignore: prefer_const_constructors
-                          markerId: MarkerId('CurrentLocation'),
-                          position: LatLng(
-                            currentLocation!.latitude!,
-                            currentLocation!.longitude!,
+                          Marker(
+                            markerId: const MarkerId('CurrentLocation'),
+                            position: LatLng(
+                              currentLocation!.latitude!,
+                              currentLocation!.longitude!,
+                            ),
                           ),
-                        ),
-                      },
-                    ),
+                          //This is for testing only
+                          // const Marker(
+                          //   markerId: MarkerId('SetLocation'),
+                          //   position: setLocation,
+                          // ),
+                        }),
             ),
           ],
         ),
