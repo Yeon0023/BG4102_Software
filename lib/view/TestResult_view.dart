@@ -16,35 +16,9 @@ class TestResultView extends StatefulWidget {
 }
 
 class _TestResultViewState extends State<TestResultView> {
-  // final Completer<GoogleMapController> _controller = Completer();
-
-  var location = Location();
-  // bool? serviceEnabled;
-  // PermissionStatus? _permissionGranted;
-  // LocationData? locationData;
-  // LocationData? currentLocation;
-
-  // void getCurrentLocation() async {
-  //   var serviceEnabled = await location.serviceEnabled();
-  //   if (!serviceEnabled) {
-  //     serviceEnabled = await location.requestService();
-  //     if (!serviceEnabled) {
-  //       return;
-  //     }
-  //   }
-  //   _permissionGranted = await location.hasPermission();
-  //   if (_permissionGranted == PermissionStatus.denied) {
-  //     _permissionGranted = await location.requestPermission();
-  //     if (_permissionGranted != PermissionStatus.granted) {
-  //       return;
-  //     }
-  //   }
-
-  //   await location.getLocation().then((location) {
-  //     currentLocation = location;
-  //     print(location);
-  //   });
-  // }
+  // ignore: unused_field
+  late GoogleMapController _mapController;
+  final Map<String, Marker> _markers = {};
 
   @override
   void initState() {
@@ -127,7 +101,6 @@ class _TestResultViewState extends State<TestResultView> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
-          // ignore: prefer_const_literals_to_create_immutables
           children: [
             //*Breathing Indicator
             SizedBox(
@@ -139,7 +112,7 @@ class _TestResultViewState extends State<TestResultView> {
                     .deepOrangeAccent), // Defaults to the current Theme's accentColor.
                 backgroundColor: Colors
                     .white, // Defaults to the current Theme's backgroundColor.
-                borderColor: const Color.fromARGB(255, 29, 93, 128),
+                borderColor: Colors.grey[500],
                 borderWidth: 5.0,
                 direction: Axis
                     .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
@@ -150,19 +123,46 @@ class _TestResultViewState extends State<TestResultView> {
               height: 50, //this is added as a spacer bwt map and indicator.
             ),
             //* Google Map view.
-            const SizedBox(
+            SizedBox(
               height: 300,
               width: 500,
               child: GoogleMap(
+                // ignore: prefer_const_constructors
                 initialCameraPosition: CameraPosition(
                   target: setLocation,
+                  zoom: 14,
                 ),
+                onMapCreated: (controller) {
+                  _mapController = controller;
+                  addMarker('test', setLocation);
+                },
+                markers: _markers.values.toSet(),
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  addMarker(String id, LatLng location) async {
+    var markerIcon = await BitmapDescriptor.fromAssetImage(
+      ImageConfiguration(size: Size(1, 1)),
+      'assets/beerIcon.png',
+    );
+
+    var marker = Marker(
+      markerId: MarkerId(id),
+      position: location,
+      infoWindow: InfoWindow(
+        title: 'Your Current location',
+        snippet: setLocation.toString(),
+      ),
+      icon: markerIcon,
+    );
+
+    _markers[id] = marker;
+    setState(() {});
   }
 }
 
@@ -181,7 +181,41 @@ class _TestResultViewState extends State<TestResultView> {
 
 
 
+
+
+
+
 //!-------------------------------------------------------------------------------
+              // final Completer<GoogleMapController> _controller = Completer();
+  // var location = Location();
+  // bool? serviceEnabled;
+  // PermissionStatus? _permissionGranted;
+  // LocationData? locationData;
+  // LocationData? currentLocation;
+
+  // void getCurrentLocation() async {
+  //   var serviceEnabled = await location.serviceEnabled();
+  //   if (!serviceEnabled) {
+  //     serviceEnabled = await location.requestService();
+  //     if (!serviceEnabled) {
+  //       return;
+  //     }
+  //   }
+  //   _permissionGranted = await location.hasPermission();
+  //   if (_permissionGranted == PermissionStatus.denied) {
+  //     _permissionGranted = await location.requestPermission();
+  //     if (_permissionGranted != PermissionStatus.granted) {
+  //       return;
+  //     }
+  //   }
+
+  //   await location.getLocation().then((location) {
+  //     currentLocation = location;
+  //     print(location);
+  //   });
+  // }
+              
+//!-------------------------------------------------------------------------------          
               // child: currentLocation == null
               //     ? const Text(
               //         'Loading',
