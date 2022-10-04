@@ -6,6 +6,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
+const LatLng setLocation = LatLng(1.342834, 103.681757);
+
 class TestResultView extends StatefulWidget {
   const TestResultView({Key? key}) : super(key: key);
 
@@ -15,40 +17,38 @@ class TestResultView extends StatefulWidget {
 
 class _TestResultViewState extends State<TestResultView> {
   // final Completer<GoogleMapController> _controller = Completer();
-  // static const LatLng setLocation = LatLng(1.342834, 103.681757);
-
 
   var location = Location();
-  bool? serviceEnabled;
-  PermissionStatus? _permissionGranted;
-  LocationData? locationData;
-  LocationData? currentLocation;
+  // bool? serviceEnabled;
+  // PermissionStatus? _permissionGranted;
+  // LocationData? locationData;
+  // LocationData? currentLocation;
 
-  void getCurrentLocation() async {
-    var serviceEnabled = await location.serviceEnabled();
-    if (!serviceEnabled) {
-      serviceEnabled = await location.requestService();
-      if (!serviceEnabled) {
-        return;
-      }
-    }
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
+  // void getCurrentLocation() async {
+  //   var serviceEnabled = await location.serviceEnabled();
+  //   if (!serviceEnabled) {
+  //     serviceEnabled = await location.requestService();
+  //     if (!serviceEnabled) {
+  //       return;
+  //     }
+  //   }
+  //   _permissionGranted = await location.hasPermission();
+  //   if (_permissionGranted == PermissionStatus.denied) {
+  //     _permissionGranted = await location.requestPermission();
+  //     if (_permissionGranted != PermissionStatus.granted) {
+  //       return;
+  //     }
+  //   }
 
-     await location.getLocation().then((location) {
-      currentLocation = location;
-      print(location);
-    });
-  }
+  //   await location.getLocation().then((location) {
+  //     currentLocation = location;
+  //     print(location);
+  //   });
+  // }
 
   @override
   void initState() {
-    getCurrentLocation();
+    // getCurrentLocation();
     super.initState();
   }
 
@@ -60,18 +60,26 @@ class _TestResultViewState extends State<TestResultView> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 3, 227, 126),
+                color: Colors.teal[700],
               ),
-              child: Text('Breathalyzer'),
+              child: const Text(
+                'Breathalyzer',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    color: Colors.white),
+              ),
             ),
             ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+                title: const Text('Home'),
+                onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    noteRoute,
+                    (route) => false,
+                  );
+                }),
             ListTile(
                 title: const Text('Profile'),
                 onTap: () {
@@ -89,21 +97,20 @@ class _TestResultViewState extends State<TestResultView> {
                 );
               },
             ),
+            // ListTile(
+            //   title: const Text('History'),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
             ListTile(
-              title: const Text('History'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Paring'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  noteRoute,
-                  (route) => false,
-                );
-              },
-            ),
+                title: const Text('Pairing'),
+                onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    pairRoute,
+                    (route) => false,
+                  );
+                }),
           ],
         ),
       ),
@@ -120,7 +127,9 @@ class _TestResultViewState extends State<TestResultView> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
+          // ignore: prefer_const_literals_to_create_immutables
           children: [
+            //*Breathing Indicator
             SizedBox(
               height: 230,
               width: 230,
@@ -140,41 +149,15 @@ class _TestResultViewState extends State<TestResultView> {
             Container(
               height: 50, //this is added as a spacer bwt map and indicator.
             ),
-            // Map showing User Location.
-            SizedBox(
+            //* Google Map view.
+            const SizedBox(
               height: 300,
               width: 500,
-              child: currentLocation == null
-                  ? const Text(
-                      'Loading',
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.center,
-                    )
-                  : GoogleMap(
-                      compassEnabled: false,
-                      mapToolbarEnabled: false,
-                      zoomControlsEnabled: false,
-                      initialCameraPosition: CameraPosition(
-                        target: LatLng(
-                          currentLocation!.latitude!,
-                          currentLocation!.longitude!,
-                        ),
-                        zoom: 15,
-                      ),
-                      markers: {
-                          Marker(
-                            markerId: const MarkerId('CurrentLocation'),
-                            position: LatLng(
-                              currentLocation!.latitude!,
-                              currentLocation!.longitude!,
-                            ),
-                          ),
-                          //This is for testing only
-                          // const Marker(
-                          //   markerId: MarkerId('SetLocation'),
-                          //   position: setLocation,
-                          // ),
-                        }),
+              child: GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: setLocation,
+                ),
+              ),
             ),
           ],
         ),
@@ -182,3 +165,53 @@ class _TestResultViewState extends State<TestResultView> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//!-------------------------------------------------------------------------------
+              // child: currentLocation == null
+              //     ? const Text(
+              //         'Loading',
+              //         style: TextStyle(fontSize: 16),
+              //         textAlign: TextAlign.center,
+              //       )
+              //     : GoogleMap(
+              //         compassEnabled: false,
+              //         mapToolbarEnabled: false,
+              //         zoomControlsEnabled: false,
+              //         initialCameraPosition: const CameraPosition(
+              //           target: setLocation,
+              //           // LatLng(
+              //           //   currentLocation!.latitude!,
+              //           //   currentLocation!.longitude!,
+              //           // ),
+              //           zoom: 15,
+              //         ),
+              //         markers: {
+              //             // Marker(
+              //             //   markerId: const MarkerId('CurrentLocation'),
+              //             //   position:
+              //             //   LatLng(
+              //             //     currentLocation!.latitude!,
+              //             //     currentLocation!.longitude!,
+              //             //   ),
+              //             // ),
+              //             //This is for testing only
+              //             const Marker(
+              //               markerId: MarkerId('SetLocation'),
+              //               position: setLocation,
+              //             ),
+              //           }),

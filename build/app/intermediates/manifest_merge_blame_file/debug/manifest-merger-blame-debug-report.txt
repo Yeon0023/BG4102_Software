@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\debug\AndroidManifest.xml:7:5-66
-15-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\debug\AndroidManifest.xml:7:22-64
+15-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:8:5-67
+15-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:8:22-64
 16    <uses-permission android:name="android.permission.CAMERA" />
 16-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:3:5-64
 16-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:3:22-62
@@ -30,46 +30,46 @@
 20    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 20-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:7:5-79
 20-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:7:22-76
-21    <uses-permission
-21-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-68
-22        android:name="android.permission.BLUETOOTH"
-22-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-65
-23        android:maxSdkVersion="30" />
-23-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-35
-24    <uses-permission
-24-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-74
-25        android:name="android.permission.BLUETOOTH_ADMIN"
-25-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-71
-26        android:maxSdkVersion="30" /> <!-- required for API 23 - 30 -->
-26-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-35
-27    <uses-permission-sdk-23
-27-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:18:5-20:38
-28        android:name="android.permission.ACCESS_COARSE_LOCATION"
-28-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-65
-29        android:maxSdkVersion="30" />
-29-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:20:9-35
-30    <uses-permission-sdk-23
-30-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:21:5-23:38
-31        android:name="android.permission.ACCESS_FINE_LOCATION"
-31-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:22:9-63
-32        android:maxSdkVersion="30" /> <!-- API 31+ -->
-32-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:23:9-35
-33    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-33-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:26:5-76
-33-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:26:22-73
-34    <!--
-35         add android:usesPermissionFlags="neverForLocation" when you can strongly assert that
-36         your app never derives physical location from Bluetooth scan results.
-37    -->
-38    <uses-permission
-38-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:31:5-73
-39        android:name="android.permission.BLUETOOTH_SCAN"
-39-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:31:22-70
-40        android:usesPermissionFlags="neverForLocation" />
-40-->[com.polidea.rxandroidble2:rxandroidble:1.13.0] C:\Users\yeoni\.gradle\caches\transforms-3\072c3e8090c65f41de07a8b675805757\transformed\jetified-rxandroidble-1.13.0\AndroidManifest.xml:23:9-55
-41    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-41-->[com.google.firebase:firebase-auth:21.0.7] C:\Users\yeoni\.gradle\caches\transforms-3\531b6680142ba7c0f76a0796ed845068\transformed\jetified-firebase-auth-21.0.7\AndroidManifest.xml:24:5-79
-41-->[com.google.firebase:firebase-auth:21.0.7] C:\Users\yeoni\.gradle\caches\transforms-3\531b6680142ba7c0f76a0796ed845068\transformed\jetified-firebase-auth-21.0.7\AndroidManifest.xml:24:22-76
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+21-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:9:5-79
+21-->C:\Users\yeoni\Desktop\BG4103_Software\android\app\src\main\AndroidManifest.xml:9:22-76
+22    <uses-permission
+22-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-68
+23        android:name="android.permission.BLUETOOTH"
+23-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-65
+24        android:maxSdkVersion="30" />
+24-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-35
+25    <uses-permission
+25-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-74
+26        android:name="android.permission.BLUETOOTH_ADMIN"
+26-->[:flutter_bluetooth_serial] C:\Users\yeoni\Desktop\BG4103_Software\build\flutter_bluetooth_serial\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-71
+27        android:maxSdkVersion="30" /> <!-- required for API 23 - 30 -->
+27-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-35
+28    <uses-permission-sdk-23
+28-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:18:5-20:38
+29        android:name="android.permission.ACCESS_COARSE_LOCATION"
+29-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-65
+30        android:maxSdkVersion="30" />
+30-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:20:9-35
+31    <uses-permission-sdk-23
+31-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:21:5-23:38
+32        android:name="android.permission.ACCESS_FINE_LOCATION"
+32-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:22:9-63
+33        android:maxSdkVersion="30" /> <!-- API 31+ -->
+33-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:23:9-35
+34    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+34-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:26:5-76
+34-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:26:22-73
+35    <!--
+36         add android:usesPermissionFlags="neverForLocation" when you can strongly assert that
+37         your app never derives physical location from Bluetooth scan results.
+38    -->
+39    <uses-permission
+39-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:31:5-73
+40        android:name="android.permission.BLUETOOTH_SCAN"
+40-->[:reactive_ble_mobile] C:\Users\yeoni\Desktop\BG4103_Software\build\reactive_ble_mobile\intermediates\merged_manifest\debug\AndroidManifest.xml:31:22-70
+41        android:usesPermissionFlags="neverForLocation" />
+41-->[com.polidea.rxandroidble2:rxandroidble:1.13.0] C:\Users\yeoni\.gradle\caches\transforms-3\072c3e8090c65f41de07a8b675805757\transformed\jetified-rxandroidble-1.13.0\AndroidManifest.xml:23:9-55
 42    <uses-permission android:name="android.permission.WAKE_LOCK" />
 42-->[com.google.android.gms:play-services-measurement-api:21.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\29ab8bf47c05c7d3cb485cadaee59515\transformed\jetified-play-services-measurement-api-21.1.0\AndroidManifest.xml:24:5-68
 42-->[com.google.android.gms:play-services-measurement-api:21.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\29ab8bf47c05c7d3cb485cadaee59515\transformed\jetified-play-services-measurement-api-21.1.0\AndroidManifest.xml:24:22-65
@@ -122,23 +122,23 @@
 78            <meta-data
 79                android:name="io.flutter.embedding.android.NormalTheme"
 80                android:resource="@style/NormalTheme" />
-81            <meta-data
-82                android:name="com.google.android.geo.API_KEY"
-83                android:value="AIzaSyDCmFwb0e20Oc2K7JSac0tfj3pGuk7-W4k" />
+81
+82            <intent-filter>
+83                <action android:name="android.intent.action.MAIN" />
 84
-85            <intent-filter>
-86                <action android:name="android.intent.action.MAIN" />
-87
-88                <category android:name="android.intent.category.LAUNCHER" />
-89            </intent-filter>
-90        </activity>
-91        <!--
-92             Don't delete the meta-data below.
-93             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-94        -->
+85                <category android:name="android.intent.category.LAUNCHER" />
+86            </intent-filter>
+87        </activity>
+88        <!--
+89             Don't delete the meta-data below.
+90             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+91        -->
+92        <meta-data
+93            android:name="flutterEmbedding"
+94            android:value="2" />
 95        <meta-data
-96            android:name="flutterEmbedding"
-97            android:value="2" />
+96            android:name="com.google.android.geo.API_KEY"
+97            android:value="AIzaSyBxxnUqjalVK47OgKd335GmtJ6-9CMHexE" />
 98
 99        <service
 99-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4103_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19

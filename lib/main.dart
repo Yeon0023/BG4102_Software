@@ -21,7 +21,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: const HomePage(),
-      home: const NoteView(),
+      home: const TestResultView(),
       theme: ThemeData(
         primaryColor: Colors.teal[900],
       ),
