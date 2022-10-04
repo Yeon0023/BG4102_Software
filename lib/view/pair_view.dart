@@ -59,12 +59,12 @@ class _PairViewState extends State<PairView> {
                 );
               },
             ),
-            // ListTile(
-            //   title: const Text('History'),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
+            ListTile(
+              title: const Text('History'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
             ListTile(
                 title: const Text('Pairing'),
                 onTap: () {

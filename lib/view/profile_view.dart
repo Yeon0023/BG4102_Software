@@ -54,12 +54,12 @@ class ProfileView extends StatelessWidget {
                 );
               },
             ),
-            // ListTile(
-            //   title: const Text('History'),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
+            ListTile(
+              title: const Text('History'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
             ListTile(
                 title: const Text('Pairing'),
                 onTap: () {

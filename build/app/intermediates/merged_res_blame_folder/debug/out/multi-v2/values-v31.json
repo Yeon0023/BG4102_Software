@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-21:/values-v31/values-v31.xml",
+            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-16:/values-v31/values-v31.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\yeoni\\Desktop\\BG4103_Software\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
+                    "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

@@ -29,20 +29,22 @@ class _NoteViewState extends State<NoteView> {
               decoration: BoxDecoration(
                 color: Colors.teal[700],
               ),
-              child: Text('Breathalyzer',style: TextStyle(
+              child: Text(
+                'Breathalyzer',
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    color: Colors.white),),
+                    color: Colors.white),
+              ),
             ),
             ListTile(
-              title: const Text('Home'),
-              onTap: () {
+                title: const Text('Home'),
+                onTap: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     noteRoute,
                     (route) => false,
                   );
-                }
-            ),
+                }),
             ListTile(
                 title: const Text('Profile'),
                 onTap: () {
@@ -60,12 +62,12 @@ class _NoteViewState extends State<NoteView> {
                 );
               },
             ),
-            // ListTile(
-            //   title: const Text('History'),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
+            ListTile(
+              title: const Text('History'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
             ListTile(
                 title: const Text('Pairing'),
                 onTap: () {

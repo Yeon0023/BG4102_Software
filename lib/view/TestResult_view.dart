@@ -71,12 +71,12 @@ class _TestResultViewState extends State<TestResultView> {
                 );
               },
             ),
-            // ListTile(
-            //   title: const Text('History'),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
+            ListTile(
+              title: const Text('History'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
             ListTile(
                 title: const Text('Pairing'),
                 onTap: () {
@@ -130,7 +130,7 @@ class _TestResultViewState extends State<TestResultView> {
                 // ignore: prefer_const_constructors
                 initialCameraPosition: CameraPosition(
                   target: setLocation,
-                  zoom: 14,
+                  zoom: 15,
                 ),
                 onMapCreated: (controller) {
                   _mapController = controller;
@@ -148,7 +148,7 @@ class _TestResultViewState extends State<TestResultView> {
   addMarker(String id, LatLng location) async {
     var markerIcon = await BitmapDescriptor.fromAssetImage(
       const ImageConfiguration(),
-      'assets/beerIcon1.png',
+      'assets/images/beerIcon80.png',
     );
 
     var marker = Marker(
