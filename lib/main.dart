@@ -20,8 +20,7 @@ void main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      // home: const HomePage(),
-      home: const TestResultView(),
+      home: const HomePage(),
       theme: ThemeData(
         primaryColor: Colors.teal[900],
       ),
