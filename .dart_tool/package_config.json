@@ -63,7 +63,7 @@
     },
     {
       "name": "coverage",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/coverage-1.6.0",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/coverage-1.6.1",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -111,25 +111,25 @@
     },
     {
       "name": "firebase_auth",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_auth-3.9.0",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_auth-3.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
     {
       "name": "firebase_auth_platform_interface",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_auth_platform_interface-6.8.0",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_auth_platform_interface-6.10.0",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
     {
       "name": "firebase_auth_web",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_auth_web-4.4.1",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_auth_web-4.6.0",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
     {
       "name": "firebase_core",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_core-1.22.0",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_core-1.24.0",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
@@ -141,27 +141,15 @@
     },
     {
       "name": "firebase_core_web",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_core_web-1.7.2",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_core_web-1.7.3",
       "packageUri": "lib/",
       "languageVersion": "2.16"
-    },
-    {
-      "name": "fixnum",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/fixnum-1.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "flutter",
       "rootUri": "file:///C:/Users/yeoni/Desktop/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "2.17"
-    },
-    {
-      "name": "flutter_bluetooth_serial",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_bluetooth_serial-0.4.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "flutter_lints",
@@ -171,19 +159,13 @@
     },
     {
       "name": "flutter_native_splash",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_native_splash-2.2.9",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_native_splash-2.2.10+1",
       "packageUri": "lib/",
-      "languageVersion": "2.15"
+      "languageVersion": "2.18"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
       "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.7",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "flutter_reactive_ble",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_reactive_ble-5.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -219,13 +201,7 @@
     },
     {
       "name": "frontend_server_client",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/frontend_server_client-2.1.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "functional_data",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/functional_data-1.0.0",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/frontend_server_client-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -243,25 +219,25 @@
     },
     {
       "name": "google_maps_flutter",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_maps_flutter-2.2.0",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_maps_flutter-2.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "google_maps_flutter_android",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_maps_flutter_android-2.3.0",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_maps_flutter_android-2.3.2",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "google_maps_flutter_ios",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_maps_flutter_ios-2.1.11",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_maps_flutter_ios-2.1.12",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "google_maps_flutter_platform_interface",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-2.2.2",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-2.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -309,19 +285,19 @@
     },
     {
       "name": "image_picker_for_web",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/image_picker_for_web-2.1.8",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/image_picker_for_web-2.1.10",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "image_picker_ios",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/image_picker_ios-0.8.6",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/image_picker_ios-0.8.6+1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "image_picker_platform_interface",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.6.1",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.6.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -342,12 +318,6 @@
       "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/js-0.6.4",
       "packageUri": "lib/",
       "languageVersion": "2.16"
-    },
-    {
-      "name": "lint",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/lint-1.10.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
     },
     {
       "name": "lints",
@@ -471,7 +441,7 @@
     },
     {
       "name": "path_provider_platform_interface",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_platform_interface-2.0.4",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_platform_interface-2.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -512,34 +482,16 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "protobuf",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/protobuf-2.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "pub_semver",
       "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/pub_semver-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "reactive_ble_mobile",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/reactive_ble_mobile-5.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "reactive_ble_platform_interface",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/reactive_ble_platform_interface-5.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "shelf",
-      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/shelf-1.3.2",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/shelf-1.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.17"
     },
     {
       "name": "shelf_packages_handler",
@@ -722,7 +674,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-10-04T09:23:37.786564Z",
+  "generated": "2022-10-04T10:20:26.746172Z",
   "generator": "pub",
   "generatorVersion": "2.19.0-146.2.beta"
 }

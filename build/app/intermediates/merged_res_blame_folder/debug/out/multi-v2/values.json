@@ -76,22 +76,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\e8394284635be6773904af45ce67fc50\\transformed\\jetified-play-services-maps-18.0.2\\res\\values\\values.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\869c8e192fc45c35894014295378ab33\\transformed\\jetified-play-services-basement-18.1.0\\res\\values\\values.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "167",
-                        "endLines": "66",
-                        "endColumns": "20",
-                        "endOffsets": "1669"
+                        "startLines": "4,7",
+                        "startColumns": "0,0",
+                        "startOffsets": "243,406",
+                        "endColumns": "63,166",
+                        "endOffsets": "306,572"
                     },
                     "to": {
-                        "startLines": "2737",
-                        "startColumns": "4",
-                        "startOffsets": "156114",
-                        "endLines": "2799",
-                        "endColumns": "20",
-                        "endOffsets": "157616"
+                        "startLines": "289,326",
+                        "startColumns": "4,4",
+                        "startOffsets": "18636,21680",
+                        "endColumns": "67,166",
+                        "endOffsets": "18699,21842"
                     }
                 },
                 {
@@ -109,6 +107,25 @@
                         "startOffsets": "23041,23400,23553,23635,23739,23848,23968,24075",
                         "endColumns": "143,152,81,103,108,119,106,83",
                         "endOffsets": "23180,23548,23630,23734,23843,23963,24070,24154"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\c5883dd374390abe4ab54a1001881369\\transformed\\jetified-play-services-maps-18.1.0\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "167",
+                        "endLines": "66",
+                        "endColumns": "20",
+                        "endOffsets": "1669"
+                    },
+                    "to": {
+                        "startLines": "2737",
+                        "startColumns": "4",
+                        "startOffsets": "156114",
+                        "endLines": "2799",
+                        "endColumns": "20",
+                        "endOffsets": "157616"
                     }
                 },
                 {
@@ -147,23 +164,6 @@
                         "endLines": "2013,2019,2029,3090,3094",
                         "endColumns": "24,24,24,24,24",
                         "endOffsets": "132050,132228,132512,166728,166855"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\da7269e952f97c3065bc2f0c2ad95c68\\transformed\\jetified-play-services-basement-18.0.0\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "4,7",
-                        "startColumns": "0,0",
-                        "startOffsets": "243,406",
-                        "endColumns": "63,166",
-                        "endOffsets": "306,572"
-                    },
-                    "to": {
-                        "startLines": "289,326",
-                        "startColumns": "4,4",
-                        "startOffsets": "18636,21680",
-                        "endColumns": "67,166",
-                        "endOffsets": "18699,21842"
                     }
                 },
                 {

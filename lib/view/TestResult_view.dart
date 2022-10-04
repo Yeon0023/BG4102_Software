@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
+// import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 const LatLng setLocation = LatLng(1.342834, 103.681757);
@@ -147,8 +147,8 @@ class _TestResultViewState extends State<TestResultView> {
 
   addMarker(String id, LatLng location) async {
     var markerIcon = await BitmapDescriptor.fromAssetImage(
-      ImageConfiguration(size: Size(1, 1)),
-      'assets/beerIcon.png',
+      const ImageConfiguration(),
+      'assets/beerIcon1.png',
     );
 
     var marker = Marker(

@@ -46,8 +46,8 @@ dependencies:
   location: ^4.4.0
   liquid_progress_indicator: ^0.4.0
   flutter_spinkit: ^5.1.0
-  flutter_reactive_ble: ^5.0.2
-  flutter_bluetooth_serial: ^0.4.0
+  # flutter_reactive_ble: ^5.0.2
+  # flutter_bluetooth_serial: ^0.4.0
   fluttertoast: ^8.0.9
   flutter_native_splash: ^2.2.9
 
@@ -85,7 +85,7 @@ flutter:
     - assets/images/
     - assets/icons8-beers-100.png
     - assets/icons8-beers-600.png
-    - assets/beerIcon.png
+    - assets/beerIcon1.png
     - assets/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png
     
 
