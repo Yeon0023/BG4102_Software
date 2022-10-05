@@ -2,11 +2,10 @@ import 'package:bg4102_software/Utilities/Show_error_dialog.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_exception.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
+import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -37,13 +36,11 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[900],
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.teal[900],
-        ),
-        backgroundColor: Colors.teal[900],
-        title: const Center(child: Text('Register Here!')),
-        titleTextStyle: GoogleFonts.lobster(fontSize: 25),
+      appBar: const customAppbar(
+        title: 'Register Here!',
+        fontSize: 20,
+        actions: null,
+        leading: null,
       ),
       body: SafeArea(
         child: Center(
@@ -133,7 +130,8 @@ class _RegisterViewState extends State<RegisterView> {
                   }
                 },
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white, textStyle: GoogleFonts.lobster(fontSize: 16),
+                  foregroundColor: Colors.white,
+                  textStyle: GoogleFonts.lobster(fontSize: 16),
                 ),
                 child: const Text("Register"),
               ),
@@ -146,7 +144,8 @@ class _RegisterViewState extends State<RegisterView> {
                   );
                 },
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white, textStyle: GoogleFonts.lobster(fontSize: 16),
+                  foregroundColor: Colors.white,
+                  textStyle: GoogleFonts.lobster(fontSize: 16),
                 ),
                 child: const Text('Already registered? Login here!'),
               )

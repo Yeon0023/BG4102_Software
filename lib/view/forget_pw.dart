@@ -1,6 +1,7 @@
 import 'package:bg4102_software/Utilities/Show_error_dialog.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_exception.dart';
+import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,10 +33,10 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[900],
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.teal[900],
-        ),
+      appBar: customAppbar(
+        title: 'Forget Password Page',
+        fontSize: 25,
+        actions: null,
         leading: InkWell(
           onTap: () {
             Navigator.of(context).pushNamedAndRemoveUntil(
@@ -48,11 +49,6 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
             color: Colors.white,
           ),
         ),
-        elevation: 0,
-        backgroundColor: Colors.teal[900],
-        title: const Text('Forget Password Page'),
-        titleTextStyle: GoogleFonts.lobster(fontSize: 25),
-        centerTitle: true,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

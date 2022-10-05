@@ -1,5 +1,7 @@
 import 'package:bg4102_software/Utilities/profile_photo.dart';
 import 'package:bg4102_software/constats/routes.dart';
+import 'package:bg4102_software/widgets/customAppbar.dart';
+import 'package:bg4102_software/widgets/customDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,75 +14,13 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[900],
-
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal[700],
-              ),
-              child: const Text(
-                'Breathalyzer',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Colors.white),
-              ),
-            ),
-            ListTile(
-                title: const Text('Home'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    noteRoute,
-                    (route) => false,
-                  );
-                }),
-            ListTile(
-                title: const Text('Profile'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    profileRoute,
-                    (route) => false,
-                  );
-                }),
-            ListTile(
-              title: const Text('Test Result'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  testResultRoute,
-                  (route) => false,
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('History'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-                title: const Text('Pairing'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    pairRoute,
-                    (route) => false,
-                  );
-                }),
-          ],
-        ),
-      ),
+      drawer: const customDrawer(),
       //App Bar
-      appBar: AppBar(
-        title: const Text('Your Profile'),
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.teal[900],
-        ),
-        elevation: 0,
-        backgroundColor: Colors.teal[900],
-        titleTextStyle: GoogleFonts.lobster(fontSize: 25),
-        centerTitle: true,
+      appBar: const customAppbar(
+        title: 'Your Profile',
+        fontSize: 25,
+        actions: null,
+        leading: null,
       ),
       body: Center(
         child: Padding(

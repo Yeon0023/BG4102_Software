@@ -2,11 +2,10 @@
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/enums/menu_action.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
-import 'package:bg4102_software/view/profile_view.dart';
 import 'package:bg4102_software/view/pair_view.dart';
+import 'package:bg4102_software/widgets/customAppbar.dart';
+import 'package:bg4102_software/widgets/customDrawer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NoteView extends StatefulWidget {
   const NoteView({Key? key}) : super(key: key);
@@ -19,73 +18,13 @@ class _NoteViewState extends State<NoteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 41, 112, 100),
+      backgroundColor: Colors.teal[900],
       // drawer
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal[700],
-              ),
-              child: Text(
-                'Breathalyzer',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Colors.white),
-              ),
-            ),
-            ListTile(
-                title: const Text('Home'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    noteRoute,
-                    (route) => false,
-                  );
-                }),
-            ListTile(
-                title: const Text('Profile'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    profileRoute,
-                    (route) => false,
-                  );
-                }),
-            ListTile(
-              title: const Text('Test Result'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  testResultRoute,
-                  (route) => false,
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('History'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-                title: const Text('Pairing'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    pairRoute,
-                    (route) => false,
-                  );
-                }),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.teal[900],
-        ),
-        backgroundColor: Colors.teal[900],
-        title: const Text('Breathalyzer'),
-        titleTextStyle: GoogleFonts.lobster(fontSize: 20),
+      drawer: const customDrawer(),
+      appBar: customAppbar(
+        title: 'Breathalyzer',
+        fontSize: 20,
+        leading: null,
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
@@ -113,6 +52,7 @@ class _NoteViewState extends State<NoteView> {
           )
         ],
       ),
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         // ignore: prefer_const_literals_to_create_immutables
@@ -120,7 +60,7 @@ class _NoteViewState extends State<NoteView> {
           Center(
             child: Image(
               image: AssetImage(
-                  'assets/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png'),
+                  'assets/images/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png'),
             ),
           ),
           GestureDetector(
@@ -156,7 +96,7 @@ class _NoteViewState extends State<NoteView> {
               width: 200.0,
               margin: EdgeInsets.all(15.0),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 77, 64),
+                color: Colors.teal[900],
                 borderRadius: BorderRadius.circular(15.0),
               ),
               child: Text(

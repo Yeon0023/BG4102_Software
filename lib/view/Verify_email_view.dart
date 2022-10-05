@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
+import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,10 +17,11 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[900],
-      appBar: AppBar(
-        title: const Text('Verify email'),
-        backgroundColor: Colors.teal[900],
-        titleTextStyle: GoogleFonts.lobster(fontSize: 25),
+      appBar: const customAppbar(
+        title: 'Verify email',
+        fontSize: 25,
+        actions: null,
+        leading: null,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

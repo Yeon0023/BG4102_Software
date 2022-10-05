@@ -53,7 +53,7 @@ dependencies:
 
 flutter_native_splash:
   color: "#DB4437"
-  image:  assets/icons8-beers-600.png
+  image:  assets/images/icons8-beers-600.png
   
 dev_dependencies:
   flutter_test:
@@ -83,9 +83,9 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
-    - assets/icons8-beers-100.png
-    - assets/icons8-beers-600.png
-    - assets/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png
+    # - assets/icons8-beers-100.png
+    # - assets/icons8-beers-600.png
+    # - assets/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png
     
 
   # - images/a_dot_ham.jpeg

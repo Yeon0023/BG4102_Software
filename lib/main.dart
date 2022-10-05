@@ -22,7 +22,7 @@ void main() async {
       title: 'Flutter Demo',
       home: const HomePage(),
       theme: ThemeData(
-        primaryColor: Colors.teal[900],
+        primaryColor: Colors.white,
       ),
       routes: {
         loginRoute: (context) => const LoginView(),

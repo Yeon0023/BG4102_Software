@@ -3,6 +3,8 @@
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/enums/menu_action.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
+import 'package:bg4102_software/widgets/customAppbar.dart';
+import 'package:bg4102_software/widgets/customDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,72 +21,13 @@ class _PairViewState extends State<PairView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 41, 112, 100),
-            drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal[700],
-              ),
-              child: Text('Breathalyzer',style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Colors.white),),
-            ),
-            ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    noteRoute,
-                    (route) => false,
-                  );
-                }
-            ),
-            ListTile(
-                title: const Text('Profile'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    profileRoute,
-                    (route) => false,
-                  );
-                }),
-            ListTile(
-              title: const Text('Test Result'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  testResultRoute,
-                  (route) => false,
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('History'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-                title: const Text('Pairing'),
-                onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    pairRoute,
-                    (route) => false,
-                  );
-                }),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.teal[900],
-        ),
-        backgroundColor: Colors.teal[900],
-        title: const Text('Breathalyzer'),
-        titleTextStyle: GoogleFonts.lobster(fontSize: 20),
-        actions: [
-          PopupMenuButton<MenuAction>(
+      backgroundColor: Colors.teal[900],
+      drawer: customDrawer(),
+      appBar: customAppbar(
+        title: 'Breathalyzer',
+        fontSize: 20,
+        leading: null,
+        actions: [PopupMenuButton<MenuAction>(
             onSelected: (value) async {
               switch (value) {
                 case MenuAction.logout:
@@ -107,8 +50,7 @@ class _PairViewState extends State<PairView> {
                 ),
               ];
             },
-          )
-        ],
+          )],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +59,7 @@ class _PairViewState extends State<PairView> {
           Center(
             child: Image(
               image: AssetImage(
-                  'assets/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png'),
+                  'assets/images/5_Things_To_Know_About_Alcohol_Breathalyzer_Test-removebg-preview.png'),
             ),
           ),
           Container(
@@ -127,7 +69,7 @@ class _PairViewState extends State<PairView> {
               width: 200.0,
               margin: EdgeInsets.all(15.0),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 77, 64),
+                color: Colors.teal[900],
                 borderRadius: BorderRadius.circular(15.0),
               ),
               child: Row(

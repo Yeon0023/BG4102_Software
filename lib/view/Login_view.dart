@@ -2,6 +2,7 @@ import 'package:bg4102_software/Utilities/glassmorphism.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_exception.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
+import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,11 +19,13 @@ class _LoginViewState extends State<LoginView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
   bool _isBlur = false;
+  bool _isObscure = true;
 
   @override
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    _isObscure = true;
     super.initState();
   }
 
@@ -37,15 +40,11 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[900],
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.teal[900],
-        ),
-        elevation: 0,
-        backgroundColor: Colors.teal[900],
-        title: const Text('-Breathalyzer-'),
-        titleTextStyle: GoogleFonts.lobster(fontSize: 37),
-        centerTitle: true,
+      appBar: const customAppbar(
+        title: '--Breathalyzer--',
+        fontSize: 37,
+        actions: null,
+        leading: null,
       ),
       body: SafeArea(
         child: Center(
@@ -62,7 +61,7 @@ class _LoginViewState extends State<LoginView> {
                     width: 150,
                     height: 150,
                     child: Image.asset(
-                      'assets/icons8-beers-100.png',
+                      'assets/images/icons8-beers-100.png',
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -81,6 +80,7 @@ class _LoginViewState extends State<LoginView> {
                     keyboardType: TextInputType.emailAddress,
                     style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
+                      label: Text('Username '),
                       prefixIcon: Icon(Icons.email),
                       hintText: 'Enter Your Email Here',
                       focusedBorder: OutlineInputBorder(),
@@ -104,17 +104,25 @@ class _LoginViewState extends State<LoginView> {
                   //User Key in Password
                   child: TextField(
                     controller: _password,
-                    obscureText: true,
+                    obscureText: _isObscure,
                     enableSuggestions: false,
                     autocorrect: false,
                     keyboardType: TextInputType.emailAddress,
                     style: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
+                    decoration: InputDecoration(
+                      label: const Text('Password'),
+                      prefixIcon: const Icon(Icons.lock),
+                      suffixIcon: IconButton(
+                        icon: Icon(_isObscure
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        onPressed: () {
+                          _isObscure = !_isObscure;
+                        },
+                      ),
                       hintText: "Enter Your Password Here",
-                      hintStyle: TextStyle(fontSize: 16),
-                      focusedBorder: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
+                      focusedBorder: const OutlineInputBorder(),
+                      enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                         color: Colors.white,
                       )),
