@@ -4,7 +4,6 @@ import 'package:bg4102_software/service/auth/auth_exception.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
 import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utilities/Show_error_dialog.dart'; //This is to replace print()
 
@@ -51,25 +50,18 @@ class _LoginViewState extends State<LoginView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 5.0,
-                    bottom: 60.0,
-                  ),
-                  child: SizedBox(
-                    width: 150,
-                    height: 150,
-                    child: Image.asset(
-                      'assets/images/icons8-beers-100.png',
-                      fit: BoxFit.contain,
-                    ),
+                SizedBox(
+                  width: 300,
+                  height: 300,
+                  child: Image.asset(
+                    'assets/images/party.png',
+                    fit: BoxFit.contain,
                   ),
                 ),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 25.0,
-                    vertical: 2,
                   ),
                   //User email key in box
                   child: TextField(
@@ -98,7 +90,6 @@ class _LoginViewState extends State<LoginView> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 25.0,
-                    vertical: 5,
                   ),
                   //User Key in Password
                   child: TextField(
@@ -244,7 +235,11 @@ class _LoginViewState extends State<LoginView> {
                     textStyle: GoogleFonts.lobster(fontSize: 16),
                   ),
                   child: const Text('Not registered yet? Register here!'),
-                )
+                ),
+                Container(
+                  height: 100,
+                  // color: Colors.amber,
+                ),
               ],
             ),
           ),

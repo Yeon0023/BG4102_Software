@@ -32,6 +32,10 @@ class _RegisterViewState extends State<RegisterView> {
     super.dispose();
   }
 
+  void getCoordinate() {
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,9 +51,22 @@ class _RegisterViewState extends State<RegisterView> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
+                padding: const EdgeInsets.only(
+                  top: 10.0,
+                ),
+                child: SizedBox(
+                  width: 300,
+                  height: 300,
+                  child: Image.asset(
+                    'assets/images/register.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 20,
+                  vertical: 10.0,
                 ),
                 child: TextField(
                   controller: _email,

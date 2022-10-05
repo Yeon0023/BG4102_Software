@@ -1,6 +1,8 @@
 import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:bg4102_software/widgets/customDrawer.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
@@ -25,6 +27,14 @@ class _TestResultViewState extends State<TestResultView> {
   LocationData? locationData;
   LocationData? currentLocation;
 
+  @override
+  void initState() {
+    _getCurrentLocation();
+    _drawGoogleMap();
+    super.initState();
+  }
+
+  //*Get the current location of device in lat and long.
   void _getCurrentLocation() async {
     var serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled) {
@@ -43,104 +53,44 @@ class _TestResultViewState extends State<TestResultView> {
 
     await location.getLocation().then((location) {
       currentLocation = location;
-      print(location);
+      print(currentLocation);
     });
   }
 
-  
-
-
-
-
-
-  @override
-  void initState() {
-    _getCurrentLocation();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const customDrawer(),
-      appBar: const customAppbar(
-        title: 'Test Result',
-        fontSize: 25,
-        actions: null,
-        leading: null,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            //*Breathing Indicator
-            SizedBox(
-              height: 230,
-              width: 230,
-              child: LiquidCircularProgressIndicator(
-                value: 0.25, // Defaults to 0.5.
-                valueColor: const AlwaysStoppedAnimation(Colors
-                    .deepOrangeAccent), // Defaults to the current Theme's accentColor.
-                backgroundColor: Colors
-                    .white, // Defaults to the current Theme's backgroundColor.
-                borderColor: Colors.grey[500],
-                borderWidth: 5.0,
-                direction: Axis
-                    .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                center: const Text(
-                  "Loading...",
-                  style: TextStyle(color: Colors.black),
+  //* Draw Google Map on page.
+  Widget _drawGoogleMap() => SizedBox(
+        height: 340,
+        width: double.infinity,
+        child: currentLocation == null
+            ? const Text(
+                'Loading',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              )
+            : GoogleMap(
+                // ignore: prefer_const_constructors
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(
+                    currentLocation!.latitude!,
+                    currentLocation!.longitude!,
+                  ),
+                  zoom: 15,
                 ),
-              ),
-            ),
-            Container(
-              height: 50, //this is added as a spacer bwt map and indicator.
-            ),
-            //* Google Map view.
-            SizedBox(
-              height: 400,
-              width: 500,
-              child: currentLocation == null ? 
-                  
-                  // const GoogleMap(
-                  //     initialCameraPosition: CameraPosition(
-                  //       target: setLocation,
-                  //       zoom: 15,
-                  //     ),
-                  //   )
-                  const Text(
-                      'Loading',
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.center,
-                    )
-                  : GoogleMap(
-                      // ignore: prefer_const_constructors
-                      initialCameraPosition: CameraPosition(
-                        target: LatLng(
-                          currentLocation!.latitude!,
-                          currentLocation!.longitude!,
-                        ),
-                        zoom: 15,
-                      ),
-                      onMapCreated: (controller) {
-                        _mapController = controller;
-                        addMarker(
-                          'Current Location',
-                          LatLng(
-                            currentLocation!.latitude!,
-                            currentLocation!.longitude!,
-                          ),
-                        );
-                      },
-                      markers: _markers.values.toSet(),
+                onMapCreated: (controller) {
+                  _mapController = controller;
+                  addMarker(
+                    'Current Location',
+                    LatLng(
+                      currentLocation!.latitude!,
+                      currentLocation!.longitude!,
                     ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+                  );
+                },
+                markers: _markers.values.toSet(),
+              ),
+      );
 
+  //* Add marker on the map.
   addMarker(String id, LatLng location) async {
     var markerIcon = await BitmapDescriptor.fromAssetImage(
       const ImageConfiguration(),
@@ -163,100 +113,82 @@ class _TestResultViewState extends State<TestResultView> {
     _markers[id] = marker;
     setState(() {});
   }
+
+  //*Alcohol level Indicator
+  Widget _drawIndicator() => SizedBox(
+        height: 230,
+        width: 230,
+        child: LiquidCircularProgressIndicator(
+          value: 0.25, // Defaults to 0.5.
+          valueColor: const AlwaysStoppedAnimation(Colors
+              .deepOrangeAccent), // Defaults to the current Theme's accentColor.
+          backgroundColor:
+              Colors.white, // Defaults to the current Theme's backgroundColor.
+          borderColor: Colors.grey[500],
+          borderWidth: 5.0,
+          direction: Axis
+              .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+          center: const Text(
+            "Loading...",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      );
+
+  //*Final View of Test Result page.
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: const customDrawer(),
+      appBar: const customAppbar(
+        title: 'Test Result',
+        fontSize: 25,
+        actions: null,
+        leading: null,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            _drawIndicator(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 18.0),
+              child: SizedBox(
+                height: 60,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 5,
+                    backgroundColor: Colors.amber[600],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                  ),
+                  child: Text(
+                    'Check Alcohol Level',
+                    style: GoogleFonts.lobster(
+                      textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Fluttertoast.showToast(
+                        msg: "Your Alcolhol Level For Today is 10%",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.TOP,
+                        timeInSecForIosWeb: 3,
+                        backgroundColor: Colors.blue[900],
+                        textColor: Colors.white,
+                        fontSize: 17);
+                  },
+                ),
+              ),
+            ),
+            _drawGoogleMap()
+          ],
+        ),
+      ),
+    );
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//!-------------------------------------------------------------------------------
-  // final Completer<GoogleMapController> _controller = Completer();
-
-              
-//!-------------------------------------------------------------------------------          
-              // child: currentLocation == null
-              //     ? const Text(
-              //         'Loading',
-              //         style: TextStyle(fontSize: 16),
-              //         textAlign: TextAlign.center,
-              //       )
-              //     : GoogleMap(
-              //         compassEnabled: false,
-              //         mapToolbarEnabled: false,
-              //         zoomControlsEnabled: false,
-              //         initialCameraPosition: const CameraPosition(
-              //           target: setLocation,
-              //           // LatLng(
-              //           //   currentLocation!.latitude!,
-              //           //   currentLocation!.longitude!,
-              //           // ),
-              //           zoom: 15,
-              //         ),
-              //         markers: {
-              //             // Marker(
-              //             //   markerId: const MarkerId('CurrentLocation'),
-              //             //   position:
-              //             //   LatLng(
-              //             //     currentLocation!.latitude!,
-              //             //     currentLocation!.longitude!,
-              //             //   ),
-              //             // ),
-              //             //This is for testing only
-              //             const Marker(
-              //               markerId: MarkerId('SetLocation'),
-              //               position: setLocation,
-              //             ),
-              //           }),
-
-
-
-
-
-/*Determine the current position of the device.When the location services are not enabled or permission 
-// are denied the `Future` will return an error.*/
-//   Future<Position> _determinePosition() async {
-//     bool serviceEnabled;
-//     LocationPermission permission;
-
-//     // Test if location services are enabled.
-//     serviceEnabled = await Geolocator.isLocationServiceEnabled();
-//     if (!serviceEnabled) {
-//       return Future.error('Location services are disabled.');
-//     }
-
-//     permission = await Geolocator.checkPermission();
-//     if (permission == LocationPermission.denied) {
-//       permission = await Geolocator.requestPermission();
-//       if (permission == LocationPermission.denied) {
-//         return Future.error('Location permissions are denied');
-//       }
-//     }
-
-//     // Permissions are denied forever, handle appropriately.
-//     if (permission == LocationPermission.deniedForever) {
-//       return Future.error(
-//           'Location permissions are permanently denied, we cannot request permissions.');
-//     }
-//     return await Geolocator.getCurrentPosition(
-//         desiredAccuracy: LocationAccuracy.high);
-//   }
