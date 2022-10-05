@@ -1,9 +1,6 @@
-import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:bg4102_software/widgets/customDrawer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
@@ -50,6 +47,12 @@ class _TestResultViewState extends State<TestResultView> {
     });
   }
 
+  
+
+
+
+
+
   @override
   void initState() {
     _getCurrentLocation();
@@ -59,7 +62,6 @@ class _TestResultViewState extends State<TestResultView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[900],
       drawer: const customDrawer(),
       appBar: const customAppbar(
         title: 'Test Result',
@@ -85,7 +87,10 @@ class _TestResultViewState extends State<TestResultView> {
                 borderWidth: 5.0,
                 direction: Axis
                     .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                center: const Text("Loading..."),
+                center: const Text(
+                  "Loading...",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ),
             Container(
@@ -95,18 +100,19 @@ class _TestResultViewState extends State<TestResultView> {
             SizedBox(
               height: 400,
               width: 500,
-              child: currentLocation == null
-                  ? const GoogleMap(
-                      initialCameraPosition: CameraPosition(
-                        target: setLocation,
-                        zoom: 15,
-                      ),
-                    )
-                  // const Text(
-                  //     'Loading',
-                  //     style: TextStyle(fontSize: 16),
-                  //     textAlign: TextAlign.center,
+              child: currentLocation == null ? 
+                  
+                  // const GoogleMap(
+                  //     initialCameraPosition: CameraPosition(
+                  //       target: setLocation,
+                  //       zoom: 15,
+                  //     ),
                   //   )
+                  const Text(
+                      'Loading',
+                      style: TextStyle(fontSize: 16),
+                      textAlign: TextAlign.center,
+                    )
                   : GoogleMap(
                       // ignore: prefer_const_constructors
                       initialCameraPosition: CameraPosition(
@@ -158,6 +164,11 @@ class _TestResultViewState extends State<TestResultView> {
     setState(() {});
   }
 }
+
+
+
+
+
 
 
 

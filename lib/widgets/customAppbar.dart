@@ -30,6 +30,8 @@ class customAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       titleTextStyle: GoogleFonts.lobster(fontSize: fontSize),
       centerTitle: true,
+      leading: leading,
+      actions: actions,
     );
   }
 }

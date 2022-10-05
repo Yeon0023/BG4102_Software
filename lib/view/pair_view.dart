@@ -21,7 +21,6 @@ class _PairViewState extends State<PairView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[900],
       drawer: customDrawer(),
       appBar: customAppbar(
         title: 'Breathalyzer',

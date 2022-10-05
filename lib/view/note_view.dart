@@ -18,7 +18,6 @@ class _NoteViewState extends State<NoteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[900],
       // drawer
       drawer: const customDrawer(),
       appBar: customAppbar(
@@ -103,9 +102,9 @@ class _NoteViewState extends State<NoteView> {
                 'Connect',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,
-                    color: Colors.white),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25.0,
+                ),
               ),
             ),
           ),

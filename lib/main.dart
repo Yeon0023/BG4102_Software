@@ -12,7 +12,7 @@ import 'package:bg4102_software/view/profile_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
+void main(context) async {
   //This is to connect device app to firebase server.
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -20,10 +20,11 @@ void main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const HomePage(),
+      home: const TestResultView(),
       theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
+          scaffoldBackgroundColor: Colors.teal[900],
+          primaryColor: Colors.teal[900],
+          colorScheme: const ColorScheme.dark(primary: Colors.white)),
       routes: {
         loginRoute: (context) => const LoginView(),
         profileRoute: (context) => const ProfileView(),

@@ -35,7 +35,6 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[900],
       appBar: const customAppbar(
         title: 'Register Here!',
         fontSize: 20,

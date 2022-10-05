@@ -39,7 +39,6 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[900],
       appBar: const customAppbar(
         title: '--Breathalyzer--',
         fontSize: 37,
@@ -117,7 +116,9 @@ class _LoginViewState extends State<LoginView> {
                             ? Icons.visibility
                             : Icons.visibility_off),
                         onPressed: () {
-                          _isObscure = !_isObscure;
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
                         },
                       ),
                       hintText: "Enter Your Password Here",

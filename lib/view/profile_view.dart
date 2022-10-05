@@ -13,7 +13,6 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[900],
       drawer: const customDrawer(),
       //App Bar
       appBar: const customAppbar(
