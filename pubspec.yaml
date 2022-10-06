@@ -52,8 +52,8 @@ dependencies:
   flutter_native_splash: ^2.2.9
 
 flutter_native_splash:
-  color: "#DB4437"
-  image:  assets/images/icons8-beers-600.png
+  color: "#00A3A3"
+  image:  assets/images/BeerIcon.png
   
 dev_dependencies:
   flutter_test:
