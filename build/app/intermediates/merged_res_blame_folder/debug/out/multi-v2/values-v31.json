@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-16:/values-v31/values-v31.xml",
+            "outputFile": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v31\\values-v31.xml",
             "map": [
                 {
                     "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\values-v31\\styles.xml",

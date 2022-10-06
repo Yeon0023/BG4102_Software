@@ -8,9 +8,8 @@ class BlueToothView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      color: Colors.lightBlue,
-      home: StreamBuilder<BluetoothState>(
+    return Scaffold(
+      body: StreamBuilder<BluetoothState>(
           stream: FlutterBlue.instance.state,
           initialData: BluetoothState.unknown,
           builder: (c, snapshot) {
@@ -63,7 +62,6 @@ class FindDevicesScreen extends StatelessWidget {
         actions: null,
         leading: null,
       ),
-
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -72,17 +70,24 @@ class FindDevicesScreen extends StatelessWidget {
               initialData: const [],
               builder: (c, snapshot) => Column(
                 children: snapshot.data!
-                    .map((result) => ListTile(
-                          title: Text(result.device.name == ""
-                              ? "No Name "
-                              : result.device.name),
-                          subtitle: Text(result.device.id.toString()),
-                          onTap: () => Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) {
-                            result.device.connect();
-                            return DeviceScreen(device: result.device);
-                          })),
-                        ))
+                    .map(
+                      (result) => ListTile(
+                        title: Text(
+                          result.device.name == ""
+                              ? "No Name"
+                              : result.device.name,
+                        ),
+                        subtitle: Text(result.device.id.toString()),
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              result.device.connect();
+                              return DeviceScreen(device: result.device);
+                            },
+                          ),
+                        ),
+                      ),
+                    )
                     .toList(),
               ),
             ),
@@ -101,9 +106,11 @@ class FindDevicesScreen extends StatelessWidget {
             );
           } else {
             return FloatingActionButton(
-                child: const Icon(Icons.search),
-                onPressed: () => FlutterBlue.instance
-                    .startScan(timeout: const Duration(seconds: 4)));
+              child: const Icon(Icons.search),
+              onPressed: () => FlutterBlue.instance.startScan(
+                timeout: const Duration(seconds: 4),
+              ),
+            );
           }
         },
       ),

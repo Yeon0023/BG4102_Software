@@ -1,50 +1,58 @@
 [
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/drawable-v21_background.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/drawable-v21/background.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_splash.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable-xxxhdpi\\splash.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/drawable-xxhdpi_splash.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/drawable-xxhdpi/splash.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/drawable-hdpi_splash.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/drawable-hdpi/splash.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable_launch_background.xml.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/drawable-xhdpi_splash.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/drawable-xhdpi/splash.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable_background.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable\\background.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable-xxhdpi_splash.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable-xxhdpi\\splash.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable-mdpi_splash.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable-mdpi\\splash.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/drawable-v21_launch_background.xml.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/drawable-v21/launch_background.xml"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable-v21_background.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable-v21\\background.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/drawable-mdpi_splash.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/drawable-mdpi/splash.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable-v21_launch_background.xml.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable-v21\\launch_background.xml"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/mipmap-hdpi/ic_launcher.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable-hdpi_splash.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable-hdpi\\splash.png"
     },
     {
-        "merged": "com.MedicalDesign.project.app-merged_res-18:/drawable-xxxhdpi_splash.png.flat",
-        "source": "com.MedicalDesign.project.app-main-11:/drawable-xxxhdpi/splash.png"
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\merged_res\\debug\\drawable-xhdpi_splash.png.flat",
+        "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\drawable-xhdpi\\splash.png"
     }
 ]

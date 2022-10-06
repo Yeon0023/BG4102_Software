@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-16:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rAU\\values-en-rAU.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\86a4e56308fd46f17a51ac454c392b41\\transformed\\core-1.8.0\\res\\values-en-rAU\\values-en-rAU.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\53007218b203953583292954aff2ce8f\\transformed\\browser-1.4.0\\res\\values-en-rAU\\values-en-rAU.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,153,250,359",
+                        "endColumns": "97,96,108,98",
+                        "endOffsets": "148,245,354,453"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\739c46a04562d6a177b67d1f6d9f947a\\transformed\\core-1.8.0\\res\\values-en-rAU\\values-en-rAU.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -18,16 +28,6 @@
                         "startOffsets": "458",
                         "endColumns": "100",
                         "endOffsets": "554"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\1d7df45d43dcfd694aad0469afcca77c\\transformed\\browser-1.4.0\\res\\values-en-rAU\\values-en-rAU.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,153,250,359",
-                        "endColumns": "97,96,108,98",
-                        "endOffsets": "148,245,354,453"
                     }
                 }
             ]

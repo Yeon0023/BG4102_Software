@@ -14,6 +14,7 @@ class DeviceScreen extends StatelessWidget {
                 ListTile(
                   title: const Text("OFF"),
                   onTap: () {
+                    // ignore: avoid_print
                     print(e.characteristics);
                     e.characteristics[0].write([0]);
                   },
@@ -21,6 +22,7 @@ class DeviceScreen extends StatelessWidget {
                 ListTile(
                   title: const Text("ON"),
                   onTap: () {
+                    // ignore: avoid_print
                     print(e.characteristics);
                     e.characteristics[0].write([1]);
                   },
@@ -35,7 +37,7 @@ class DeviceScreen extends StatelessWidget {
     return Scaffold(
       appBar: customAppbar(
         title: device.name,
-            leading: null,
+        leading: null,
         fontSize: 25,
         actions: <Widget>[
           StreamBuilder<BluetoothDeviceState>(
@@ -59,20 +61,19 @@ class DeviceScreen extends StatelessWidget {
                   break;
               }
               return TextButton(
-                  onPressed: onPressed,
-                  child: Text(
-                    text,
-                    style: Theme.of(context)
-                        .primaryTextTheme
-                        .labelLarge
-                        ?.copyWith(color: Colors.white),
-                  ));
+                onPressed: onPressed,
+                child: Text(
+                  text,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .labelLarge
+                      ?.copyWith(color: Colors.white),
+                ),
+              );
             },
           )
         ],
-    
       ),
-
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

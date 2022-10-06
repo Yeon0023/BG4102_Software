@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-16:/values-it/values-it.xml",
+            "outputFile": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-it\\values-it.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\86a4e56308fd46f17a51ac454c392b41\\transformed\\core-1.8.0\\res\\values-it\\values-it.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "24",
-                        "startColumns": "4",
-                        "startOffsets": "2688",
-                        "endColumns": "100",
-                        "endOffsets": "2784"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\36cc38428ec5cc4eb7f201d1f0307824\\transformed\\jetified-play-services-base-18.0.1\\res\\values-it\\values.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\9d2b5bc3c703b038b6707bb266a1b246\\transformed\\jetified-play-services-base-18.0.1\\res\\values-it\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\869c8e192fc45c35894014295378ab33\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-it\\values.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\22b638207fa94ec0ded4f99c86fb0e27\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-it\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -55,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\1d7df45d43dcfd694aad0469afcca77c\\transformed\\browser-1.4.0\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\739c46a04562d6a177b67d1f6d9f947a\\transformed\\core-1.8.0\\res\\values-it\\values-it.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "24",
+                        "startColumns": "4",
+                        "startOffsets": "2688",
+                        "endColumns": "100",
+                        "endOffsets": "2784"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\53007218b203953583292954aff2ce8f\\transformed\\browser-1.4.0\\res\\values-it\\values-it.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

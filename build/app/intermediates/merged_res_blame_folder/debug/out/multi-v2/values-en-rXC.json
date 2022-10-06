@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-16:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\86a4e56308fd46f17a51ac454c392b41\\transformed\\core-1.8.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\739c46a04562d6a177b67d1f6d9f947a\\transformed\\core-1.8.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\1d7df45d43dcfd694aad0469afcca77c\\transformed\\browser-1.4.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\yeoni\\.gradle\\caches\\transforms-3\\53007218b203953583292954aff2ce8f\\transformed\\browser-1.4.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

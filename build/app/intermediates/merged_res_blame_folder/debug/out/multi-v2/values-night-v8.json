@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.MedicalDesign.project.app-mergeDebugResources-16:/values-night-v8/values-night-v8.xml",
+            "outputFile": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
                     "source": "C:\\Users\\yeoni\\Desktop\\BG4102_Software\\android\\app\\src\\main\\res\\values-night\\styles.xml",
@@ -14,12 +14,12 @@
                         "endOffsets": "482,997"
                     },
                     "to": {
-                        "startLines": "2,6",
+                        "startLines": "2,7",
                         "startColumns": "4,4",
-                        "startOffsets": "55,236",
-                        "endLines": "5,8",
+                        "startOffsets": "55,363",
+                        "endLines": "6,9",
                         "endColumns": "12,12",
-                        "endOffsets": "231,400"
+                        "endOffsets": "358,527"
                     }
                 }
             ]
