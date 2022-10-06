@@ -146,10 +146,22 @@
       "languageVersion": "2.16"
     },
     {
+      "name": "fixnum",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/fixnum-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/Users/yeoni/Desktop/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_blue",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blue-0.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_lints",
@@ -482,8 +494,20 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "protobuf",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/protobuf-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "pub_semver",
       "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/pub_semver-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "rxdart",
+      "rootUri": "file:///C:/Users/yeoni/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/rxdart-0.26.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -674,7 +698,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-10-06T07:49:49.726748Z",
+  "generated": "2022-10-06T08:33:35.703103Z",
   "generator": "pub",
   "generatorVersion": "2.19.0-146.2.beta"
 }
