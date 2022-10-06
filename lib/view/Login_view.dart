@@ -171,7 +171,7 @@ class _LoginViewState extends State<LoginView> {
                         //If user email is verified
                         //ignore: use_build_context_synchronously
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                          noteRoute,
+                          homePageRoute,
                           (route) => false,
                         );
                       } else {
@@ -202,19 +202,24 @@ class _LoginViewState extends State<LoginView> {
                       _isBlur = !_isBlur;
                     });
                   },
-                  child: GlassMorphism(
-                    blur: _isBlur ? 20 : 0,
-                    opacity: 0.25,
-                    child: SizedBox(
-                      height: 45,
-                      width: 345,
-                      child: Center(
-                        child: Text(
-                          "Sign In!",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.lobster(
-                            color: Colors.white,
-                            fontSize: 17,
+                  child: SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: GlassMorphism(
+                        borderThickness: 1,
+                        cornerRadius: 4,
+                        height: 50,
+                        width: 350,
+                        blur: _isBlur ? 20 : 0,
+                        opacity: 0.25,
+                        child: Center(
+                          child: Text(
+                            "Sign In!",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lobster(
+                              color: Colors.white,
+                              fontSize: 17,
+                            ),
                           ),
                         ),
                       ),

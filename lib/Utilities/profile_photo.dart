@@ -58,8 +58,6 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                   backgroundColor: Colors.blueGrey[700],
                   child: CircleAvatar(
                     radius: 52,
-                    //backgroundColor: Colors.white,
-                    // backgroundImage: AssetImage('assets/images/Profile_Image.png')
                     backgroundImage: _pickedImage == null
                         ? _profileDefaultPhoto
                         : FileImage(_pickedImage!),

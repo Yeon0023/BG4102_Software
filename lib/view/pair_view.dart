@@ -6,8 +6,6 @@ import 'package:bg4102_software/service/auth/auth_service.dart';
 import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:bg4102_software/widgets/customDrawer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PairView extends StatefulWidget {
@@ -26,7 +24,8 @@ class _PairViewState extends State<PairView> {
         title: 'Breathalyzer',
         fontSize: 20,
         leading: null,
-        actions: [PopupMenuButton<MenuAction>(
+        actions: [
+          PopupMenuButton<MenuAction>(
             onSelected: (value) async {
               switch (value) {
                 case MenuAction.logout:
@@ -49,7 +48,8 @@ class _PairViewState extends State<PairView> {
                 ),
               ];
             },
-          )],
+          )
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +75,7 @@ class _PairViewState extends State<PairView> {
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   SpinKitFadingCircle(
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: Colors.white,
                     size: 30,
                     duration: Duration(milliseconds: 3000),
                   ),
@@ -84,9 +84,10 @@ class _PairViewState extends State<PairView> {
                     'Pairing...',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: Colors.white),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),

@@ -26,7 +26,7 @@ class customDrawer extends StatelessWidget {
               title: const Text('Home'),
               onTap: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  noteRoute,
+                  homePageRoute,
                   (route) => false,
                 );
               }),
