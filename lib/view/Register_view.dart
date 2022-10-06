@@ -4,7 +4,6 @@ import 'package:bg4102_software/service/auth/auth_exception.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
 import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterView extends StatefulWidget {
