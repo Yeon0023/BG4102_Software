@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   shadowColor: Colors.transparent,
                 ),
                 onPressed: () {
-                  
+                  Navigator.of(context).pushNamed(testResultRoute);
                 },
                 child: Container(
                   height: 120,
@@ -169,14 +169,16 @@ class _HomePageState extends State<HomePage> {
                       backgroundColor: Colors.transparent,
                       shadowColor: Colors.transparent,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(profileRoute);
+                    },
                     child: Column(
                       children: <Widget>[
                         Image.asset(
                           'assets/images/BeerIcon.png',
                         ),
                         Text(
-                          "Home",
+                          "My Profile",
                           style: GoogleFonts.lobster(fontSize: 20),
                         ),
                       ],
@@ -194,14 +196,17 @@ class _HomePageState extends State<HomePage> {
                       backgroundColor: Colors.transparent,
                       shadowColor: Colors.transparent,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      //!TO BE Added
+                      // Navigator.of(context).pushNamed(blueToothRoute);
+                    },
                     child: Column(
                       children: <Widget>[
                         Image.asset(
                           'assets/images/BeerIcon.png',
                         ),
                         Text(
-                          "Home",
+                          "Records",
                           style: GoogleFonts.lobster(fontSize: 20),
                         ),
                       ],
@@ -217,12 +222,15 @@ class _HomePageState extends State<HomePage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigator.of(context).pushNamed(blueToothRoute);
+                    },
                     child: Column(
                       children: <Widget>[
+                        //!TO BE Added
                         Image.asset('assets/images/BeerIcon.png'),
                         Text(
-                          "Home",
+                          "Games!",
                           overflow: TextOverflow.visible,
                           softWrap: false,
                           style: GoogleFonts.lobster(
