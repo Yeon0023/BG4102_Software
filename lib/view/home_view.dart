@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   shadowColor: Colors.transparent,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(blueToothRoute);
+                  
                 },
                 child: Container(
                   height: 120,
@@ -141,12 +141,14 @@ class _HomePageState extends State<HomePage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(blueToothRoute);
+                    },
                     child: Column(
                       children: <Widget>[
                         Image.asset('assets/images/BeerIcon.png'),
                         Text(
-                          "Home",
+                          "Pairng Device",
                           overflow: TextOverflow.visible,
                           softWrap: false,
                           style: GoogleFonts.lobster(
