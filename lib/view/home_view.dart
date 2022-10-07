@@ -1,8 +1,6 @@
 import 'package:bg4102_software/Utilities/glassmorphism.dart';
 import 'package:bg4102_software/constats/routes.dart';
-import 'package:bg4102_software/enums/menu_action.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
-import 'package:bg4102_software/service/crud/note_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utilities/profile_photo.dart';
@@ -81,22 +79,44 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: const Color.fromARGB(255, 206, 97, 2),
                   shadowColor: Colors.transparent,
                 ),
-                onPressed: () {},
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(right: 250, bottom: 0, top: 0),
-                      child: Container(
-                        width: 150,
-                        height: 100,
-                        child: Image.asset(
-                          'assets/images/BeerIcon.png',
-                          fit: BoxFit.contain,
+                onPressed: () {
+                  Navigator.of(context).pushNamed(blueToothRoute);
+                },
+                child: Container(
+                  height: 120,
+                  width: 400,
+                  // color: Colors.green,
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        child: SizedBox(
+                          width: 150,
+                          height: 100,
+                          child: Image.asset(
+                            'assets/images/BeerIcon.png',
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        right: 8,
+                        // ignore: sized_box_for_whitespace
+                        child: Container(
+                          height: 95,
+                          width: 200,
+                          // color: Colors.blue,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Am I Drunk?',
+                              style: GoogleFonts.lobster(
+                                  color: Colors.white, fontSize: 30),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -248,6 +268,52 @@ class _HomePageState extends State<HomePage> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//!--------------------------------------OLD CODE-----------------------------------------------------------------------
 // class NoteView extends StatefulWidget {
 //   const NoteView({Key? key}) : super(key: key);
 

@@ -1,3 +1,4 @@
+import 'package:bg4102_software/enums/menu_action.dart';
 import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
@@ -56,11 +57,16 @@ class FindDevicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const customAppbar(
+      appBar: customAppbar(
         title: 'Find Devices',
         fontSize: 25,
         actions: null,
-        leading: null,
+        leading: InkWell(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: const Icon(Icons.arrow_back_ios),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

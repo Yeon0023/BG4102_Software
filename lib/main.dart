@@ -10,8 +10,6 @@ import 'package:bg4102_software/view/main_view.dart';
 import 'package:bg4102_software/view/pair_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import 'view/profile_view.dart';
 
 void main(context) async {
@@ -22,7 +20,7 @@ void main(context) async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const MainPage(),
+      home: const HomePage(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.teal[900],
         primaryColor: Colors.teal[900],

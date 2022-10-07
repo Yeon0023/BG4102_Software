@@ -31,9 +31,7 @@ class _RegisterViewState extends State<RegisterView> {
     super.dispose();
   }
 
-  void getCoordinate() {
-    
-  }
+  void getCoordinate() {}
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +42,7 @@ class _RegisterViewState extends State<RegisterView> {
         actions: null,
         leading: null,
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
