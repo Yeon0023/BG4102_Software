@@ -1,8 +1,6 @@
-import 'package:bg4102_software/enums/menu_action.dart';
 import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
-import 'package:bg4102_software/view/device.dart';
 
 class BlueToothView extends StatelessWidget {
   const BlueToothView({super.key});
@@ -26,9 +24,9 @@ class BlueToothView extends StatelessWidget {
 
 class BluetoothOffScreen extends StatelessWidget {
   const BluetoothOffScreen({Key? key, this.state}) : super(key: key);
-
   final BluetoothState? state;
 
+  //* This is show if bluetooth an device is On/Off.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +49,35 @@ class BluetoothOffScreen extends StatelessWidget {
   }
 }
 
+void _blueToothConnectionPopUp(context, result) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('BlueTooth Connection'),
+        content:
+            const Text('Are you sure you want to connect with this device?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              // result.device.connect();
+              Navigator.of(context).pop(result.device.connect());
+            },
+            child: const Text('Connect'),
+          ),
+          TextButton(
+            onPressed: () {
+              // result.device.disconnect();
+              Navigator.of(context).pop(result.device.disconnect());
+            },
+            child: const Text('Disconnect'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
 class FindDevicesScreen extends StatelessWidget {
   const FindDevicesScreen({super.key});
 
@@ -71,6 +98,7 @@ class FindDevicesScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            //* This to a list view of all bluetooth device detected.
             StreamBuilder<List<ScanResult>>(
               stream: FlutterBlue.instance.scanResults,
               initialData: const [],
@@ -84,14 +112,17 @@ class FindDevicesScreen extends StatelessWidget {
                               : result.device.name,
                         ),
                         subtitle: Text(result.device.id.toString()),
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              result.device.connect();
-                              return DeviceScreen(device: result.device);
-                            },
-                          ),
+                        //* This is the connection state indicator.
+                        trailing: StreamBuilder<BluetoothDeviceState>(
+                          stream: result.device.state,
+                          initialData: BluetoothDeviceState.connecting,
+                          builder: (c, snapshot) => Text(
+                              'Device is ${snapshot.data.toString().split('.')[1]}.'),
                         ),
+                        onTap: () {
+                          //* This is the pop up dialog.
+                          _blueToothConnectionPopUp(context, result);
+                        },
                       ),
                     )
                     .toList(),
@@ -100,6 +131,8 @@ class FindDevicesScreen extends StatelessWidget {
           ],
         ),
       ),
+
+      //* This the search bluetooth buttom bottom right corner.
       floatingActionButton: StreamBuilder<bool>(
         stream: FlutterBlue.instance.isScanning,
         initialData: false,

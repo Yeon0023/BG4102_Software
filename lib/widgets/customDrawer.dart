@@ -54,13 +54,11 @@ class customDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-              title: const Text('Pairing'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  pairRoute,
-                  (route) => false,
-                );
-              }),
+            title: const Text('Records'),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ],
       ),
     );

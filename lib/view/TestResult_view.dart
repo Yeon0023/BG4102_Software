@@ -141,7 +141,7 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
-  //* This is to activate the process of recoding the test. 
+  //* This is to activate the process of recoding the test.
   Widget _toastmaker() => Padding(
         padding: const EdgeInsets.symmetric(vertical: 18.0),
         child: SizedBox(
