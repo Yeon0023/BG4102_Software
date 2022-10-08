@@ -1,6 +1,9 @@
+import 'package:bg4102_software/widgets/BlueTooth_connection.dart';
 import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+
+bool isDeviceConnected = false;
 
 class BlueToothView extends StatelessWidget {
   const BlueToothView({super.key});
@@ -49,6 +52,7 @@ class BluetoothOffScreen extends StatelessWidget {
   }
 }
 
+
 void _blueToothConnectionPopUp(context, result) {
   showDialog(
     context: context,
@@ -62,6 +66,7 @@ void _blueToothConnectionPopUp(context, result) {
             onPressed: () {
               // result.device.connect();
               Navigator.of(context).pop(result.device.connect());
+              isDeviceConnected = true;
             },
             child: const Text('Connect'),
           ),
@@ -77,6 +82,8 @@ void _blueToothConnectionPopUp(context, result) {
     },
   );
 }
+
+
 
 class FindDevicesScreen extends StatelessWidget {
   const FindDevicesScreen({super.key});
@@ -111,14 +118,10 @@ class FindDevicesScreen extends StatelessWidget {
                               ? "No Name"
                               : result.device.name,
                         ),
+                        //* This is all the names of detected devices.
                         subtitle: Text(result.device.id.toString()),
-                        //* This is the connection state indicator.
-                        trailing: StreamBuilder<BluetoothDeviceState>(
-                          stream: result.device.state,
-                          initialData: BluetoothDeviceState.connecting,
-                          builder: (c, snapshot) => Text(
-                              'Device is ${snapshot.data.toString().split('.')[1]}.'),
-                        ),
+                        //* This is the blue tooth connection state indicator.
+                        trailing: DeviceConnectionStatus(device: result.device),
                         onTap: () {
                           //* This is the pop up dialog.
                           _blueToothConnectionPopUp(context, result);
@@ -132,7 +135,7 @@ class FindDevicesScreen extends StatelessWidget {
         ),
       ),
 
-      //* This the search bluetooth buttom bottom right corner.
+      //* Search bluetooth button, bottom right corner.
       floatingActionButton: StreamBuilder<bool>(
         stream: FlutterBlue.instance.isScanning,
         initialData: false,

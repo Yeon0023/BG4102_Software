@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         Image.asset('assets/images/BeerIcon.png'),
                         Text(
-                          "Pairng Device",
+                          "Pairing Device",
                           overflow: TextOverflow.visible,
                           softWrap: false,
                           style: GoogleFonts.lobster(
