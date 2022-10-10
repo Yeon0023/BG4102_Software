@@ -34,7 +34,7 @@ class _TestResultViewState extends State<TestResultView> {
   PermissionStatus? _permissionGranted;
   LocationData? locationData;
   LocationData? currentLocation;
-  
+
   BluetoothDevice? targetDevice;
   BluetoothCharacteristic? targetCharacteristic;
   BluetoothDescriptor? targetDescriptor;
@@ -232,7 +232,7 @@ class _TestResultViewState extends State<TestResultView> {
                 : Colors.red[700],
           ),
           onPressed: () {
-              toggleBlueTooth();
+            toggleBlueTooth();
           },
           // ignore: unrelated_type_equality_checks
           child: targetDevice == BluetoothDeviceState.connected
@@ -291,10 +291,10 @@ class _TestResultViewState extends State<TestResultView> {
 
   bool _isBlueToothConnected = false;
   toggleBlueTooth() {
-    if (_isBlueToothConnected) {
-      connectToDevice();
-    } else {
+    if (!_isBlueToothConnected) {
       disconnectFromDevice();
+    } else {
+      connectToDevice();
     }
     setState(() {
       _isBlueToothConnected = !_isBlueToothConnected;
