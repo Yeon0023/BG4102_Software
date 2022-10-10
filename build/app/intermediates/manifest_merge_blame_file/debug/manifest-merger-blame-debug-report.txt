@@ -33,321 +33,330 @@
 21    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 21-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:9:5-79
 21-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:9:22-76
-22    <uses-permission android:name="android.permission.BLUETOOTH" />
+22    <uses-permission
 22-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:10:5-68
-22-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:10:22-65
-23    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-23-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:11:5-74
-23-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:11:22-71
-24    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-24-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:12:5-76
-24-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:12:22-73
-25    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-25-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:13:5-72
-25-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:13:22-70
-26    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
-26-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:14:5-78
-26-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:14:22-75
-27
-28    <uses-feature
-28-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:15:5-87
-29        android:name="android.hardware.bluetooth"
-29-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:15:19-60
-30        android:required="false" />
-30-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:15:61-85
-31    <uses-feature
-31-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:16:5-90
-32        android:name="android.hardware.bluetooth_le"
-32-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:16:19-63
-33        android:required="false" />
-33-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:16:64-88
-34
-35    <uses-permission android:name="android.permission.WAKE_LOCK" />
-35-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:24:5-68
-35-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:24:22-65
-36    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-36-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:25:5-79
-36-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:25:22-76
-37
-38    <uses-feature
-38-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
-39        android:glEsVersion="0x00020000"
-39-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
-40        android:required="true" />
-40-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
-41
-42    <queries>
-42-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:30:5-34:15
+23        android:name="android.permission.BLUETOOTH"
+23-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:10:22-65
+24        android:maxSdkVersion="30" />
+24-->[:flutter_blue_plus] C:\Users\yeoni\Desktop\BG4102_Software\build\flutter_blue_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:25:9-35
+25    <uses-permission
+25-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:11:5-74
+26        android:name="android.permission.BLUETOOTH_ADMIN"
+26-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:11:22-71
+27        android:maxSdkVersion="30" />
+27-->[:flutter_blue_plus] C:\Users\yeoni\Desktop\BG4102_Software\build\flutter_blue_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:28:9-35
+28    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+28-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:12:5-76
+28-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:12:22-73
+29    <uses-permission
+29-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:13:5-72
+30        android:name="android.permission.BLUETOOTH_SCAN"
+30-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:13:22-70
+31        android:usesPermissionFlags="neverForLocation" />
+31-->[:flutter_blue_plus] C:\Users\yeoni\Desktop\BG4102_Software\build\flutter_blue_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-55
+32    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+32-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:14:5-78
+32-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:14:22-75
+33
+34    <uses-feature
+34-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:15:5-87
+35        android:name="android.hardware.bluetooth"
+35-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:15:19-60
+36        android:required="false" />
+36-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:15:61-85
+37    <uses-feature
+37-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:16:5-90
+38        android:name="android.hardware.bluetooth_le"
+38-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:16:19-63
+39        android:required="false" />
+39-->C:\Users\yeoni\Desktop\BG4102_Software\android\app\src\main\AndroidManifest.xml:16:64-88
+40
+41    <uses-permission android:name="android.permission.WAKE_LOCK" />
+41-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:24:5-68
+41-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:24:22-65
+42    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+42-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:25:5-79
+42-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:25:22-76
 43
-44        <!-- Needs to be explicitly declared on Android R+ -->
-45        <package android:name="com.google.android.apps.maps" />
-45-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
-45-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
-46    </queries>
+44    <uses-feature
+44-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
+45        android:glEsVersion="0x00020000"
+45-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
+46        android:required="true" />
+46-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
 47
-48    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-48-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:26:5-110
-48-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:26:22-107
+48    <queries>
+48-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:30:5-34:15
 49
-50    <application
-51        android:name="android.app.Application"
-52        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-52-->[androidx.core:core:1.8.0] C:\Users\yeoni\.gradle\caches\transforms-3\739c46a04562d6a177b67d1f6d9f947a\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
-53        android:debuggable="true"
-54        android:icon="@mipmap/ic_launcher"
-55        android:label="bg4102_software" >
-56        <activity
-57            android:name="com.MedicalDesign.project.MainActivity"
-58            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-59            android:exported="true"
-60            android:hardwareAccelerated="true"
-61            android:launchMode="singleTop"
-62            android:theme="@style/LaunchTheme"
-63            android:windowSoftInputMode="adjustResize" >
-64
-65            <!--
-66                 Specifies an Android theme to apply to this Activity as soon as
-67                 the Android process has started. This theme is visible to the user
-68                 while the Flutter UI initializes. After that, this theme continues
-69                 to determine the Window background behind the Flutter UI.
-70            -->
-71            <meta-data
-72                android:name="io.flutter.embedding.android.NormalTheme"
-73                android:resource="@style/NormalTheme" />
-74
-75            <intent-filter>
-76                <action android:name="android.intent.action.MAIN" />
-77
-78                <category android:name="android.intent.category.LAUNCHER" />
-79            </intent-filter>
-80        </activity>
-81        <!--
-82             Don't delete the meta-data below.
-83             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-84        -->
-85        <meta-data
-86            android:name="flutterEmbedding"
-87            android:value="2" />
-88        <meta-data
-89            android:name="com.google.android.geo.API_KEY"
-90            android:value="AIzaSyBxxnUqjalVK47OgKd335GmtJ6-9CMHexE" />
-91
-92        <service
-92-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
-93            android:name="com.google.firebase.components.ComponentDiscoveryService"
-93-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
-94            android:directBootAware="true"
-94-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:35:13-43
-95            android:exported="false" >
-95-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:66:13-37
-96            <meta-data
-96-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
-97                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-97-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
-98                android:value="com.google.firebase.components.ComponentRegistrar" />
-98-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
-99            <meta-data
-99-->[:firebase_core] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
-100                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-100-->[:firebase_core] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
-101                android:value="com.google.firebase.components.ComponentRegistrar" />
-101-->[:firebase_core] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+50        <!-- Needs to be explicitly declared on Android R+ -->
+51        <package android:name="com.google.android.apps.maps" />
+51-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
+51-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
+52    </queries>
+53
+54    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+54-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:26:5-110
+54-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:26:22-107
+55
+56    <application
+57        android:name="android.app.Application"
+58        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+58-->[androidx.core:core:1.8.0] C:\Users\yeoni\.gradle\caches\transforms-3\739c46a04562d6a177b67d1f6d9f947a\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+59        android:debuggable="true"
+60        android:icon="@mipmap/ic_launcher"
+61        android:label="bg4102_software" >
+62        <activity
+63            android:name="com.MedicalDesign.project.MainActivity"
+64            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+65            android:exported="true"
+66            android:hardwareAccelerated="true"
+67            android:launchMode="singleTop"
+68            android:theme="@style/LaunchTheme"
+69            android:windowSoftInputMode="adjustResize" >
+70
+71            <!--
+72                 Specifies an Android theme to apply to this Activity as soon as
+73                 the Android process has started. This theme is visible to the user
+74                 while the Flutter UI initializes. After that, this theme continues
+75                 to determine the Window background behind the Flutter UI.
+76            -->
+77            <meta-data
+78                android:name="io.flutter.embedding.android.NormalTheme"
+79                android:resource="@style/NormalTheme" />
+80
+81            <intent-filter>
+82                <action android:name="android.intent.action.MAIN" />
+83
+84                <category android:name="android.intent.category.LAUNCHER" />
+85            </intent-filter>
+86        </activity>
+87        <!--
+88             Don't delete the meta-data below.
+89             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+90        -->
+91        <meta-data
+92            android:name="flutterEmbedding"
+93            android:value="2" />
+94        <meta-data
+95            android:name="com.google.android.geo.API_KEY"
+96            android:value="AIzaSyBxxnUqjalVK47OgKd335GmtJ6-9CMHexE" />
+97
+98        <service
+98-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+99            android:name="com.google.firebase.components.ComponentDiscoveryService"
+99-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+100            android:directBootAware="true"
+100-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:35:13-43
+101            android:exported="false" >
+101-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:66:13-37
 102            <meta-data
-102-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:67:13-69:85
-103                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-103-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:68:17-109
+102-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+103                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+103-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
 104                android:value="com.google.firebase.components.ComponentRegistrar" />
-104-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:69:17-82
+104-->[:firebase_auth] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 105            <meta-data
-105-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:31:13-33:85
-106                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-106-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:32:17-139
+105-->[:firebase_core] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+106                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+106-->[:firebase_core] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
 107                android:value="com.google.firebase.components.ComponentRegistrar" />
-107-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:33:17-82
+107-->[:firebase_core] C:\Users\yeoni\Desktop\BG4102_Software\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 108            <meta-data
-108-->[com.google.firebase:firebase-installations:17.0.3] C:\Users\yeoni\.gradle\caches\transforms-3\2938fa6f5100e42ba5b6a627c50d57bd\transformed\jetified-firebase-installations-17.0.3\AndroidManifest.xml:18:13-20:85
-109                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-109-->[com.google.firebase:firebase-installations:17.0.3] C:\Users\yeoni\.gradle\caches\transforms-3\2938fa6f5100e42ba5b6a627c50d57bd\transformed\jetified-firebase-installations-17.0.3\AndroidManifest.xml:19:17-127
+108-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:67:13-69:85
+109                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+109-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:68:17-109
 110                android:value="com.google.firebase.components.ComponentRegistrar" />
-110-->[com.google.firebase:firebase-installations:17.0.3] C:\Users\yeoni\.gradle\caches\transforms-3\2938fa6f5100e42ba5b6a627c50d57bd\transformed\jetified-firebase-installations-17.0.3\AndroidManifest.xml:20:17-82
-111        </service>
-112
-113        <provider
-113-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
-114            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-114-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
-115            android:authorities="com.MedicalDesign.project.flutter.image_provider"
-115-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
-116            android:exported="false"
-116-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
-117            android:grantUriPermissions="true" >
-117-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
-118            <meta-data
-118-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
-119                android:name="android.support.FILE_PROVIDER_PATHS"
-119-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
-120                android:resource="@xml/flutter_image_picker_file_paths" />
-120-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
-121        </provider>
-122
-123        <service
-123-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:13:9-17:56
-124            android:name="com.lyokone.location.FlutterLocationService"
-124-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-71
-125            android:enabled="true"
-125-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-35
-126            android:exported="false"
-126-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-37
-127            android:foregroundServiceType="location" />
-127-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-53
+110-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:69:17-82
+111            <meta-data
+111-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:31:13-33:85
+112                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+112-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:32:17-139
+113                android:value="com.google.firebase.components.ComponentRegistrar" />
+113-->[com.google.android.gms:play-services-measurement-api:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\6490e4cc9642953f263efc290989abcb\transformed\jetified-play-services-measurement-api-21.1.1\AndroidManifest.xml:33:17-82
+114            <meta-data
+114-->[com.google.firebase:firebase-installations:17.0.3] C:\Users\yeoni\.gradle\caches\transforms-3\2938fa6f5100e42ba5b6a627c50d57bd\transformed\jetified-firebase-installations-17.0.3\AndroidManifest.xml:18:13-20:85
+115                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+115-->[com.google.firebase:firebase-installations:17.0.3] C:\Users\yeoni\.gradle\caches\transforms-3\2938fa6f5100e42ba5b6a627c50d57bd\transformed\jetified-firebase-installations-17.0.3\AndroidManifest.xml:19:17-127
+116                android:value="com.google.firebase.components.ComponentRegistrar" />
+116-->[com.google.firebase:firebase-installations:17.0.3] C:\Users\yeoni\.gradle\caches\transforms-3\2938fa6f5100e42ba5b6a627c50d57bd\transformed\jetified-firebase-installations-17.0.3\AndroidManifest.xml:20:17-82
+117        </service>
+118
+119        <provider
+119-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+120            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+120-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+121            android:authorities="com.MedicalDesign.project.flutter.image_provider"
+121-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+122            android:exported="false"
+122-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+123            android:grantUriPermissions="true" >
+123-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+124            <meta-data
+124-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+125                android:name="android.support.FILE_PROVIDER_PATHS"
+125-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+126                android:resource="@xml/flutter_image_picker_file_paths" />
+126-->[:image_picker_android] C:\Users\yeoni\Desktop\BG4102_Software\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+127        </provider>
 128
-129        <uses-library
-129-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-130            android:name="androidx.window.extensions"
-130-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-131            android:required="false" />
-131-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-132        <uses-library
-132-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-133            android:name="androidx.window.sidecar"
-133-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-134            android:required="false" />
-134-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-135
-136        <activity
-136-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:27:9-44:20
-137            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-137-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:28:13-80
-138            android:excludeFromRecents="true"
-138-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:29:13-46
-139            android:exported="true"
-139-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:30:13-36
-140            android:launchMode="singleTask"
-140-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:31:13-44
-141            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-141-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:32:13-72
-142            <intent-filter>
-142-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:33:13-43:29
-143                <action android:name="android.intent.action.VIEW" />
-143-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:17-69
-143-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:25-66
-144
-145                <category android:name="android.intent.category.DEFAULT" />
-145-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:17-76
-145-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:27-73
-146                <category android:name="android.intent.category.BROWSABLE" />
-146-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:17-78
-146-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:27-75
-147
-148                <data
-148-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:39:17-42:51
-149                    android:host="firebase.auth"
-149-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:40:21-49
-150                    android:path="/"
-150-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:41:21-37
-151                    android:scheme="genericidp" />
-151-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:42:21-48
-152            </intent-filter>
-153        </activity>
-154        <activity
-154-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:45:9-62:20
-155            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-155-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:46:13-79
-156            android:excludeFromRecents="true"
-156-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:47:13-46
-157            android:exported="true"
-157-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:48:13-36
-158            android:launchMode="singleTask"
-158-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:49:13-44
-159            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-159-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:50:13-72
-160            <intent-filter>
-160-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:51:13-61:29
-161                <action android:name="android.intent.action.VIEW" />
-161-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:17-69
-161-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:25-66
-162
-163                <category android:name="android.intent.category.DEFAULT" />
-163-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:17-76
-163-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:27-73
-164                <category android:name="android.intent.category.BROWSABLE" />
-164-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:17-78
-164-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:27-75
-165
-166                <data
-166-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:39:17-42:51
-167                    android:host="firebase.auth"
-167-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:40:21-49
-168                    android:path="/"
-168-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:41:21-37
-169                    android:scheme="recaptcha" />
-169-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:42:21-48
-170            </intent-filter>
-171        </activity>
-172
-173        <provider
-173-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:26:9-31:39
-174            android:name="com.google.firebase.provider.FirebaseInitProvider"
-174-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:27:13-77
-175            android:authorities="com.MedicalDesign.project.firebaseinitprovider"
-175-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:28:13-72
-176            android:directBootAware="true"
-176-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:29:13-43
-177            android:exported="false"
-177-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:30:13-37
-178            android:initOrder="100" /> <!-- Needs to be explicitly declared on P+ -->
-178-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:31:13-36
-179        <uses-library
-179-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
-180            android:name="org.apache.http.legacy"
-180-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
-181            android:required="false" />
-181-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
-182
-183        <receiver
-183-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:29:9-33:20
-184            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-184-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:30:13-85
-185            android:enabled="true"
-185-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:31:13-35
-186            android:exported="false" >
-186-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:32:13-37
-187        </receiver>
+129        <service
+129-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:13:9-17:56
+130            android:name="com.lyokone.location.FlutterLocationService"
+130-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-71
+131            android:enabled="true"
+131-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-35
+132            android:exported="false"
+132-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-37
+133            android:foregroundServiceType="location" />
+133-->[:location] C:\Users\yeoni\Desktop\BG4102_Software\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-53
+134
+135        <uses-library
+135-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+136            android:name="androidx.window.extensions"
+136-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+137            android:required="false" />
+137-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+138        <uses-library
+138-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+139            android:name="androidx.window.sidecar"
+139-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+140            android:required="false" />
+140-->[androidx.window:window:1.0.0-beta04] C:\Users\yeoni\.gradle\caches\transforms-3\aaeb399fe1f537ce0838cbaf38cd3726\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+141
+142        <activity
+142-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:27:9-44:20
+143            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+143-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:28:13-80
+144            android:excludeFromRecents="true"
+144-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:29:13-46
+145            android:exported="true"
+145-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:30:13-36
+146            android:launchMode="singleTask"
+146-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:31:13-44
+147            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+147-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:32:13-72
+148            <intent-filter>
+148-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:33:13-43:29
+149                <action android:name="android.intent.action.VIEW" />
+149-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:17-69
+149-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:25-66
+150
+151                <category android:name="android.intent.category.DEFAULT" />
+151-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:17-76
+151-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:27-73
+152                <category android:name="android.intent.category.BROWSABLE" />
+152-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:17-78
+152-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:27-75
+153
+154                <data
+154-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:39:17-42:51
+155                    android:host="firebase.auth"
+155-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:40:21-49
+156                    android:path="/"
+156-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:41:21-37
+157                    android:scheme="genericidp" />
+157-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:42:21-48
+158            </intent-filter>
+159        </activity>
+160        <activity
+160-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:45:9-62:20
+161            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+161-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:46:13-79
+162            android:excludeFromRecents="true"
+162-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:47:13-46
+163            android:exported="true"
+163-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:48:13-36
+164            android:launchMode="singleTask"
+164-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:49:13-44
+165            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+165-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:50:13-72
+166            <intent-filter>
+166-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:51:13-61:29
+167                <action android:name="android.intent.action.VIEW" />
+167-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:17-69
+167-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:25-66
+168
+169                <category android:name="android.intent.category.DEFAULT" />
+169-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:17-76
+169-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:27-73
+170                <category android:name="android.intent.category.BROWSABLE" />
+170-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:17-78
+170-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:27-75
+171
+172                <data
+172-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:39:17-42:51
+173                    android:host="firebase.auth"
+173-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:40:21-49
+174                    android:path="/"
+174-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:41:21-37
+175                    android:scheme="recaptcha" />
+175-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\yeoni\.gradle\caches\transforms-3\9e1f25fd04c9f5cf104d4c315e51318d\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:42:21-48
+176            </intent-filter>
+177        </activity>
+178
+179        <provider
+179-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:26:9-31:39
+180            android:name="com.google.firebase.provider.FirebaseInitProvider"
+180-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:27:13-77
+181            android:authorities="com.MedicalDesign.project.firebaseinitprovider"
+181-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:28:13-72
+182            android:directBootAware="true"
+182-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:29:13-43
+183            android:exported="false"
+183-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:30:13-37
+184            android:initOrder="100" /> <!-- Needs to be explicitly declared on P+ -->
+184-->[com.google.firebase:firebase-common:20.1.2] C:\Users\yeoni\.gradle\caches\transforms-3\8e7725d19d1d4053b808cda39f3b8957\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:31:13-36
+185        <uses-library
+185-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+186            android:name="org.apache.http.legacy"
+186-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
+187            android:required="false" />
+187-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\5fe485508589e6cc40fd17c2134d6ed0\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
 188
-189        <service
-189-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:35:9-38:40
-190            android:name="com.google.android.gms.measurement.AppMeasurementService"
-190-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:36:13-84
+189        <receiver
+189-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:29:9-33:20
+190            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+190-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:30:13-85
 191            android:enabled="true"
-191-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:37:13-35
-192            android:exported="false" />
-192-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:38:13-37
-193        <service
-193-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:39:9-43:72
-194            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-194-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:40:13-87
-195            android:enabled="true"
-195-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:41:13-35
-196            android:exported="false"
-196-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:42:13-37
-197            android:permission="android.permission.BIND_JOB_SERVICE" />
-197-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:43:13-69
-198
-199        <activity
-199-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\yeoni\.gradle\caches\transforms-3\9d2b5bc3c703b038b6707bb266a1b246\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
-200            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-200-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\yeoni\.gradle\caches\transforms-3\9d2b5bc3c703b038b6707bb266a1b246\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
-201            android:exported="false"
-201-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\yeoni\.gradle\caches\transforms-3\9d2b5bc3c703b038b6707bb266a1b246\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
-202            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-202-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\yeoni\.gradle\caches\transforms-3\9d2b5bc3c703b038b6707bb266a1b246\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
-203
-204        <meta-data
-204-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\22b638207fa94ec0ded4f99c86fb0e27\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
-205            android:name="com.google.android.gms.version"
-205-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\22b638207fa94ec0ded4f99c86fb0e27\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
-206            android:value="@integer/google_play_services_version" />
-206-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\22b638207fa94ec0ded4f99c86fb0e27\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
-207    </application>
-208
-209</manifest>
+191-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:31:13-35
+192            android:exported="false" >
+192-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:32:13-37
+193        </receiver>
+194
+195        <service
+195-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:35:9-38:40
+196            android:name="com.google.android.gms.measurement.AppMeasurementService"
+196-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:36:13-84
+197            android:enabled="true"
+197-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:37:13-35
+198            android:exported="false" />
+198-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:38:13-37
+199        <service
+199-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:39:9-43:72
+200            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+200-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:40:13-87
+201            android:enabled="true"
+201-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:41:13-35
+202            android:exported="false"
+202-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:42:13-37
+203            android:permission="android.permission.BIND_JOB_SERVICE" />
+203-->[com.google.android.gms:play-services-measurement:21.1.1] C:\Users\yeoni\.gradle\caches\transforms-3\0c197d668bbc8b7b26d60db3b05ba035\transformed\jetified-play-services-measurement-21.1.1\AndroidManifest.xml:43:13-69
+204
+205        <activity
+205-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\yeoni\.gradle\caches\transforms-3\9d2b5bc3c703b038b6707bb266a1b246\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+206            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+206-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\yeoni\.gradle\caches\transforms-3\9d2b5bc3c703b038b6707bb266a1b246\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+207            android:exported="false"
+207-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\yeoni\.gradle\caches\transforms-3\9d2b5bc3c703b038b6707bb266a1b246\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+208            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+208-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\yeoni\.gradle\caches\transforms-3\9d2b5bc3c703b038b6707bb266a1b246\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+209
+210        <meta-data
+210-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\22b638207fa94ec0ded4f99c86fb0e27\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+211            android:name="com.google.android.gms.version"
+211-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\22b638207fa94ec0ded4f99c86fb0e27\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+212            android:value="@integer/google_play_services_version" />
+212-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\yeoni\.gradle\caches\transforms-3\22b638207fa94ec0ded4f99c86fb0e27\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+213    </application>
+214
+215</manifest>

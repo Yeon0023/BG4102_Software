@@ -35,6 +35,7 @@ void main(context) async {
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
         testResultRoute: (context) => const TestResultView(),
         blueToothRoute: (context) => const BlueToothView(),
+
       },
     ),
   );

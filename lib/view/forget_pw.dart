@@ -1,10 +1,11 @@
 import 'package:bg4102_software/Utilities/Show_error_dialog.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_exception.dart';
-import 'package:bg4102_software/widgets/customAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
+
+import '../Utilities/customAppbar.dart';
 
 class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
@@ -91,7 +92,6 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               final email = _email.text;
               try {
                 await AuthService.firebase().sendPasswordResetEmail(
-                  //await FirebaseAuth.instance.sendPasswordResetEmail(
                   email: email,
                 );
                 showDialog(

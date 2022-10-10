@@ -1,9 +1,10 @@
 import 'package:bg4102_software/Utilities/profile_photo.dart';
 import 'package:bg4102_software/constats/routes.dart';
-import 'package:bg4102_software/widgets/customAppbar.dart';
-import 'package:bg4102_software/widgets/customDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Utilities/customAppbar.dart';
+import '../Utilities/customDrawer.dart';
 
 // Appbar design for profile setting page.
 class ProfileView extends StatelessWidget {
