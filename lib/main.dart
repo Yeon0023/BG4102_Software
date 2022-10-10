@@ -3,7 +3,6 @@ import 'package:bg4102_software/view/Login_view.dart';
 import 'package:bg4102_software/view/Register_view.dart';
 import 'package:bg4102_software/view/TestResult_view.dart';
 import 'package:bg4102_software/view/Verify_email_view.dart';
-import 'package:bg4102_software/view/blueTooth_view.dart';
 import 'package:bg4102_software/view/forget_pw.dart';
 import 'package:bg4102_software/view/home_view.dart';
 import 'package:bg4102_software/view/main_view.dart';
@@ -34,8 +33,6 @@ void main(context) async {
         verifyEmailRoute: (context) => const VerifyEmailView(),
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
         testResultRoute: (context) => const TestResultView(),
-        blueToothRoute: (context) => const BlueToothView(),
-
       },
     ),
   );

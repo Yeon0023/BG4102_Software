@@ -1,4 +1,4 @@
-import 'package:bg4102_software/view/blueTooth_view.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
-import '../Utilities/Bluetooth_data.dart';
 import '../Utilities/customAppbar.dart';
 import '../Utilities/customDrawer.dart';
 
@@ -23,14 +22,27 @@ class _TestResultViewState extends State<TestResultView> {
   var location = Location();
   late GoogleMapController _mapController;
   final Location _location = Location();
+  final String startTestUuid = "0x2A57";
+  final String serviceUuid = "0x180A";
+  final String descriptorUuid = "0x8594";
+  final String targetDeviceName = "ManoBreathalyser";
+
+  FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
+  StreamSubscription<ScanResult>? scanSubcription;
+
   bool? serviceEnabled;
   PermissionStatus? _permissionGranted;
   LocationData? locationData;
   LocationData? currentLocation;
-  late BluetoothDevice device;
+  
+  BluetoothDevice? targetDevice;
+  BluetoothCharacteristic? targetCharacteristic;
+  BluetoothDescriptor? targetDescriptor;
+  String connectionText = "";
 
   @override
   void initState() {
+    bool _isBlueToothConnected = false;
     _getPermission();
     _getCurrentLocation();
     super.initState();
@@ -167,8 +179,11 @@ class _TestResultViewState extends State<TestResultView> {
                 ),
               ),
             ),
-            onPressed: () {
-              print(selectedDevice[0]);
+            onPressed: () async {
+              int data = 1;
+              await writeData(data);
+              await readData();
+
               Fluttertoast.showToast(
                 msg: "Starting Test Now !",
                 toastLength: Toast.LENGTH_LONG,
@@ -183,15 +198,19 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
+  //* BlueTooth Connection.
   final connectedText = const Text.rich(
     TextSpan(
       children: [
         WidgetSpan(child: Icon(Icons.bluetooth_connected)),
-        TextSpan(text: ' Connected', style: TextStyle(fontSize: 18)),
+        TextSpan(
+            text: ' Connected',
+            style: TextStyle(
+              fontSize: 18,
+            )),
       ],
     ),
   );
-
   final disconnectedText = const Text.rich(
     TextSpan(
       children: [
@@ -200,24 +219,154 @@ class _TestResultViewState extends State<TestResultView> {
       ],
     ),
   );
-
   Widget _status() => Container(
-        width: 160,
+        width: 180,
         height: 50,
-        decoration: BoxDecoration(
-          color:
-              isDeviceConnected == false ? Colors.red[900] : Colors.blue[900],
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            isDeviceConnected == false ? disconnectedText : connectedText,
-          ],
+        child: ElevatedButton(
+          // ignore: unrelated_type_equality_checks
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            // ignore: unrelated_type_equality_checks
+            backgroundColor: targetDevice == BluetoothDeviceState.connected
+                ? Colors.blue[700]
+                : Colors.red[700],
+          ),
+          onPressed: () {
+              toggleBlueTooth();
+          },
+          // ignore: unrelated_type_equality_checks
+          child: targetDevice == BluetoothDeviceState.connected
+              ? connectedText
+              : disconnectedText,
         ),
       );
 
-  
+  //*This is Blue Tooth Section.
+  startScan() {
+    setState(() {
+      connectionText = "Start Scanning";
+    });
+
+    scanSubcription = flutterBlue.scan().listen((scanResult) {
+      if (scanResult.device.name == targetDeviceName) {
+        print('DEVICE found');
+        stopScan();
+        setState(() {
+          connectionText = "Found Target Device";
+        });
+
+        targetDevice = scanResult.device;
+        connectToDevice();
+      }
+    }, onDone: () => stopScan());
+  }
+
+  stopScan() {
+    scanSubcription?.cancel();
+    scanSubcription = null;
+  }
+
+  connectToDevice() async {
+    if (targetDevice == null) return;
+    setState(() {
+      connectionText = "Device Connecting";
+    });
+    await targetDevice!.connect();
+    print('DEVICE CONNECTED');
+    setState(() {
+      connectionText = "Device Connected";
+    });
+    discoverServices();
+  }
+
+  disconnectFromDevice() {
+    if (targetDevice == null) return;
+    targetDevice?.disconnect();
+    setState(
+      () {
+        connectionText = "Device Disconnected";
+      },
+    );
+  }
+
+  bool _isBlueToothConnected = false;
+  toggleBlueTooth() {
+    if (_isBlueToothConnected) {
+      connectToDevice();
+    } else {
+      disconnectFromDevice();
+    }
+    setState(() {
+      _isBlueToothConnected = !_isBlueToothConnected;
+    });
+  }
+
+  discoverServices() async {
+    if (targetDevice == null) return;
+
+    List<BluetoothService> services = await targetDevice!.discoverServices();
+    // ignore: avoid_function_literals_in_foreach_calls
+    services.forEach(
+      (service) {
+        if ('0x${service.uuid.toString().toUpperCase().substring(4, 8)}' ==
+            serviceUuid) {
+          // ignore: avoid_function_literals_in_foreach_calls
+          service.characteristics.forEach(
+            (characteristic) {
+              if ('0x${characteristic.uuid.toString().toUpperCase().substring(4, 8)}' ==
+                  startTestUuid) {
+                targetCharacteristic = characteristic;
+                // ignore: avoid_function_literals_in_foreach_calls
+                characteristic.descriptors.forEach(
+                  (descriptor) {
+                    if ('0x${descriptor.uuid.toString().toUpperCase().substring(4, 8)}' ==
+                        descriptorUuid) {
+                      targetDescriptor = descriptor;
+                      setState(
+                        () {
+                          connectionText =
+                              "All Ready with ${targetDevice!.name}";
+                        },
+                      );
+                    }
+                  },
+                );
+              }
+            },
+          );
+        }
+      },
+    );
+  }
+
+  writeData(int data) async {
+    if (targetCharacteristic == null) return;
+
+    // List<int> bytes = utf8.encode(data);
+    await targetCharacteristic!.write([data]);
+  }
+
+  readData() async {
+    if (targetCharacteristic == null) return;
+    List<int> value = await targetCharacteristic!.read();
+    print(value);
+  }
+
+  desWriteData(int data) async {
+    if (targetDescriptor == null) return;
+
+    // List<int> bytes = utf8.encode(data);
+    await targetDescriptor!.write([data]);
+  }
+
+  desReadData() async {
+    if (targetDescriptor == null) return;
+    List<int> value = await targetCharacteristic!.read();
+    print(value);
+  }
+
+  //*-------------------------------------------------------------------------------------------------------------------
+
   //*Final View of Test Result page.
   @override
   Widget build(BuildContext context) {
@@ -256,7 +405,6 @@ class _TestResultViewState extends State<TestResultView> {
                     top: 320,
                     child: _toastmaker(),
                   ),
-                  
                 ],
               ),
             ),
@@ -265,64 +413,13 @@ class _TestResultViewState extends State<TestResultView> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _drawGoogleMap();
+  }
 }
-
-
-
 
 //!---------------------------------------------------------------------------------------------------------------------
 
-
-  // _buildServiceTiles(List<BluetoothService> services) {
-  //   List<BluetoothService> copy = [];
-
-  //   for (BluetoothService service in services) {
-  //     if ("0x${service.uuid.toString().toUpperCase().substring(4, 8)}" ==
-  //         "0x180A") {
-  //       copy.add(service);
-  //     }
-  //   }
-  //   return copy
-  //       .map(
-  //         (s) => ServiceTile(
-  //           service: s,
-  //           characteristicTiles: s.characteristics
-  //               .map(
-  //                 (c) => CharacteristicTile(
-  //                   characteristic: c,
-  //                   onReadPressed: () => c.read(),
-  //                   onWritePressed: () async {
-  //                     await c.write(
-  //                         [1]); //! Start Case 1 in adriuno and start test.
-  //                     await c.read();
-  //                   },
-  //                   onNotificationPressed: () async {
-  //                     await c.setNotifyValue(!c.isNotifying);
-  //                     await c.read();
-  //                   },
-  //                   descriptorTiles: c.descriptors
-  //                       .map(
-  //                         (d) => DescriptorTile(
-  //                           descriptor: d,
-  //                           onReadPressed: () => d.read(),
-  //                           onWritePressed: () => d.write([0]),
-  //                         ),
-  //                       )
-  //                       .toList(),
-  //                 ),
-  //               )
-  //               .toList(),
-  //         ),
-  //       )
-
-
-// StreamBuilder<List<BluetoothService>>(
-//                     stream: selectedDevice[0].services,
-//                     initialData: const [],
-//                     builder: (c, snapshot) {
-//                       return 
-//                       Column(
-//                         children: _buildServiceTiles(snapshot.data!),
-//                       );
-//                     },
-//                   ),
