@@ -231,7 +231,7 @@ class _LoginViewState extends State<LoginView> {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil(
-                      registerRoute,
+                      signUpRoute,
                       (route) => false,
                     );
                   },

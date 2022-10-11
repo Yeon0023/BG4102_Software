@@ -77,7 +77,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                     await AuthService.firebase().logOut();
                     //ignore: use_build_context_synchronously
                     Navigator.of(context).pushNamedAndRemoveUntil(
-                      registerRoute,
+                      loginRoute,
                       (route) => false,
                     );
                   },
@@ -85,7 +85,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                     foregroundColor: Colors.white,
                     textStyle: GoogleFonts.lobster(fontSize: 15),
                   ),
-                  child: const Text('Restart'),
+                  child: const Text('Back To Login Page'),
                 )
               ],
             ),

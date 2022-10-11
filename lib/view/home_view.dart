@@ -142,8 +142,7 @@ class _HomePageState extends State<HomePage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                       child: Column(
                         children: <Widget>[
                           SizedBox(
@@ -177,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                         shadowColor: Colors.transparent,
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed(profileRoute);
+                        Navigator.of(context).pushNamed(profileGet);
                       },
                       child: Column(
                         children: <Widget>[

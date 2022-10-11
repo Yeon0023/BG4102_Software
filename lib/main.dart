@@ -1,14 +1,15 @@
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/view/Login_view.dart';
-import 'package:bg4102_software/view/Register_view.dart';
 import 'package:bg4102_software/view/TestResult_view.dart';
 import 'package:bg4102_software/view/Verify_email_view.dart';
 import 'package:bg4102_software/view/forget_pw.dart';
 import 'package:bg4102_software/view/home_view.dart';
 import 'package:bg4102_software/view/main_view.dart';
+import 'package:bg4102_software/view/profileedit.dart';
+import 'package:bg4102_software/view/profileget.dart';
+import 'package:bg4102_software/view/signup_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'view/profile_view.dart';
 
 void main(context) async {
   //This is to connect device app to firebase server.
@@ -18,7 +19,7 @@ void main(context) async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const HomePage(),
+      home: const MainPage(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.teal[900],
         primaryColor: Colors.teal[900],
@@ -28,8 +29,9 @@ void main(context) async {
         mainPageRoute: (context) => const MainPage(),
         homePageRoute: (context) => const HomePage(),
         loginRoute: (context) => const LoginView(),
-        profileRoute: (context) => const ProfileView(),
-        registerRoute: (context) => const RegisterView(),
+        signUpRoute: (context) => SignupScreen(),
+        profileGet: (context) => const ProfileScreen(),
+        profileEdit: (context) => ProfileEditScreen(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
         testResultRoute: (context) => const TestResultView(),
