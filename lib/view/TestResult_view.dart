@@ -25,6 +25,7 @@ class _TestResultViewState extends State<TestResultView> {
   final String startTestUuid = "0x2A57";
   final String serviceUuid = "0x180A";
   final String descriptorUuid = "0x8594";
+  final String bleFloat = "C8F88594-2217-0CA6-8F06-A4270B675D69";
   final String targetDeviceName = "ManoBreathalyser";
 
   FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
@@ -34,11 +35,12 @@ class _TestResultViewState extends State<TestResultView> {
   PermissionStatus? _permissionGranted;
   LocationData? locationData;
   LocationData? currentLocation;
-
   BluetoothDevice? targetDevice;
   BluetoothCharacteristic? targetCharacteristic;
   BluetoothDescriptor? targetDescriptor;
   String connectionText = "";
+
+  get value => readData();
 
   @override
   void initState() {
@@ -47,6 +49,134 @@ class _TestResultViewState extends State<TestResultView> {
     _getCurrentLocation();
     super.initState();
   }
+
+  //*-----------------------------------This is Blue Tooth Section. ------------------------------------------------
+
+  startScan() {
+    setState(() {
+      connectionText = "Start Scanning";
+    });
+
+    scanSubcription = flutterBlue.scan().listen((scanResult) {
+      if (scanResult.device.name == targetDeviceName) {
+        print('DEVICE found');
+        stopScan();
+        setState(() {
+          connectionText = "Found Target Device";
+        });
+
+        targetDevice = scanResult.device;
+        connectToDevice();
+      }
+    }, onDone: () => stopScan());
+  }
+
+  stopScan() {
+    scanSubcription?.cancel();
+    scanSubcription = null;
+  }
+
+  bool _connected = false;
+  connectToDevice() async {
+    if (targetDevice == null) return;
+    setState(() {
+      connectionText = "Device Connecting";
+    });
+    await targetDevice!.connect().then(
+          (value) => _connected = true,
+        );
+
+    print('DEVICE CONNECTED');
+    setState(() {
+      connectionText = "Device Connected";
+    });
+    discoverServices();
+  }
+
+  disconnectFromDevice() {
+    if (targetDevice == null) return;
+    targetDevice?.disconnect();
+    setState(
+      () {
+        connectionText = "Device Disconnected";
+      },
+    );
+  }
+
+  bool _isBlueToothConnected = false;
+  toggleBlueTooth() {
+    if (_isBlueToothConnected == true) {
+      disconnectFromDevice();
+    } else {
+      startScan();
+      connectToDevice();
+    }
+    setState(() {
+      _isBlueToothConnected = !_isBlueToothConnected;
+    });
+  }
+
+  discoverServices() async {
+    if (targetDevice == null) return;
+
+    List<BluetoothService> services = await targetDevice!.discoverServices();
+    // ignore: avoid_function_literals_in_foreach_calls
+    services.forEach(
+      (service) {
+        if ('0x${service.uuid.toString().toUpperCase().substring(4, 8)}' ==
+            serviceUuid) {
+          // ignore: avoid_function_literals_in_foreach_calls
+          service.characteristics.forEach(
+            (characteristic) {
+              if ('0x${characteristic.uuid.toString().toUpperCase().substring(4, 8)}' ==
+                  startTestUuid) {
+                targetCharacteristic = characteristic;
+                // ignore: avoid_function_literals_in_foreach_calls
+                characteristic.descriptors.forEach(
+                  (descriptor) {
+                    if (descriptor.uuid.toString().toUpperCase() == bleFloat) {
+                      targetDescriptor = descriptor;
+                      setState(
+                        () {
+                          connectionText =
+                              "All Ready with ${targetDevice!.name}";
+                        },
+                      );
+                    }
+                  },
+                );
+              }
+            },
+          );
+        }
+      },
+    );
+  }
+
+  writeData(int data) async {
+    if (targetCharacteristic == null) return;
+    // List<int> bytes = utf8.encode(data);
+    await targetCharacteristic!.write([data]);
+  }
+
+  readData() async {
+    if (targetCharacteristic == null) return;
+    List<int> value = await targetCharacteristic!.read();
+    print(value.toString());
+  }
+
+  desWriteData(int extractData) async {
+    if (targetDescriptor == null) return;
+    await targetDescriptor!.write([extractData]);
+  }
+
+  desReadData() async {
+    if (targetDescriptor == null) return;
+    List<int> values = await targetDescriptor!.read();
+    print("This is extracted ${value.toString()}");
+  }
+
+  //*-------------------------------------------------------------------------------------------------------------------
 
   //*Get the current location of device in lat and long.
   void _getPermission() async {
@@ -141,7 +271,7 @@ class _TestResultViewState extends State<TestResultView> {
         height: 230,
         width: 230,
         child: LiquidCircularProgressIndicator(
-          value: 0.25, // Defaults to 0.5.
+          value: 0.5, // Defaults to 0.5.
           valueColor: const AlwaysStoppedAnimation(Colors
               .deepOrangeAccent), // Defaults to the current Theme's accentColor.
           backgroundColor:
@@ -180,11 +310,7 @@ class _TestResultViewState extends State<TestResultView> {
               ),
             ),
             onPressed: () async {
-              int data = 1;
-              await writeData(data);
-              await readData();
-
-              Fluttertoast.showToast(
+              await Fluttertoast.showToast(
                 msg: "Starting Test Now !",
                 toastLength: Toast.LENGTH_LONG,
                 gravity: ToastGravity.BOTTOM,
@@ -193,6 +319,16 @@ class _TestResultViewState extends State<TestResultView> {
                 textColor: Colors.white,
                 fontSize: 17,
               );
+
+              int data = 1;
+              int extractData = 0;
+              await readData();
+              await writeData(data);
+              Timer(const Duration(seconds: 12), () async {
+                await desWriteData(extractData);
+                await desReadData();
+                print("Extraction Done!");
+              });
             },
           ),
         ),
@@ -226,146 +362,14 @@ class _TestResultViewState extends State<TestResultView> {
           // ignore: unrelated_type_equality_checks
           style: ElevatedButton.styleFrom(
             foregroundColor: Colors.white,
-            // ignore: unrelated_type_equality_checks
-            backgroundColor: targetDevice == BluetoothDeviceState.connected
-                ? Colors.blue[700]
-                : Colors.red[700],
+            backgroundColor: _connected ? Colors.blue[700] : Colors.red[700],
           ),
           onPressed: () {
             toggleBlueTooth();
           },
-          // ignore: unrelated_type_equality_checks
-          child: targetDevice == BluetoothDeviceState.connected
-              ? connectedText
-              : disconnectedText,
+          child: _connected ? connectedText : disconnectedText,
         ),
       );
-
-  //*This is Blue Tooth Section.
-  startScan() {
-    setState(() {
-      connectionText = "Start Scanning";
-    });
-
-    scanSubcription = flutterBlue.scan().listen((scanResult) {
-      if (scanResult.device.name == targetDeviceName) {
-        print('DEVICE found');
-        stopScan();
-        setState(() {
-          connectionText = "Found Target Device";
-        });
-
-        targetDevice = scanResult.device;
-        connectToDevice();
-      }
-    }, onDone: () => stopScan());
-  }
-
-  stopScan() {
-    scanSubcription?.cancel();
-    scanSubcription = null;
-  }
-
-  connectToDevice() async {
-    if (targetDevice == null) return;
-    setState(() {
-      connectionText = "Device Connecting";
-    });
-    await targetDevice!.connect();
-    print('DEVICE CONNECTED');
-    setState(() {
-      connectionText = "Device Connected";
-    });
-    discoverServices();
-  }
-
-  disconnectFromDevice() {
-    if (targetDevice == null) return;
-    targetDevice?.disconnect();
-    setState(
-      () {
-        connectionText = "Device Disconnected";
-      },
-    );
-  }
-
-  bool _isBlueToothConnected = false;
-  toggleBlueTooth() {
-    if (!_isBlueToothConnected) {
-      disconnectFromDevice();
-    } else {
-      connectToDevice();
-    }
-    setState(() {
-      _isBlueToothConnected = !_isBlueToothConnected;
-    });
-  }
-
-  discoverServices() async {
-    if (targetDevice == null) return;
-
-    List<BluetoothService> services = await targetDevice!.discoverServices();
-    // ignore: avoid_function_literals_in_foreach_calls
-    services.forEach(
-      (service) {
-        if ('0x${service.uuid.toString().toUpperCase().substring(4, 8)}' ==
-            serviceUuid) {
-          // ignore: avoid_function_literals_in_foreach_calls
-          service.characteristics.forEach(
-            (characteristic) {
-              if ('0x${characteristic.uuid.toString().toUpperCase().substring(4, 8)}' ==
-                  startTestUuid) {
-                targetCharacteristic = characteristic;
-                // ignore: avoid_function_literals_in_foreach_calls
-                characteristic.descriptors.forEach(
-                  (descriptor) {
-                    if ('0x${descriptor.uuid.toString().toUpperCase().substring(4, 8)}' ==
-                        descriptorUuid) {
-                      targetDescriptor = descriptor;
-                      setState(
-                        () {
-                          connectionText =
-                              "All Ready with ${targetDevice!.name}";
-                        },
-                      );
-                    }
-                  },
-                );
-              }
-            },
-          );
-        }
-      },
-    );
-  }
-
-  writeData(int data) async {
-    if (targetCharacteristic == null) return;
-
-    // List<int> bytes = utf8.encode(data);
-    await targetCharacteristic!.write([data]);
-  }
-
-  readData() async {
-    if (targetCharacteristic == null) return;
-    List<int> value = await targetCharacteristic!.read();
-    print(value);
-  }
-
-  desWriteData(int data) async {
-    if (targetDescriptor == null) return;
-
-    // List<int> bytes = utf8.encode(data);
-    await targetDescriptor!.write([data]);
-  }
-
-  desReadData() async {
-    if (targetDescriptor == null) return;
-    List<int> value = await targetCharacteristic!.read();
-    print(value);
-  }
-
-  //*-------------------------------------------------------------------------------------------------------------------
 
   //*Final View of Test Result page.
   @override
