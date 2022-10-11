@@ -7,7 +7,6 @@ import 'package:date_field/date_field.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:bg4102_software/constats/routes.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ProfileEditScreen extends StatefulWidget {
   const ProfileEditScreen({super.key});

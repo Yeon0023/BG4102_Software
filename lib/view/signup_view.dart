@@ -249,8 +249,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                     final user =
                                         AuthService.firebase().currentUser;
                                     //ignore: use_build_context_synchronously
-                                    Navigator.of(context)
-                                        .pushNamed(verifyEmailRoute);
+                                    Navigator.of(context).pushNamed(
+                                      verifyEmailRoute,
+                                    );
                                     //devtools.log(userCredential.toString());
                                   } on WeakPasswordAuthException {
                                     await showErrorDialog(

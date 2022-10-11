@@ -76,7 +76,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           IconButton(
               icon: const Icon(Icons.mode_edit),
               onPressed: () {
-                Navigator.of(context).pushNamed(profileEdit);
+                Navigator.of(context).pushNamed(
+                  profileEdit,
+                );
               }),
         ],
         leading: IconButton(
