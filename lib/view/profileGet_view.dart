@@ -1,3 +1,4 @@
+import 'package:bg4102_software/Utilities/customAppbar.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,9 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:path/path.dart';
-import 'package:bg4102_software/view/profileget.dart';
 import 'package:bg4102_software/Utilities/profilewidget.dart';
-import 'package:bg4102_software/Utilities/profile_photo.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -70,13 +69,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Profile',
-          style: GoogleFonts.lobster(fontSize: 25),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.teal[900],
+      appBar: customAppbar(
+        title: 'Profile',
+        fontSize: 25,
         actions: [
           IconButton(
               icon: const Icon(Icons.mode_edit),
@@ -90,7 +85,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             color: Colors.black,
             size: 30,
           ),
-          onPressed: () => Navigator.of(context).pushNamed(homePageRoute),
+          onPressed: () => Navigator.of(context).pushNamed(
+            homePageRoute,
+          ),
         ),
       ),
       body: ListView(

@@ -1,21 +1,19 @@
-import 'package:bg4102_software/view/home_view.dart';
-import 'package:bg4102_software/view/profileget.dart';
+import 'package:bg4102_software/Utilities/customAppbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bg4102_software/Utilities/button.dart';
 import 'package:date_field/date_field.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import 'package:bg4102_software/Utilities/Show_error_dialog.dart';
 import 'package:bg4102_software/constats/routes.dart';
-import 'package:bg4102_software/service/auth/auth_exception.dart';
-import 'package:bg4102_software/service/auth/auth_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileEditScreen extends StatefulWidget {
+  const ProfileEditScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _ProfileEditScreenState createState() => _ProfileEditScreenState();
 }
 
@@ -34,7 +32,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   String ecp = '';
   String ec = '';
   String dropdownValue = 'Enter your gender';
-  var formatter = new DateFormat('dd-MM-yyyy');
+  var formatter = DateFormat('dd-MM-yyyy');
   bool isloading = false;
 
   Future<void> updateUserName() {
@@ -112,21 +110,19 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Edit Profile',
-          style: GoogleFonts.lobster(fontSize: 25),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.teal[900],
-        elevation: 0,
+      appBar: customAppbar(
+        title: 'Edit Profile',
+        fontSize: 25,
+        actions: null,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
             size: 30,
           ),
-          onPressed: () => Navigator.of(context).pushNamed(profileGet),
+          onPressed: () => Navigator.of(context).pushNamed(
+            profileGet,
+          ),
         ),
       ),
       body: isloading
@@ -144,14 +140,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                       width: double.infinity,
                       color: Colors.teal[900],
                       child: SingleChildScrollView(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 25,
+                          vertical: 0,
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
                                     prefixIcon: Icon(Icons.account_circle,
                                         color: Colors.white),
@@ -176,9 +174,10 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 onChanged: (value) {
                                   name = value;
                                 }),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             DateTimeFormField(
-                              dateTextStyle: TextStyle(color: Colors.white),
+                              dateTextStyle:
+                                  const TextStyle(color: Colors.white),
                               decoration: const InputDecoration(
                                 hintStyle: TextStyle(color: Colors.white),
                                 errorStyle: TextStyle(color: Colors.redAccent),
@@ -205,7 +204,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 dob = formatter.format(value);
                               },
                             ),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             Theme(
                               data: Theme.of(context).copyWith(
                                 canvasColor: Colors.teal[900],
@@ -253,12 +252,13 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   if (value == 'Enter your gender') {
                                     return 'Enter your gender';
                                   }
+                                  return null;
                                 },
                               ),
                             ),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
                                     prefixIcon:
                                         Icon(Icons.height, color: Colors.white),
@@ -283,9 +283,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 onChanged: (value) {
                                   height = value;
                                 }),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
                                     prefixIcon: Icon(Icons.monitor_weight,
                                         color: Colors.white),
@@ -310,9 +310,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 onChanged: (value) {
                                   weight = value;
                                 }),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
                                     prefixIcon:
                                         Icon(Icons.phone, color: Colors.white),
@@ -337,9 +337,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 onChanged: (value) {
                                   phone = value;
                                 }),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
                                     prefixIcon:
                                         Icon(Icons.person, color: Colors.white),
@@ -365,9 +365,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 onChanged: (value) {
                                   ecp = value;
                                 }),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
                                     prefixIcon: Icon(Icons.phone_android,
                                         color: Colors.white),

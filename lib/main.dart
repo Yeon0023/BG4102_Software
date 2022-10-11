@@ -5,8 +5,8 @@ import 'package:bg4102_software/view/Verify_email_view.dart';
 import 'package:bg4102_software/view/forget_pw.dart';
 import 'package:bg4102_software/view/home_view.dart';
 import 'package:bg4102_software/view/main_view.dart';
-import 'package:bg4102_software/view/profileedit.dart';
-import 'package:bg4102_software/view/profileget.dart';
+import 'package:bg4102_software/view/profileEdit_view.dart';
+import 'package:bg4102_software/view/profileGet_view.dart';
 import 'package:bg4102_software/view/signup_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +29,9 @@ void main(context) async {
         mainPageRoute: (context) => const MainPage(),
         homePageRoute: (context) => const HomePage(),
         loginRoute: (context) => const LoginView(),
-        signUpRoute: (context) => SignupScreen(),
+        signUpRoute: (context) => const SignupScreen(),
         profileGet: (context) => const ProfileScreen(),
-        profileEdit: (context) => ProfileEditScreen(),
+        profileEdit: (context) => const ProfileEditScreen(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
         testResultRoute: (context) => const TestResultView(),
