@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class customAppbar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final double fontSize;
   final List<Widget>? actions;
   final Widget? leading;
 
-  const customAppbar({
+  const CustomAppbar({
     super.key,
     required this.title,
     required this.fontSize,

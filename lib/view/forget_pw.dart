@@ -32,7 +32,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppbar(
+      appBar: CustomAppbar(
         title: 'Forget Password Page',
         fontSize: 25,
         actions: null,

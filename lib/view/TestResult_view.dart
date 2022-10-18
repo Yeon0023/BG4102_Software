@@ -363,7 +363,7 @@ class _TestResultViewState extends State<TestResultView> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       drawer: const customDrawer(),
-      appBar: const customAppbar(
+      appBar: const CustomAppbar(
         title: 'Test Result',
         fontSize: 25,
         actions: null,

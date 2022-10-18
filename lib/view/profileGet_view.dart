@@ -69,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppbar(
+      appBar: CustomAppbar(
         title: 'Profile',
         fontSize: 25,
         actions: [

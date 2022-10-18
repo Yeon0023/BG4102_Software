@@ -37,7 +37,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppbar(
+      appBar: CustomAppbar(
         title: "Sign Up!",
         fontSize: 25,
         actions: null,

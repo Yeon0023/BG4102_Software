@@ -38,7 +38,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const customAppbar(
+      appBar: const CustomAppbar(
         title: '--Breathalyzer--',
         fontSize: 37,
         actions: null,

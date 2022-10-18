@@ -148,62 +148,63 @@ class _GamePage extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        body: Column(
-          children: [
-            Expanded(
-              flex: 5,
-              child: GridView.builder(
-                  itemCount: numberOfSquares,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 10),
-                  itemBuilder: (BuildContext context, int index) {
-                    if (piece.contains(index)) {
-                      return const MyPixel(
-                        color: Color.fromARGB(255, 33, 226, 243),
-                      );
-                    } else if (landed.contains(index)) {
-                      return const MyPixel(
-                        color: Color.fromARGB(255, 33, 226, 243),
-                      );
-                    } else {
-                      return MyPixel(
-                        color: Colors.grey[400],
-                      );
-                    }
-                  }),
+      backgroundColor: Colors.black,
+      body: Column(
+        children: [
+          Expanded(
+            flex: 5,
+            child: GridView.builder(
+                itemCount: numberOfSquares,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 10),
+                itemBuilder: (BuildContext context, int index) {
+                  if (piece.contains(index)) {
+                    return const MyPixel(
+                      color: Color.fromARGB(255, 33, 226, 243),
+                    );
+                  } else if (landed.contains(index)) {
+                    return const MyPixel(
+                      color: Color.fromARGB(255, 33, 226, 243),
+                    );
+                  } else {
+                    return MyPixel(
+                      color: Colors.grey[400],
+                    );
+                  }
+                }),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                MyButton(
+                  function: !_isPlaying ? startGame : () {},
+                  child: const Text(
+                    "S T A R T",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                ),
+                MyButton(
+                  function: stack,
+                  child: const Text(
+                    "S T A C K",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                ),
+                MyButton(
+                  function: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    "H O M E",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                )
+              ],
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MyButton(
-                    function: !_isPlaying ? startGame : () {},
-                    child: const Text(
-                      "S T A R T",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                  ),
-                  MyButton(
-                    function: stack,
-                    child: const Text(
-                      "S T A C K",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                  ),
-                  MyButton(
-                    function: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text(
-                      "H O M E",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ));
+          )
+        ],
+      ),
+    );
   }
 }
