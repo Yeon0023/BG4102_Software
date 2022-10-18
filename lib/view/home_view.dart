@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onPressed: () {
                         //!TO BE Added
-                        // Navigator.of(context).pushNamed(blueToothRoute);
+                        // Navigator.of(context).pushNamed();
                       },
                       child: Column(
                         children: <Widget>[
@@ -278,7 +278,7 @@ class _HomePageState extends State<HomePage> {
                         backgroundColor: Colors.white,
                       ),
                       onPressed: () {
-                        // Navigator.of(context).pushNamed(blueToothRoute);
+                        Navigator.of(context).pushNamed(gamePageRoute);
                       },
                       child: Column(
                         children: <Widget>[

@@ -3,6 +3,7 @@ import 'package:bg4102_software/view/Login_view.dart';
 import 'package:bg4102_software/view/TestResult_view.dart';
 import 'package:bg4102_software/view/Verify_email_view.dart';
 import 'package:bg4102_software/view/forget_pw.dart';
+import 'package:bg4102_software/view/game_page.dart';
 import 'package:bg4102_software/view/home_view.dart';
 import 'package:bg4102_software/view/main_view.dart';
 import 'package:bg4102_software/view/profileEdit_view.dart';
@@ -35,6 +36,7 @@ void main(context) async {
         verifyEmailRoute: (context) => const VerifyEmailView(),
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
         testResultRoute: (context) => const TestResultView(),
+        gamePageRoute: (context) => const GamePage(),
       },
     ),
   );

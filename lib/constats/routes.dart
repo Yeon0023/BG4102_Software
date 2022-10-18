@@ -8,4 +8,4 @@ const testResultRoute = '/testResult/';
 const signUpRoute = '/signup';
 const profileGet = '/profileGet';
 const profileEdit = '/profileEdit';
-
+const gamePageRoute = '/gamePage';

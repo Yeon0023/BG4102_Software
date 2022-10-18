@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bg4102_software/Utilities/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -19,32 +20,32 @@ class TestResultView extends StatefulWidget {
 class _TestResultViewState extends State<TestResultView> {
   final LatLng _initialcameraposition = const LatLng(20.5937, 78.9629);
   final Map<String, Marker> _markers = {};
-  var location = Location();
-  late GoogleMapController _mapController;
-  final Location _location = Location();
-  final String startTestUuid = "0x2A57";
   final String serviceUuid = "0x180A";
-  final String descriptorUuid = "0x8594";
   final String bleFloat = "C8F88594-2217-0CA6-8F06-A4270B675D69";
   final String targetDeviceName = "ManoBreathalyser";
-
+  final Location _location = Location();
+  static const String startTestUuid = "0x2A57";
+  static const String retrieveResultUuid = "0x8594";
+  late GoogleMapController _mapController;
+  var location = Location();
+  double _result = 0.0;
+  String _indicatorText = "No Result";
   FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
   StreamSubscription<ScanResult>? scanSubcription;
-
   bool? serviceEnabled;
   PermissionStatus? _permissionGranted;
   LocationData? locationData;
   LocationData? currentLocation;
   BluetoothDevice? targetDevice;
-  BluetoothCharacteristic? targetCharacteristic;
+  BluetoothCharacteristic? startTestCharacteristic,
+      retrieveResultCharacteristic;
   BluetoothDescriptor? targetDescriptor;
   String connectionText = "";
 
-  get value => readData();
+  get value => readData(startTestCharacteristic!);
 
   @override
   void initState() {
-    bool _isBlueToothConnected = false;
     _getPermission();
     _getCurrentLocation();
     super.initState();
@@ -128,23 +129,15 @@ class _TestResultViewState extends State<TestResultView> {
           // ignore: avoid_function_literals_in_foreach_calls
           service.characteristics.forEach(
             (characteristic) {
-              if ('0x${characteristic.uuid.toString().toUpperCase().substring(4, 8)}' ==
-                  startTestUuid) {
-                targetCharacteristic = characteristic;
-                // ignore: avoid_function_literals_in_foreach_calls
-                characteristic.descriptors.forEach(
-                  (descriptor) {
-                    if (descriptor.uuid.toString().toUpperCase() == bleFloat) {
-                      targetDescriptor = descriptor;
-                      setState(
-                        () {
-                          connectionText =
-                              "All Ready with ${targetDevice!.name}";
-                        },
-                      );
-                    }
-                  },
-                );
+              switch (
+                  "0x${characteristic.uuid.toString().toUpperCase().substring(4, 8)}") {
+                case startTestUuid:
+                  startTestCharacteristic = characteristic;
+                  break;
+                case retrieveResultUuid:
+                  retrieveResultCharacteristic = characteristic;
+                  break;
+                default:
               }
             },
           );
@@ -153,27 +146,13 @@ class _TestResultViewState extends State<TestResultView> {
     );
   }
 
-  writeData(int data) async {
-    if (targetCharacteristic == null) return;
-    // List<int> bytes = utf8.encode(data);
-    await targetCharacteristic!.write([data]);
+  startTest(int data) async {
+    if (startTestCharacteristic == null) return;
+    await startTestCharacteristic!.write([data]);
   }
 
-  readData() async {
-    if (targetCharacteristic == null) return;
-    List<int> value = await targetCharacteristic!.read();
-    print(value.toString());
-  }
-
-  desWriteData(int extractData) async {
-    if (targetDescriptor == null) return;
-    await targetDescriptor!.write([extractData]);
-  }
-
-  desReadData() async {
-    if (targetDescriptor == null) return;
-    List<int> values = await targetDescriptor!.read();
-    print("This is extracted ${value.toString()}");
+  Future<List<int>> readData(BluetoothCharacteristic characteristic) async {
+    return await characteristic.read();
   }
 
   //*-------------------------------------------------------------------------------------------------------------------
@@ -271,7 +250,7 @@ class _TestResultViewState extends State<TestResultView> {
         height: 230,
         width: 230,
         child: LiquidCircularProgressIndicator(
-          value: 0.5, // Defaults to 0.5.
+          value: _result, // Defaults to 0.5.
           valueColor: const AlwaysStoppedAnimation(Colors
               .deepOrangeAccent), // Defaults to the current Theme's accentColor.
           backgroundColor:
@@ -280,9 +259,9 @@ class _TestResultViewState extends State<TestResultView> {
           borderWidth: 5.0,
           direction: Axis
               .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-          center: const Text(
-            "Loading...",
-            style: TextStyle(color: Colors.black),
+          center: Text(
+            _indicatorText,
+            style: const TextStyle(color: Colors.black),
           ),
         ),
       );
@@ -321,14 +300,21 @@ class _TestResultViewState extends State<TestResultView> {
               );
 
               int data = 1;
-              int extractData = 0;
-              await readData();
-              await writeData(data);
-              Timer(const Duration(seconds: 12), () async {
-                await desWriteData(extractData);
-                await desReadData();
-                print("Extraction Done!");
+              await startTest(data);
+              List<int> result = await readData(startTestCharacteristic!);
+              setState(() {
+                _indicatorText = "Loading...";
               });
+              if (result.first == 1) {
+                List<int> result =
+                    await readData(retrieveResultCharacteristic!);
+                double _value = convertByteArray(result);
+                _result = relativeToAlcohol(_value);
+                _indicatorText = _value.toString();
+                setState(() {});
+              } else {
+                print("Error, try again...");
+              }
             },
           ),
         ),
@@ -424,6 +410,7 @@ class _TestResultViewState extends State<TestResultView> {
     _drawGoogleMap();
   }
 }
+
 
 //!---------------------------------------------------------------------------------------------------------------------
 

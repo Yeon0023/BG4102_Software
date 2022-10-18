@@ -48,9 +48,12 @@ class customDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('History'),
+            title: const Text('Game'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                gamePageRoute,
+                (route) => false,
+              );
             },
           ),
           ListTile(

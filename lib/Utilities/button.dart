@@ -38,3 +38,33 @@ class LoginSignupButton extends StatelessWidget {
     );
   }
 }
+
+class MyButton extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
+  final child;
+  // ignore: prefer_typing_uninitialized_variables
+  final function;
+
+  const MyButton({
+    super.key,
+    this.child,
+    this.function,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: function,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 0.4, vertical: 0.4),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              color: Colors.grey[900],
+              child: Center(child: child),
+            )),
+      ),
+    );
+  }
+}
