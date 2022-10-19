@@ -15,12 +15,14 @@ androidx/annotation/ColorInt.class
 androidx/annotation/ColorLong.class
 androidx/annotation/ColorRes.class
 androidx/annotation/ContentView.class
+androidx/annotation/DeprecatedSinceApi.class
 androidx/annotation/DimenRes.class
 androidx/annotation/Dimension.class
 androidx/annotation/Discouraged.class
 androidx/annotation/DisplayContext.class
 androidx/annotation/DoNotInline.class
 androidx/annotation/DrawableRes.class
+androidx/annotation/EmptySuper.class
 androidx/annotation/FloatRange.class
 androidx/annotation/FontRes.class
 androidx/annotation/FractionRes.class
@@ -45,6 +47,7 @@ androidx/annotation/NavigationRes.class
 androidx/annotation/NonNull.class
 androidx/annotation/NonUiContext.class
 androidx/annotation/Nullable.class
+androidx/annotation/OpenForTesting.class
 androidx/annotation/OptIn.class
 androidx/annotation/PluralsRes.class
 androidx/annotation/Px.class
@@ -58,6 +61,7 @@ androidx/annotation/RequiresPermission$Write.class
 androidx/annotation/RequiresPermission.class
 androidx/annotation/RestrictTo$Scope.class
 androidx/annotation/RestrictTo.class
+androidx/annotation/ReturnThis.class
 androidx/annotation/Size.class
 androidx/annotation/StringDef.class
 androidx/annotation/StringRes.class

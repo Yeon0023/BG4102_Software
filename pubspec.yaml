@@ -53,6 +53,8 @@ dependencies:
   email_validator: ^2.1.17
   cloud_firestore: ^3.5.0
   intl: ^0.17.0
+  geocoder2: ^1.4.0
+  geocoding: ^2.0.5
 
 flutter_native_splash:
   color: "#00A3A3"

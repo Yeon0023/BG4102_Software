@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bg4102_software/Utilities/currentAddress.dart';
 import 'package:bg4102_software/Utilities/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -9,6 +10,8 @@ import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import '../Utilities/customAppbar.dart';
 import '../Utilities/customDrawer.dart';
+
+
 
 class TestResultView extends StatefulWidget {
   const TestResultView({Key? key}) : super(key: key);
@@ -41,7 +44,6 @@ class _TestResultViewState extends State<TestResultView> {
       retrieveResultCharacteristic;
   BluetoothDescriptor? targetDescriptor;
   String connectionText = "";
-
   get value => readData(startTestCharacteristic!);
 
   @override
@@ -51,7 +53,7 @@ class _TestResultViewState extends State<TestResultView> {
     super.initState();
   }
 
-  //*-----------------------------------This is Blue Tooth Section. ------------------------------------------------
+  //?-----------------------------------This is Blue Tooth Section.-----------------------------------------------------
 
   startScan() {
     setState(() {
@@ -155,7 +157,7 @@ class _TestResultViewState extends State<TestResultView> {
     return await characteristic.read();
   }
 
-  //*-------------------------------------------------------------------------------------------------------------------
+  //?-------------------------------------------------------------------------------------------------------------------
 
   //*Get the current location of device in lat and long.
   void _getPermission() async {
@@ -176,11 +178,18 @@ class _TestResultViewState extends State<TestResultView> {
   }
 
   //* Get current Location for Icon only.
-  void _getCurrentLocation() {
+  
+  Future<void> _getCurrentLocation() async {
     Location location = Location();
     location.getLocation().then(
       (location) {
         currentLocation = location;
+        List<double> currentCoordinate = [];
+        currentCoordinate.addAll([currentLocation!.latitude!,currentLocation!.longitude!]);
+        GetCurrentAddress(currentCoordinate);
+        print(Address);
+        setState(() {
+        });
       },
     );
   }
