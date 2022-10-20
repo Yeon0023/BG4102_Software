@@ -19,6 +19,7 @@ class _LoginViewState extends State<LoginView> {
   late final TextEditingController _password;
   bool _isBlur = false;
   bool _isObscure = true;
+  var size, height, width;
 
   @override
   void initState() {
@@ -37,6 +38,9 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
       appBar: const CustomAppbar(
         title: '--Breathalyzer--',
@@ -45,207 +49,211 @@ class _LoginViewState extends State<LoginView> {
         leading: null,
       ),
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 300,
-                  height: 300,
-                  child: Image.asset(
-                    'assets/images/party.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0,
-                  ),
-                  //User email key in box
-                  child: TextField(
-                    controller: _email,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    keyboardType: TextInputType.emailAddress,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
-                      label: Text('Username '),
-                      prefixIcon: Icon(Icons.email),
-                      hintText: 'Enter Your Email Here',
-                      focusedBorder: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                        color: Colors.white,
-                      )),
+        child: Container(
+          height: height,
+          width: width,
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: height / 2.5,
+                    height: 300,
+                    child: Image.asset(
+                      'assets/images/party.png',
+                      fit: BoxFit.contain,
                     ),
                   ),
-                ),
 
-                const SizedBox(
-                  height: 12,
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0,
-                  ),
-                  //User Key in Password
-                  child: TextField(
-                    controller: _password,
-                    obscureText: _isObscure,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    keyboardType: TextInputType.emailAddress,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      label: const Text('Password'),
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: IconButton(
-                        icon: Icon(_isObscure
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                        onPressed: () {
-                          setState(() {
-                            _isObscure = !_isObscure;
-                          });
-                        },
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25.0,
+                    ),
+                    //User email key in box
+                    child: TextField(
+                      controller: _email,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: const InputDecoration(
+                        label: Text('Username '),
+                        prefixIcon: Icon(Icons.email),
+                        hintText: 'Enter Your Email Here',
+                        focusedBorder: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                          color: Colors.white,
+                        )),
                       ),
-                      hintText: "Enter Your Password Here",
-                      focusedBorder: const OutlineInputBorder(),
-                      enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                        color: Colors.white,
-                      )),
                     ),
                   ),
-                ),
 
-                const SizedBox(
-                  height: 10,
-                ),
+                  const SizedBox(
+                    height: 12,
+                  ),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25.0,
+                    ),
+                    //User Key in Password
+                    child: TextField(
+                      controller: _password,
+                      obscureText: _isObscure,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        label: const Text('Password'),
+                        prefixIcon: const Icon(Icons.lock),
+                        suffixIcon: IconButton(
+                          icon: Icon(_isObscure
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          onPressed: () {
+                            setState(() {
+                              _isObscure = !_isObscure;
+                            });
+                          },
+                        ),
+                        hintText: "Enter Your Password Here",
+                        focusedBorder: const OutlineInputBorder(),
+                        enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                          color: Colors.white,
+                        )),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 10,
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                              forgetPasswordRoute,
+                              (route) => false,
+                            );
+                          },
+                          child: Text(
+                            'Forgot Password ?',
+                            style: GoogleFonts.lobster(
+                              textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 10,
+                  ),
+
+                  //Login Button
+                  TextButton(
+                    onPressed: () async {
+                      final email = _email.text;
+                      final password = _password.text;
+                      try {
+                        await AuthService.firebase().logIn(
+                          email: email,
+                          password: password,
+                        );
+                        final user = AuthService.firebase().currentUser;
+                        if (user?.isEmailVerified ?? false) {
+                          //If user email is verified
+                          //ignore: use_build_context_synchronously
                           Navigator.of(context).pushNamedAndRemoveUntil(
-                            forgetPasswordRoute,
+                            homePageRoute,
                             (route) => false,
                           );
-                        },
-                        child: Text(
-                          'Forgot Password ?',
-                          style: GoogleFonts.lobster(
-                            textStyle: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(
-                  height: 10,
-                ),
-
-                //Login Button
-                TextButton(
-                  onPressed: () async {
-                    final email = _email.text;
-                    final password = _password.text;
-                    try {
-                      await AuthService.firebase().logIn(
-                        email: email,
-                        password: password,
-                      );
-                      final user = AuthService.firebase().currentUser;
-                      if (user?.isEmailVerified ?? false) {
-                        //If user email is verified
-                        //ignore: use_build_context_synchronously
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          homePageRoute,
-                          (route) => false,
+                        } else {
+                          // If user email is NOT verified
+                          ////ignore: use_build_context_synchronously
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                            verifyEmailRoute,
+                            (route) => false,
+                          );
+                        }
+                      } on UserNotFoundAuthException {
+                        await showErrorDialog(
+                          context,
+                          'User not found',
                         );
-                      } else {
-                        // If user email is NOT verified
-                        ////ignore: use_build_context_synchronously
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          verifyEmailRoute,
-                          (route) => false,
+                      } on WrongPasswordAuthException {
+                        await showErrorDialog(
+                          context,
+                          'Wrong Password',
+                        );
+                      } on GenericAuthException {
+                        await showErrorDialog(
+                          context,
+                          'Authentication Error',
                         );
                       }
-                    } on UserNotFoundAuthException {
-                      await showErrorDialog(
-                        context,
-                        'User not found',
-                      );
-                    } on WrongPasswordAuthException {
-                      await showErrorDialog(
-                        context,
-                        'Wrong Password',
-                      );
-                    } on GenericAuthException {
-                      await showErrorDialog(
-                        context,
-                        'Authentication Error',
-                      );
-                    }
-                    setState(() {
-                      _isBlur = !_isBlur;
-                    });
-                  },
-                  child: SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: GlassMorphism(
-                        borderThickness: 1,
-                        cornerRadius: 4,
-                        height: 50,
-                        width: 350,
-                        blur: _isBlur ? 20 : 0,
-                        opacity: 0.25,
-                        child: Center(
-                          child: Text(
-                            "Sign In!",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.lobster(
-                              color: Colors.white,
-                              fontSize: 17,
+                      setState(() {
+                        _isBlur = !_isBlur;
+                      });
+                    },
+                    child: SafeArea(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: GlassMorphism(
+                          borderThickness: 1,
+                          cornerRadius: 4,
+                          height: 50,
+                          width: 350,
+                          blur: _isBlur ? 20 : 0,
+                          opacity: 0.25,
+                          child: Center(
+                            child: Text(
+                              "Sign In!",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.lobster(
+                                color: Colors.white,
+                                fontSize: 17,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
 
-                // Register redirect button
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      signUpRoute,
-                      (route) => false,
-                    );
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    textStyle: GoogleFonts.lobster(fontSize: 16),
+                  // Register redirect button
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        signUpRoute,
+                        (route) => false,
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      textStyle: GoogleFonts.lobster(fontSize: 16),
+                    ),
+                    child: const Text('Not registered yet? Register here!'),
                   ),
-                  child: const Text('Not registered yet? Register here!'),
-                ),
-                Container(
-                  height: 100,
-                  // color: Colors.amber,
-                ),
-              ],
+                  Container(
+                    height: 100,
+                    // color: Colors.amber,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

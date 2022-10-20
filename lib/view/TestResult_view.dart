@@ -11,8 +11,6 @@ import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import '../Utilities/customAppbar.dart';
 import '../Utilities/customDrawer.dart';
 
-
-
 class TestResultView extends StatefulWidget {
   const TestResultView({Key? key}) : super(key: key);
 
@@ -27,10 +25,10 @@ class _TestResultViewState extends State<TestResultView> {
   final String bleFloat = "C8F88594-2217-0CA6-8F06-A4270B675D69";
   final String targetDeviceName = "ManoBreathalyser";
   final Location _location = Location();
+  var location = Location();
   static const String startTestUuid = "0x2A57";
   static const String retrieveResultUuid = "0x8594";
   late GoogleMapController _mapController;
-  var location = Location();
   double _result = 0.0;
   String _indicatorText = "No Result";
   FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
@@ -53,7 +51,7 @@ class _TestResultViewState extends State<TestResultView> {
     super.initState();
   }
 
-  //?-----------------------------------This is Blue Tooth Section.-----------------------------------------------------
+  //?-----------------------------------This is BlueTooth Section.-----------------------------------------------------
 
   startScan() {
     setState(() {
@@ -177,8 +175,7 @@ class _TestResultViewState extends State<TestResultView> {
     }
   }
 
-  //* Get current Location for Icon only.
-  
+  //* Get current Location for Icon only. 
   Future<void> _getCurrentLocation() async {
     Location location = Location();
     location.getLocation().then(
@@ -421,5 +418,5 @@ class _TestResultViewState extends State<TestResultView> {
 }
 
 
-//!---------------------------------------------------------------------------------------------------------------------
+//!-------------------------------------END----------------------------------------------------------------------------
 
