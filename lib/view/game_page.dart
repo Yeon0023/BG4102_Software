@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:flutter/material.dart';
 import '../Utilities/button.dart';
 import '../Utilities/pixel.dart';
@@ -147,14 +148,16 @@ class _GamePage extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      body: Container(
-        height: 800,
-        // color: Color,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 2,
+      body: Column(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Container(
+              height: SizeConfig.blockSizeVertical * 80,
+              width: SizeConfig.blockSizeHorizontal * 100,
+              // color: Colors.amber,
               child: GridView.builder(
                   itemCount: numberOfSquares,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -175,9 +178,13 @@ class _GamePage extends State<GamePage> {
                     }
                   }),
             ),
-            Expanded(
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.blockSizeHorizontal * 5),
               child: ListView(
-                physics: const NeverScrollableScrollPhysics(),
+                // physics: const NeverScrollableScrollPhysics(),
                 children: [
                   MyButton(
                     function: !_isPlaying ? startGame : () {},
@@ -204,9 +211,9 @@ class _GamePage extends State<GamePage> {
                   )
                 ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

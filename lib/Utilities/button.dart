@@ -1,3 +1,4 @@
+import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,10 +14,11 @@ class LoginSignupButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SizedBox(
       width: double.infinity,
       child: SizedBox(
-        height: 45,
+        height: SizeConfig.blockSizeVertical * 25,
         child: ElevatedButton(
           onPressed: ontapp,
           style: TextButton.styleFrom(
@@ -53,13 +55,16 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return GestureDetector(
       onTap: function,
       child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8, top: 0, bottom: 5),
+        padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Container(
+              height: SizeConfig.blockSizeVertical * 10,
+              width: SizeConfig.blockSizeHorizontal * 80,
               padding: const EdgeInsets.all(20),
               color: Colors.black,
               child: Center(child: child),

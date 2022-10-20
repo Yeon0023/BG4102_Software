@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bg4102_software/Utilities/currentAddress.dart';
+import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:bg4102_software/Utilities/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -175,18 +176,18 @@ class _TestResultViewState extends State<TestResultView> {
     }
   }
 
-  //* Get current Location for Icon only. 
+  //* Get current Location for Icon only.
   Future<void> _getCurrentLocation() async {
     Location location = Location();
     location.getLocation().then(
       (location) {
         currentLocation = location;
         List<double> currentCoordinate = [];
-        currentCoordinate.addAll([currentLocation!.latitude!,currentLocation!.longitude!]);
+        currentCoordinate
+            .addAll([currentLocation!.latitude!, currentLocation!.longitude!]);
         GetCurrentAddress(currentCoordinate);
         print(Address);
-        setState(() {
-        });
+        setState(() {});
       },
     );
   }
@@ -235,8 +236,8 @@ class _TestResultViewState extends State<TestResultView> {
 
   //* Draw Google Map on page.
   Widget _drawGoogleMap() => Container(
-        height: 300,
-        width: 400,
+        height: SizeConfig.blockSizeVertical * 40,
+        width: SizeConfig.blockSizeHorizontal * 100,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.blueGrey,
@@ -366,6 +367,7 @@ class _TestResultViewState extends State<TestResultView> {
   //*Final View of Test Result page.
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       drawer: const customDrawer(),
@@ -380,7 +382,7 @@ class _TestResultViewState extends State<TestResultView> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              height: 710,
+              height: SizeConfig.blockSizeVertical * 85,
               // color: Colors.blue,
               child: Stack(
                 alignment: Alignment.center,
@@ -417,6 +419,4 @@ class _TestResultViewState extends State<TestResultView> {
   }
 }
 
-
 //!-------------------------------------END----------------------------------------------------------------------------
-
