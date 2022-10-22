@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:bg4102_software/Utilities/currentAddress.dart';
 import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:bg4102_software/Utilities/utils.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -9,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:twilio_flutter/twilio_flutter.dart';
 import '../Utilities/customAppbar.dart';
 import '../Utilities/customDrawer.dart';
 
@@ -43,17 +46,49 @@ class _TestResultViewState extends State<TestResultView> {
       retrieveResultCharacteristic;
   BluetoothDescriptor? targetDescriptor;
   String connectionText = "";
+  TwilioFlutter? twilioFlutter;
   get value => readData(startTestCharacteristic!);
 
   @override
   void initState() {
+    twilioFlutter = TwilioFlutter(
+        accountSid: 'AC4594fe0673b475bd0dbee2770e2f8eda',
+        authToken: 'dc32274542c684524eb629b6cf8a40df',
+        twilioNumber: '+13854062421');
     _getPermission();
     _getCurrentLocation();
     super.initState();
+    _getdata();
   }
 
-  //?-----------------------------------This is BlueTooth Section.-----------------------------------------------------
+  //?--------------------------------THIS IS SMS SYSTEM----------------------------------------------------------------
+  final firebaseUser = FirebaseAuth.instance.currentUser;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  String name = '';
+  String ec = '';
 
+  //Firebase Cloud
+  void _getdata() async {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseUser!.uid)
+        .snapshots()
+        .listen((userData) {
+      setState(() {
+        name = userData.data()!['Name'];
+        ec = userData.data()!['Emergency Contact'];
+      });
+    });
+  }
+
+  void _sendSms() {
+    twilioFlutter?.sendSMS(
+        toNumber: ec,
+        messageBody:
+            'Hi, $name is drunk. Please come and get $name at $Address.');
+  }
+
+  //?-----------------------------------This is BlueTooth Section.------------------------------------------------------
   startScan() {
     setState(() {
       connectionText = "Start Scanning";
@@ -155,7 +190,6 @@ class _TestResultViewState extends State<TestResultView> {
   Future<List<int>> readData(BluetoothCharacteristic characteristic) async {
     return await characteristic.read();
   }
-
   //?-------------------------------------------------------------------------------------------------------------------
 
   //*Get the current location of device in lat and long.
@@ -315,10 +349,15 @@ class _TestResultViewState extends State<TestResultView> {
               if (result.first == 1) {
                 List<int> result =
                     await readData(retrieveResultCharacteristic!);
+                // ignore: no_leading_underscores_for_local_identifiers
                 double _value = convertByteArray(result);
                 _result = relativeToAlcohol(_value);
                 _indicatorText = _value.toString();
                 setState(() {});
+                if (_result > 0.08) {
+                  _sendSms();
+                  setState(() {});
+                }
               } else {
                 print("Error, try again...");
               }

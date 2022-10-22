@@ -674,6 +674,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "twilio_flutter",
+      "rootUri": "file:///C:/Users/yeoni/Desktop/NTU%20FYP/flutter/.pub-cache/hosted/pub.dartlang.org/twilio_flutter-0.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "typed_data",
       "rootUri": "file:///C:/Users/yeoni/Desktop/NTU%20FYP/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.1",
       "packageUri": "lib/",
@@ -746,7 +752,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-10-20T13:53:06.699140Z",
+  "generated": "2022-10-22T15:13:15.074649Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }
