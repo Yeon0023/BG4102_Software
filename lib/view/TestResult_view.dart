@@ -58,30 +58,32 @@ class _TestResultViewState extends State<TestResultView> {
     _getPermission();
     _getCurrentLocation();
     super.initState();
-    _getdata();
+    // _getdata();
   }
 
   //?--------------------------------THIS IS SMS SYSTEM----------------------------------------------------------------
-  final firebaseUser = FirebaseAuth.instance.currentUser;
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  String name = '';
-  String ec = '';
+  // final firebaseUser = FirebaseAuth.instance.currentUser;
+  // final FirebaseAuth auth = FirebaseAuth.instance;
+  // String name = '';
+  // String ec = '';
 
-  //Firebase Cloud
-  void _getdata() async {
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(firebaseUser!.uid)
-        .snapshots()
-        .listen((userData) {
-      setState(() {
-        name = userData.data()!['Name'];
-        ec = userData.data()!['Emergency Contact'];
-      });
-    });
-  }
+  // //Firebase Cloud
+  // void _getdata() async {
+  //   FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc(firebaseUser!.uid)
+  //       .snapshots()
+  //       .listen((userData) {
+  //     setState(() {
+  //       name = userData.data()!['Name'];
+  //       ec = userData.data()!['Emergency Contact'];
+  //     });
+  //   });
+  // }
 
-  void _sendSms() {
+  String ec = '+6590292936';
+  String name = 'Yeo Nigel';
+  Future<void> _sendSms(String Address) async {
     twilioFlutter?.sendSMS(
         toNumber: ec,
         messageBody:
@@ -214,13 +216,14 @@ class _TestResultViewState extends State<TestResultView> {
   Future<void> _getCurrentLocation() async {
     Location location = Location();
     location.getLocation().then(
-      (location) {
+      (location) async{
         currentLocation = location;
         List<double> currentCoordinate = [];
         currentCoordinate
             .addAll([currentLocation!.latitude!, currentLocation!.longitude!]);
-        GetCurrentAddress(currentCoordinate);
-        print(Address);
+        await GetCurrentAddress(currentCoordinate);
+        await _sendSms(Address); //!This is for testing only.
+        if (!mounted) return;
         setState(() {});
       },
     );
@@ -265,6 +268,7 @@ class _TestResultViewState extends State<TestResultView> {
       icon: markerIcon,
     );
     _markers[id] = marker;
+    if (!mounted) return;
     setState(() {});
   }
 
@@ -353,11 +357,8 @@ class _TestResultViewState extends State<TestResultView> {
                 double _value = convertByteArray(result);
                 _result = relativeToAlcohol(_value);
                 _indicatorText = _value.toString();
+                if (!mounted) return;
                 setState(() {});
-                if (_result > 0.08) {
-                  _sendSms();
-                  setState(() {});
-                }
               } else {
                 print("Error, try again...");
               }
@@ -449,12 +450,6 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _drawGoogleMap();
   }
 }
 

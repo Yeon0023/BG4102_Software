@@ -20,7 +20,7 @@ void main(context) async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const MainPage(),
+      home: const LoginView(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.teal[900],
         primaryColor: Colors.teal[900],
