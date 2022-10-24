@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bg4102_software/Utilities/currentAddress.dart';
 import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:bg4102_software/Utilities/utils.dart';
+import 'package:bg4102_software/constats/routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
@@ -33,7 +35,9 @@ class _TestResultViewState extends State<TestResultView> {
   static const String startTestUuid = "0x2A57";
   static const String retrieveResultUuid = "0x8594";
   late GoogleMapController _mapController;
-  double _result = 0.0;
+  // ignore: non_constant_identifier_names
+  double BAC = 0.0; //!BAC is Blood Alcohol Content.
+  // ignore: prefer_final_fields, unused_field
   String _indicatorText = "No Result";
   FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
   StreamSubscription<ScanResult>? scanSubcription;
@@ -47,6 +51,11 @@ class _TestResultViewState extends State<TestResultView> {
   BluetoothDescriptor? targetDescriptor;
   String connectionText = "";
   TwilioFlutter? twilioFlutter;
+  final firebaseUser = FirebaseAuth.instance.currentUser;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  String name = '';
+  String ec = '';
+  String ecp = '';
   get value => readData(startTestCharacteristic!);
 
   @override
@@ -58,36 +67,33 @@ class _TestResultViewState extends State<TestResultView> {
     _getPermission();
     _getCurrentLocation();
     super.initState();
-    // _getdata();
+    _getdata();
   }
 
   //?--------------------------------THIS IS SMS SYSTEM----------------------------------------------------------------
-  // final firebaseUser = FirebaseAuth.instance.currentUser;
-  // final FirebaseAuth auth = FirebaseAuth.instance;
-  // String name = '';
-  // String ec = '';
+  //Firebase Cloud
+  void _getdata() async {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseUser!.uid)
+        .snapshots()
+        .listen((userData) {
+      setState(() {
+        name = userData.data()!['Name'];
+        ec = userData.data()!['Emergency Contact'];
+        ecp = userData.data()!['Emergency contact person'];
+      });
+    });
+  }
 
-  // //Firebase Cloud
-  // void _getdata() async {
-  //   FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(firebaseUser!.uid)
-  //       .snapshots()
-  //       .listen((userData) {
-  //     setState(() {
-  //       name = userData.data()!['Name'];
-  //       ec = userData.data()!['Emergency Contact'];
-  //     });
-  //   });
-  // }
-
-  String ec = '+6590292936';
-  String name = 'Yeo Nigel';
+  // String ec = '+6590292936';
+  // String name = 'Yeo Nigel';
+  // String ecp = 'Yee Guan';
   Future<void> _sendSms(String Address) async {
     twilioFlutter?.sendSMS(
         toNumber: ec,
         messageBody:
-            'Hi, $name is drunk. Please come and get $name at $Address.');
+            'Hi $ecp, $name is drunk currently. Please come and get $name at $Address.');
   }
 
   //?-----------------------------------This is BlueTooth Section.------------------------------------------------------
@@ -216,13 +222,13 @@ class _TestResultViewState extends State<TestResultView> {
   Future<void> _getCurrentLocation() async {
     Location location = Location();
     location.getLocation().then(
-      (location) async{
+      (location) async {
         currentLocation = location;
         List<double> currentCoordinate = [];
         currentCoordinate
             .addAll([currentLocation!.latitude!, currentLocation!.longitude!]);
         await GetCurrentAddress(currentCoordinate);
-        await _sendSms(Address); //!This is for testing only.
+        // await _sendSms(Address); //!This is for testing only.
         if (!mounted) return;
         setState(() {});
       },
@@ -290,14 +296,21 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
+  final double _testValue = 0.7;
   //*Alcohol level Indicator
   Widget _drawIndicator() => SizedBox(
         height: 230,
         width: 230,
         child: LiquidCircularProgressIndicator(
-          value: _result, // Defaults to 0.5.
-          valueColor: const AlwaysStoppedAnimation(Colors
-              .deepOrangeAccent), // Defaults to the current Theme's accentColor.
+          value: BAC, // Defaults to 0.5.
+          // value: _testValue, //!Testing
+          valueColor: AlwaysStoppedAnimation(
+            BAC >= 0.8
+                ? Colors.red
+                : BAC > 0.2 && BAC < 0.8
+                    ? Colors.orange
+                    : Colors.green,
+          ), // Defaults to the current Theme's accentColor.
           backgroundColor:
               Colors.white, // Defaults to the current Theme's backgroundColor.
           borderColor: Colors.grey[500],
@@ -306,6 +319,7 @@ class _TestResultViewState extends State<TestResultView> {
               .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
           center: Text(
             _indicatorText,
+            // _testValue.toString(),
             style: const TextStyle(color: Colors.black),
           ),
         ),
@@ -344,6 +358,12 @@ class _TestResultViewState extends State<TestResultView> {
                 fontSize: 17,
               );
 
+              //! For Testing only.
+              // BAC = 0.09;
+              // Timer(const Duration(seconds: 3), () {
+              //   resultDialog(BAC);
+              // });
+
               int data = 1;
               await startTest(data);
               List<int> result = await readData(startTestCharacteristic!);
@@ -355,8 +375,12 @@ class _TestResultViewState extends State<TestResultView> {
                     await readData(retrieveResultCharacteristic!);
                 // ignore: no_leading_underscores_for_local_identifiers
                 double _value = convertByteArray(result);
-                _result = relativeToAlcohol(_value);
+                BAC =
+                    relativeToAlcohol(_value); //!BAC is Blood Alcohol Content.
                 _indicatorText = _value.toString();
+                Timer(const Duration(seconds: 3), () {
+                  resultDialog(BAC);
+                });
                 if (!mounted) return;
                 setState(() {});
               } else {
@@ -366,6 +390,63 @@ class _TestResultViewState extends State<TestResultView> {
           ),
         ),
       );
+
+  //* BAC level from: https://beta.mountelizabeth.com.sg/healthplus/article/festive-drinking-driving
+  String drinkingstatus = '';
+  String dialogContent = '';
+  // ignore: non_constant_identifier_names
+  void resultDialog(BAC) {
+    if (BAC >= 0.08) {
+      drinkingstatus = "Drinking Status: Drunk";
+      dialogContent =
+          "\n\nPLEASE DO NOT DRIVE ! \n\nBreathX have contacted your emergency contact about your location.";
+      _sendSms(Address);
+    } else if (BAC > 0.02 && BAC < 0.08) {
+      drinkingstatus = "Drinking status: Within limit";
+      dialogContent =
+          "\n\nYou are within limit, Ensure you are Sober by playing a GAME to test your focus.";
+    } else {
+      drinkingstatus = "Drinking Status: Sober";
+      dialogContent = "\n\nYou are Sober, reward yourself by playing a GAME!";
+    }
+    var now = DateTime.now();
+    var formatter = DateFormat('\ndd-MM-yyyy – HH:mm');
+    final String formattedDate = formatter.format(now);
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("BreathX Result"),
+        content: Text(
+          '$drinkingstatus $dialogContent \n\nDate & Time of Record: $formattedDate',
+          textAlign: TextAlign.center,
+        ),
+        actions: <Widget>[
+          BAC < 0.08
+              ? TextButton(
+                  onPressed: () {
+                    Navigator.of(ctx).pushNamed(gamePageRoute);
+                  },
+                  child: Container(
+                    color: Colors.teal[500],
+                    padding: const EdgeInsets.all(14),
+                    child: const Text("Play Game"),
+                  ),
+                )
+              : Container(),
+          TextButton(
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+            child: Container(
+              color: Colors.teal[500],
+              padding: const EdgeInsets.all(14),
+              child: const Text("okay"),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   //* BlueTooth Connection.
   final connectedText = const Text.rich(

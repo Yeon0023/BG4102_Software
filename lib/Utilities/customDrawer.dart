@@ -34,7 +34,7 @@ class customDrawer extends StatelessWidget {
               title: const Text('Profile'),
               onTap: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  profileRoute,
+                  profileGet,
                   (route) => false,
                 );
               }),
