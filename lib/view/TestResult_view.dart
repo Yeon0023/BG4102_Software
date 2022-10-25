@@ -46,6 +46,7 @@ class _TestResultViewState extends State<TestResultView> {
   LocationData? locationData;
   LocationData? currentLocation;
   BluetoothDevice? targetDevice;
+  BluetoothDeviceState? deviceState;
   BluetoothCharacteristic? startTestCharacteristic,
       retrieveResultCharacteristic;
   BluetoothDescriptor? targetDescriptor;
@@ -86,9 +87,6 @@ class _TestResultViewState extends State<TestResultView> {
     });
   }
 
-  // String ec = '+6590292936';
-  // String name = 'Yeo Nigel';
-  // String ecp = 'Yee Guan';
   Future<void> _sendSms(String Address) async {
     twilioFlutter?.sendSMS(
         toNumber: ec,
@@ -109,7 +107,6 @@ class _TestResultViewState extends State<TestResultView> {
         setState(() {
           connectionText = "Found Target Device";
         });
-
         targetDevice = scanResult.device;
         connectToDevice();
       }
@@ -117,20 +114,17 @@ class _TestResultViewState extends State<TestResultView> {
   }
 
   stopScan() {
+    flutterBlue.stopScan();
     scanSubcription?.cancel();
     scanSubcription = null;
   }
 
-  bool _connected = false;
   connectToDevice() async {
     if (targetDevice == null) return;
     setState(() {
       connectionText = "Device Connecting";
     });
-    await targetDevice!.connect().then(
-          (value) => _connected = true,
-        );
-
+    await targetDevice!.connect();
     print('DEVICE CONNECTED');
     setState(() {
       connectionText = "Device Connected";
@@ -140,7 +134,8 @@ class _TestResultViewState extends State<TestResultView> {
 
   disconnectFromDevice() {
     if (targetDevice == null) return;
-    targetDevice?.disconnect();
+    targetDevice!.disconnect();
+    deviceState = BluetoothDeviceState.disconnected;
     setState(
       () {
         connectionText = "Device Disconnected";
@@ -296,12 +291,25 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
-  final double _testValue = 0.7;
+  Path _buildBoatPath() {
+    return Path()
+      ..moveTo(50.01, 19.91)
+      ..lineTo(180.03, 19.07)
+      ..quadraticBezierTo(180.39, 89.67, 170.47, 109.97)
+      ..cubicTo(162.51, 129.61, 150.54, 159.57, 150.18, 180.56)
+      ..quadraticBezierTo(150.18, 198.06, 160.02, 229.85)
+      ..lineTo(69.59, 229.89)
+      ..quadraticBezierTo(80.27, 193.42, 80.38, 180.69)
+      ..cubicTo(80.28, 159.5, 67.13, 129.81, 59.97, 110.34)
+      ..quadraticBezierTo(50.11, 90.14, 50.01, 19.91)
+      ..close();
+  }
+
   //*Alcohol level Indicator
   Widget _drawIndicator() => SizedBox(
         height: 230,
         width: 230,
-        child: LiquidCircularProgressIndicator(
+        child: LiquidCustomProgressIndicator(
           value: BAC, // Defaults to 0.5.
           // value: _testValue, //!Testing
           valueColor: AlwaysStoppedAnimation(
@@ -313,15 +321,13 @@ class _TestResultViewState extends State<TestResultView> {
           ), // Defaults to the current Theme's accentColor.
           backgroundColor:
               Colors.white, // Defaults to the current Theme's backgroundColor.
-          borderColor: Colors.grey[500],
-          borderWidth: 5.0,
           direction: Axis
               .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
           center: Text(
             _indicatorText,
-            // _testValue.toString(),
             style: const TextStyle(color: Colors.black),
           ),
+          shapePath: _buildBoatPath(),
         ),
       );
 
@@ -381,7 +387,7 @@ class _TestResultViewState extends State<TestResultView> {
                 Timer(const Duration(seconds: 3), () {
                   resultDialog(BAC);
                 });
-                if (!mounted) return;
+
                 setState(() {});
               } else {
                 print("Error, try again...");
@@ -396,12 +402,12 @@ class _TestResultViewState extends State<TestResultView> {
   String dialogContent = '';
   // ignore: non_constant_identifier_names
   void resultDialog(BAC) {
-    if (BAC >= 0.08) {
+    if (BAC >= 0.8) {
       drinkingstatus = "Drinking Status: Drunk";
       dialogContent =
           "\n\nPLEASE DO NOT DRIVE ! \n\nBreathX have contacted your emergency contact about your location.";
       _sendSms(Address);
-    } else if (BAC > 0.02 && BAC < 0.08) {
+    } else if (BAC > 0.2 && BAC < 0.8) {
       drinkingstatus = "Drinking status: Within limit";
       dialogContent =
           "\n\nYou are within limit, Ensure you are Sober by playing a GAME to test your focus.";
@@ -472,16 +478,35 @@ class _TestResultViewState extends State<TestResultView> {
   Widget _status() => Container(
         width: 180,
         height: 50,
-        child: ElevatedButton(
-          // ignore: unrelated_type_equality_checks
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: _connected ? Colors.blue[700] : Colors.red[700],
-          ),
-          onPressed: () {
-            toggleBlueTooth();
+        child: StreamBuilder<BluetoothDeviceState>(
+          stream: targetDevice?.state,
+          initialData: BluetoothDeviceState.disconnected,
+          builder: (c, snapshot) {
+            if (snapshot.data == BluetoothDeviceState.connected) {
+              return ElevatedButton(
+                // ignore: unrelated_type_equality_checks
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.blue[700],
+                ),
+                onPressed: () {
+                  toggleBlueTooth();
+                },
+                child: connectedText,
+              );
+            }
+            return ElevatedButton(
+              // ignore: unrelated_type_equality_checks
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.red[700],
+              ),
+              onPressed: () {
+                toggleBlueTooth();
+              },
+              child: disconnectedText,
+            );
           },
-          child: _connected ? connectedText : disconnectedText,
         ),
       );
 
@@ -534,4 +559,33 @@ class _TestResultViewState extends State<TestResultView> {
   }
 }
 
+
+
 //!-------------------------------------END----------------------------------------------------------------------------
+
+
+
+  // SizedBox(
+  //       height: 230,
+  //       width: 230,
+  //       child: LiquidCircularProgressIndicator(
+  //         value: BAC, // Defaults to 0.5.
+  //         valueColor: AlwaysStoppedAnimation(
+  //           BAC >= 0.8
+  //               ? Colors.red
+  //               : BAC > 0.2 && BAC < 0.8
+  //                   ? Colors.orange
+  //                   : Colors.green,
+  //         ), // Defaults to the current Theme's accentColor.
+  //         backgroundColor:
+  //             Colors.white, // Defaults to the current Theme's backgroundColor.
+  //         borderColor: Colors.grey[500],
+  //         borderWidth: 5.0,
+  //         direction: Axis
+  //             .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+  //         center: Text(
+  //           _indicatorText,
+  //           style: const TextStyle(color: Colors.black),
+  //         ),
+  //       ),
+  //     );
