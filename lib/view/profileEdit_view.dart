@@ -1,5 +1,6 @@
 import 'package:bg4102_software/Utilities/customAppbar.dart';
 import 'package:bg4102_software/Utilities/profileeditinfo.dart';
+import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -109,6 +110,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: CustomAppbar(
         title: 'Edit Profile',
@@ -178,28 +180,57 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               },
                             ),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(labeltext: 'Enter your height (cm)', labeltextpls: 'Please enter your height', title: height, icon: Icon(Icons.height, color: Colors.white)),
+                            ProfileEditInfo(
+                                labeltext: 'Enter your height (cm)',
+                                labeltextpls: 'Please enter your height',
+                                title: height,
+                                icon: Icon(Icons.height, color: Colors.white)),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(labeltext: 'Enter your weight (kg)', labeltextpls: 'Please enter your weight', title: weight, icon: Icon(Icons.monitor_weight_outlined, color: Colors.white)),
+                            ProfileEditInfo(
+                                labeltext: 'Enter your weight (kg)',
+                                labeltextpls: 'Please enter your weight',
+                                title: weight,
+                                icon: Icon(Icons.monitor_weight_outlined,
+                                    color: Colors.white)),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(labeltext: 'Enter your phone number', labeltextpls: 'Please enter your phone number', title: phone, icon: Icon(Icons.phone, color: Colors.white)),
+                            ProfileEditInfo(
+                                labeltext: 'Enter your phone number',
+                                labeltextpls: 'Please enter your phone number',
+                                title: phone,
+                                icon: Icon(Icons.phone, color: Colors.white)),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(labeltext: 'Enter your emergency contact person', labeltextpls: 'Please enter your emergency contact person', title: ecp, icon: Icon(Icons.person, color: Colors.white)),
+                            ProfileEditInfo(
+                                labeltext:
+                                    'Enter your emergency contact person',
+                                labeltextpls:
+                                    'Please enter your emergency contact person',
+                                title: ecp,
+                                icon: Icon(Icons.person, color: Colors.white)),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(labeltext: 'Enter your emergency contact number', labeltextpls: 'Please enter your emergency contact number', title: ec, icon: Icon(Icons.phone_android, color: Colors.white)),
+                            ProfileEditInfo(
+                                labeltext:
+                                    'Enter your emergency contact number',
+                                labeltextpls:
+                                    'Please enter your emergency contact number',
+                                title: ec,
+                                icon: const Icon(Icons.phone_android,
+                                    color: Colors.white)),
                             const SizedBox(height: 30),
-                            LoginSignupButton(
-                                title: 'Update',
-                                ontapp: () async {
-                                  updateUserName();
-                                  updateUserDoB();
-                                  updateUserEmergencyContact();
-                                  updateUserEcp();
-                                  updateUserHeight();
-                                  updateUserWeight();
-                                  updateUserPhone();
-                                  Navigator.of(context).pushNamed(profileGet);
-                                }),
+                            SizedBox(
+                              height: SizeConfig.blockSizeVertical * 8,
+                              child: LoginSignupButton(
+                                  title: 'Update',
+                                  ontapp: () async {
+                                    updateUserName();
+                                    updateUserDoB();
+                                    updateUserEmergencyContact();
+                                    updateUserEcp();
+                                    updateUserHeight();
+                                    updateUserWeight();
+                                    updateUserPhone();
+                                    Navigator.of(context).pushNamed(profileGet);
+                                  }),
+                            ),
                             const SizedBox(height: 30),
                           ],
                         ),

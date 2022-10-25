@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 import '../Utilities/button.dart';
@@ -44,7 +45,7 @@ class _GamePage extends State<GamePage> {
         _restartDialog();
         timer.cancel();
         tryCounter += 1;
-      } else if (_gameOver && tryCounter == 1){
+      } else if (_gameOver && tryCounter == 1) {
         _gameOver = false;
         _isPlaying = false;
         _notSoberDialog();
@@ -145,7 +146,8 @@ class _GamePage extends State<GamePage> {
       } else if (level >= 7) {
         piece = [
           numberOfSquares - 2 - level * 10,
-          numberOfSquares - 1 - level * 10];
+          numberOfSquares - 1 - level * 10
+        ];
       }
 
       checkStack();
@@ -177,6 +179,7 @@ class _GamePage extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Container(
         height: 800,
@@ -206,33 +209,37 @@ class _GamePage extends State<GamePage> {
                   }),
             ),
             Expanded(
-              child: ListView(
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  MyButton(
-                    function: !_isPlaying ? startGame : () {},
-                    child: const Text(
-                      "S T A R T",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.blockSizeHorizontal * 5),
+                child: ListView(
+                  // physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    MyButton(
+                      function: !_isPlaying ? startGame : () {},
+                      child: const Text(
+                        "S T A R T",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
                     ),
-                  ),
-                  MyButton(
-                    function: stack,
-                    child: const Text(
-                      "S T A C K",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
+                    MyButton(
+                      function: stack,
+                      child: const Text(
+                        "S T A C K",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
                     ),
-                  ),
-                  MyButton(
-                    function: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text(
-                      "H O M E",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                  )
-                ],
+                    MyButton(
+                      function: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        "H O M E",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                    )
+                  ],
+                ),
               ),
             )
           ],
