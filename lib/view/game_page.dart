@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
+import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 import '../Utilities/button.dart';
 import '../Utilities/pixel.dart';
@@ -18,12 +18,14 @@ class _GamePage extends State<GamePage> {
   List<int> landed = [100000];
   int level = 0;
   bool _isPlaying = false, _gameOver = false;
+  int tryCounter = 0;
 
   void startGame() {
     _isPlaying = true;
     level = 0;
     landed = [100000];
     piece = [
+      numberOfSquares - 4 - level * 10,
       numberOfSquares - 3 - level * 10,
       numberOfSquares - 2 - level * 10,
       numberOfSquares - 1 - level * 10
@@ -36,11 +38,18 @@ class _GamePage extends State<GamePage> {
         timer.cancel();
       }
 
-      if (_gameOver) {
+      if (_gameOver && tryCounter == 0) {
         _gameOver = false;
         _isPlaying = false;
         _restartDialog();
         timer.cancel();
+        tryCounter += 1;
+      } else if (_gameOver && tryCounter == 1){
+        _gameOver = false;
+        _isPlaying = false;
+        _notSoberDialog();
+        timer.cancel();
+        tryCounter = 0;
       }
 
       if (piece.first % 10 == 0) {
@@ -76,7 +85,7 @@ class _GamePage extends State<GamePage> {
         context: context,
         builder: (BuildContext context) {
           return const AlertDialog(
-            title: Text("Winner!"),
+            title: Text("You are sober!"),
           );
         });
   }
@@ -91,7 +100,23 @@ class _GamePage extends State<GamePage> {
                 startGame();
                 Navigator.of(context).pop();
               },
-              child: const Text("Restart!"),
+              child: const Text("Try again"),
+            ),
+          );
+        });
+  }
+
+  void _notSoberDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: InkWell(
+              onTap: () {
+                startGame();
+                Navigator.of(context).pop();
+              },
+              child: const Text("You should not be driving."),
             ),
           );
         });
@@ -104,19 +129,23 @@ class _GamePage extends State<GamePage> {
         landed.add(piece[i]);
       }
 
-      if (level < 4) {
+      if (level < 2) {
+        piece = [
+          numberOfSquares - 4 - level * 10,
+          numberOfSquares - 3 - level * 10,
+          numberOfSquares - 2 - level * 10,
+          numberOfSquares - 1 - level * 10
+        ];
+      } else if (level >= 2 && level < 7) {
         piece = [
           numberOfSquares - 3 - level * 10,
           numberOfSquares - 2 - level * 10,
           numberOfSquares - 1 - level * 10
         ];
-      } else if (level >= 4 && level < 8) {
+      } else if (level >= 7) {
         piece = [
           numberOfSquares - 2 - level * 10,
-          numberOfSquares - 1 - level * 10
-        ];
-      } else if (level >= 8) {
-        piece = [numberOfSquares - 1 - level * 10];
+          numberOfSquares - 1 - level * 10];
       }
 
       checkStack();
@@ -148,16 +177,14 @@ class _GamePage extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-              height: SizeConfig.blockSizeVertical * 80,
-              width: SizeConfig.blockSizeHorizontal * 100,
-              // color: Colors.amber,
+      body: Container(
+        height: 800,
+        // color: Color,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 2,
               child: GridView.builder(
                   itemCount: numberOfSquares,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -178,13 +205,9 @@ class _GamePage extends State<GamePage> {
                     }
                   }),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.blockSizeHorizontal * 5),
+            Expanded(
               child: ListView(
-                // physics: const NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   MyButton(
                     function: !_isPlaying ? startGame : () {},
@@ -211,9 +234,9 @@ class _GamePage extends State<GamePage> {
                   )
                 ],
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -8,6 +8,7 @@ import 'package:bg4102_software/view/home_view.dart';
 import 'package:bg4102_software/view/main_view.dart';
 import 'package:bg4102_software/view/profileEdit_view.dart';
 import 'package:bg4102_software/view/profileGet_view.dart';
+import 'package:bg4102_software/view/records_page.dart';
 import 'package:bg4102_software/view/signup_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,7 @@ void main(context) async {
         forgetPasswordRoute: (context) => const ForgetPasswordView(),
         testResultRoute: (context) => const TestResultView(),
         gamePageRoute: (context) => const GamePage(),
+        recordpageRoute: (context) => const Recordpage(),
       },
     ),
   );

@@ -4,15 +4,11 @@ import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:bg4102_software/Utilities/profilewidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart';
-import 'dart:io';
+import 'package:bg4102_software/Utilities/profilewidget.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatefulWidget{
   const HomePage({super.key});
 
   @override
@@ -22,16 +18,35 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final firebaseUser = FirebaseAuth.instance.currentUser;
   final FirebaseAuth auth = FirebaseAuth.instance;
-  String fp = '';
 
-  Future<void> updateUser() {
-    return FirebaseFirestore.instance
+    String fp = '';
+
+    void _getdata1() async {
+    FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseUser!.uid)
-        .update({'Image Path': fp})
-        .then((value) => print("User Updated"))
-        .catchError((error) => print("Failed to update user: $error"));
+        .snapshots()
+        .listen((userData) {
+      setState(() {
+        fp = userData.data()!['Image Path'];
+      });
+    });
   }
+
+  // Future<void> updateUser() {
+  //   return FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc(firebaseUser!.uid)
+  //       .update({'Image Path': fp})
+  //       .then((value) => print("User Updated"))
+  //       .catchError((error) => print("Failed to update user: $error"));
+  // }
+  @override
+  void initState() {
+    super.initState();
+    _getdata1();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,26 +73,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Positioned(
-                    top: 18,
-                    left: 15,
-                    child: ProfileWidget(
-                      imagePath: fp,
-                      isEdit: true,
-                      onClicked: () async {
-                        final image = await ImagePicker()
-                            .pickImage(source: ImageSource.camera);
-                        if (image == null) return;
-                        final directory =
-                            await getApplicationDocumentsDirectory();
-                        final name = basename(image.path);
-                        final imageFile = File('${directory.path}/$name');
-                        final newImage =
-                            await File(image.path).copy(imageFile.path);
-                        fp = newImage.path;
-                        // fp = faceprofile.toString();
-                        updateUser();
-                        setState(() {});
-                      },
+                    top: 4,
+                    left: 25,
+                    child: Stack(
+                      children: [
+                        ProfileWidget(imagePath: fp, onClicked: (){}).buildImage(),
+                      ],
                     ),
                   ),
                   Positioned(
@@ -255,8 +256,7 @@ class _HomePageState extends State<HomePage> {
                         shadowColor: Colors.transparent,
                       ),
                       onPressed: () {
-                        //!TO BE Added
-                        // Navigator.of(context).pushNamed();
+                        Navigator.of(context).pushNamed(recordpageRoute);
                       },
                       child: Column(
                         children: <Widget>[
@@ -320,35 +320,23 @@ class _HomePageState extends State<HomePage> {
 
 
 
-//!---------old code--------------------------------------------
-                  // GlassMorphism(
-                  //   borderThickness: 0,
-                  //   cornerRadius: 20,
-                  //   blur: 0,
-                  //   opacity: 0,
-                  //   child: TextButton(
-                  //     style: ElevatedButton.styleFrom(
-                  //       backgroundColor: Colors.white,
-                  //     ),
-                  //     onPressed: () {},
-                  //     child: Column(
-                  //       children: <Widget>[
-                  //         SizedBox(
-                  //           width: SizeConfig.blockSizeHorizontal * 25,
-                  //           height: SizeConfig.blockSizeVertical * 25,
-                  //           child: Image.asset(
-                  //             'assets/images/BeerIcon.png',
-                  //             fit: BoxFit.contain,
-                  //           ),
-                  //         ),
-                  //         Text(
-                  //           "Unused Tap",
-                  //           overflow: TextOverflow.visible,
-                  //           softWrap: false,
-                  //           style: GoogleFonts.lobster(
-                  //               fontSize: 20, color: Colors.black),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

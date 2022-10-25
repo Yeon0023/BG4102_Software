@@ -59,7 +59,10 @@ class customDrawer extends StatelessWidget {
           ListTile(
             title: const Text('Records'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                recordpageRoute,
+                (route) => false,
+              );
             },
           ),
         ],

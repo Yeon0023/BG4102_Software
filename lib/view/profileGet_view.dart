@@ -1,4 +1,5 @@
 import 'package:bg4102_software/Utilities/customAppbar.dart';
+import 'package:bg4102_software/Utilities/profileinfo.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -103,25 +104,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ProfileWidget(
-                  imagePath: fp,
-                  isEdit: true,
-                  onClicked: () async {
-                    final image = await ImagePicker()
-                        .pickImage(source: ImageSource.camera);
+                Stack(
+                  children: [
+                    ProfileWidget(
+                    imagePath: fp,
+                    onClicked: () async {
+                      final image = await ImagePicker()
+                          .pickImage(source: ImageSource.camera);
 
-                    if (image == null) return;
+                      if (image == null) return;
 
-                    final directory = await getApplicationDocumentsDirectory();
-                    final name = basename(image.path);
-                    final imageFile = File('${directory.path}/$name');
-                    final newImage =
-                        await File(image.path).copy(imageFile.path);
-                    fp = newImage.path;
-                    // fp = faceprofile.toString();
-                    updateUser();
-                    setState(() {});
-                  },
+                      final directory = await getApplicationDocumentsDirectory();
+                      final name = basename(image.path);
+                      final imageFile = File('${directory.path}/$name');
+                      final newImage =
+                          await File(image.path).copy(imageFile.path);
+                      fp = newImage.path;
+                      // fp = faceprofile.toString();
+                      updateUser();
+                      setState(() {});
+                    },
+                  ),
+                    Positioned(
+                      bottom: 0,
+                      right: 4,
+                      child: ProfileWidget(imagePath: fp, onClicked: (){}).buildEditIcon(Colors.white),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 48,
@@ -154,186 +163,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           const SizedBox(height: 30),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Date of Birth',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Open Sans',
-                      color: Colors.grey),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  dob,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.4,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Open Sans'),
-                ),
-              ],
-            ),
-          ),
+          ProfileInfo(info: 'Date of Birth', title: dob),
           const Divider(height: 20, thickness: 1.5, indent: 48, endIndent: 48),
           const SizedBox(height: 25),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Gender',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Open Sans',
-                      color: Colors.grey),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  gender,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.4,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Open Sans'),
-                ),
-              ],
-            ),
-          ),
+          ProfileInfo(info: 'Gender', title: gender),
           const Divider(height: 20, thickness: 1.5, indent: 48, endIndent: 48),
           const SizedBox(height: 25),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Height',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Open Sans',
-                      color: Colors.grey),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  height,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.4,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Open Sans'),
-                ),
-              ],
-            ),
-          ),
+          ProfileInfo(info: 'Height (cm)', title: height),
           const Divider(height: 20, thickness: 1.5, indent: 48, endIndent: 48),
           const SizedBox(height: 25),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Weight',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Open Sans',
-                      color: Colors.grey),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  weight,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.4,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Open Sans'),
-                ),
-              ],
-            ),
-          ),
+          ProfileInfo(info: 'Weight (kg)', title: weight),
           const Divider(height: 20, thickness: 1.5, indent: 48, endIndent: 48),
           const SizedBox(height: 25),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Phone',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Open Sans',
-                      color: Colors.grey),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  phone,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.4,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Open Sans'),
-                ),
-              ],
-            ),
-          ),
+          ProfileInfo(info: 'Phone', title: phone),
           const Divider(height: 20, thickness: 1.5, indent: 48, endIndent: 48),
           const SizedBox(height: 25),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Emergency contact person',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Open Sans',
-                      color: Colors.grey),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  ecp,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.4,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Open Sans'),
-                ),
-              ],
-            ),
-          ),
+          ProfileInfo(info: 'Emergency contact person', title: ecp),
           const Divider(height: 20, thickness: 1.5, indent: 48, endIndent: 48),
           const SizedBox(height: 25),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Emergency Contact',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Open Sans',
-                      color: Colors.grey),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  ec,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.4,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Open Sans'),
-                ),
-              ],
-            ),
-          ),
+          ProfileInfo(info: 'Emergency Contact', title: ec),
           const Divider(
             height: 20,
             thickness: 1.5,

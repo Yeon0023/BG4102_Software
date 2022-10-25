@@ -1,4 +1,5 @@
 import 'package:bg4102_software/Utilities/customAppbar.dart';
+import 'package:bg4102_software/Utilities/profileeditinfo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -147,33 +148,6 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const SizedBox(height: 30),
-                            TextFormField(
-                                style: const TextStyle(color: Colors.white),
-                                decoration: const InputDecoration(
-                                    prefixIcon: Icon(Icons.account_circle,
-                                        color: Colors.white),
-                                    hintStyle: TextStyle(color: Colors.white),
-                                    errorStyle:
-                                        TextStyle(color: Colors.redAccent),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.white)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                                    labelText: 'Enter your name',
-                                    labelStyle: TextStyle(color: Colors.white)),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your name';
-                                  }
-                                  return null;
-                                },
-                                onChanged: (value) {
-                                  name = value;
-                                }),
-                            const SizedBox(height: 30),
                             DateTimeFormField(
                               dateTextStyle:
                                   const TextStyle(color: Colors.white),
@@ -204,194 +178,15 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               },
                             ),
                             const SizedBox(height: 30),
-                            Theme(
-                              data: Theme.of(context).copyWith(
-                                canvasColor: Colors.teal[900],
-                              ),
-                              child: DropdownButtonFormField(
-                                decoration: const InputDecoration(
-                                  hintStyle: TextStyle(color: Colors.white),
-                                  errorStyle:
-                                      TextStyle(color: Colors.redAccent),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                    color: Colors.white,
-                                  )),
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  labelText: 'Enter your gender',
-                                  prefixIcon:
-                                      Icon(Icons.wc, color: Colors.white),
-                                ),
-                                value: dropdownValue,
-                                icon: const Icon(Icons.arrow_drop_down_sharp),
-                                iconSize: 24,
-                                elevation: 16,
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 16),
-                                onChanged: (String? value) {
-                                  setState(() {
-                                    dropdownValue = value!;
-                                  });
-                                },
-                                items: <String>[
-                                  'Enter your gender',
-                                  'Male',
-                                  'Female',
-                                  'Prefer not to say'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                                validator: (value) {
-                                  if (value == 'Enter your gender') {
-                                    return 'Enter your gender';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
+                            ProfileEditInfo(labeltext: 'Enter your height (cm)', labeltextpls: 'Please enter your height', title: height, icon: Icon(Icons.height, color: Colors.white)),
                             const SizedBox(height: 30),
-                            TextFormField(
-                                style: const TextStyle(color: Colors.white),
-                                decoration: const InputDecoration(
-                                    prefixIcon:
-                                        Icon(Icons.height, color: Colors.white),
-                                    hintStyle: TextStyle(color: Colors.white),
-                                    errorStyle:
-                                        TextStyle(color: Colors.redAccent),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.white)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                                    labelText: 'Enter your height',
-                                    labelStyle: TextStyle(color: Colors.white)),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your height';
-                                  }
-                                  return null;
-                                },
-                                onChanged: (value) {
-                                  height = value;
-                                }),
+                            ProfileEditInfo(labeltext: 'Enter your weight (kg)', labeltextpls: 'Please enter your weight', title: weight, icon: Icon(Icons.monitor_weight_outlined, color: Colors.white)),
                             const SizedBox(height: 30),
-                            TextFormField(
-                                style: const TextStyle(color: Colors.white),
-                                decoration: const InputDecoration(
-                                    prefixIcon: Icon(Icons.monitor_weight,
-                                        color: Colors.white),
-                                    hintStyle: TextStyle(color: Colors.white),
-                                    errorStyle:
-                                        TextStyle(color: Colors.redAccent),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.white)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                                    labelText: 'Enter your weight',
-                                    labelStyle: TextStyle(color: Colors.white)),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your weight';
-                                  }
-                                  return null;
-                                },
-                                onChanged: (value) {
-                                  weight = value;
-                                }),
+                            ProfileEditInfo(labeltext: 'Enter your phone number', labeltextpls: 'Please enter your phone number', title: phone, icon: Icon(Icons.phone, color: Colors.white)),
                             const SizedBox(height: 30),
-                            TextFormField(
-                                style: const TextStyle(color: Colors.white),
-                                decoration: const InputDecoration(
-                                    prefixIcon:
-                                        Icon(Icons.phone, color: Colors.white),
-                                    hintStyle: TextStyle(color: Colors.white),
-                                    errorStyle:
-                                        TextStyle(color: Colors.redAccent),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.white)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                                    labelText: 'Enter your phone number',
-                                    labelStyle: TextStyle(color: Colors.white)),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your phone number';
-                                  }
-                                  return null;
-                                },
-                                onChanged: (value) {
-                                  phone = value;
-                                }),
+                            ProfileEditInfo(labeltext: 'Enter your emergency contact person', labeltextpls: 'Please enter your emergency contact person', title: ecp, icon: Icon(Icons.person, color: Colors.white)),
                             const SizedBox(height: 30),
-                            TextFormField(
-                                style: const TextStyle(color: Colors.white),
-                                decoration: const InputDecoration(
-                                    prefixIcon:
-                                        Icon(Icons.person, color: Colors.white),
-                                    hintStyle: TextStyle(color: Colors.white),
-                                    errorStyle:
-                                        TextStyle(color: Colors.redAccent),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.white)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                                    labelText:
-                                        'Enter your emergency contact person',
-                                    labelStyle: TextStyle(color: Colors.white)),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your emergency contact person';
-                                  }
-                                  return null;
-                                },
-                                onChanged: (value) {
-                                  ecp = value;
-                                }),
-                            const SizedBox(height: 30),
-                            TextFormField(
-                                style: const TextStyle(color: Colors.white),
-                                decoration: const InputDecoration(
-                                    prefixIcon: Icon(Icons.phone_android,
-                                        color: Colors.white),
-                                    hintStyle: TextStyle(color: Colors.white),
-                                    errorStyle:
-                                        TextStyle(color: Colors.redAccent),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.white)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                                    labelText:
-                                        'Enter your emergency contact number',
-                                    labelStyle: TextStyle(color: Colors.white)),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your emergency contact number';
-                                  }
-                                  return null;
-                                },
-                                onChanged: (value) {
-                                  ec = value;
-                                }),
+                            ProfileEditInfo(labeltext: 'Enter your emergency contact number', labeltextpls: 'Please enter your emergency contact number', title: ec, icon: Icon(Icons.phone_android, color: Colors.white)),
                             const SizedBox(height: 30),
                             LoginSignupButton(
                                 title: 'Update',
