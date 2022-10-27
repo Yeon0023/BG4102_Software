@@ -1,8 +1,8 @@
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 
-class customDrawer extends StatelessWidget {
-  const customDrawer({Key? key}) : super(key: key);
+class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

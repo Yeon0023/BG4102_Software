@@ -1,5 +1,4 @@
 import 'package:bg4102_software/Utilities/customAppbar.dart';
-import 'package:bg4102_software/Utilities/profileeditinfo.dart';
 import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -180,41 +179,147 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               },
                             ),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(
-                                labeltext: 'Enter your height (cm)',
-                                labeltextpls: 'Please enter your height',
-                                title: height,
-                                icon: Icon(Icons.height, color: Colors.white)),
+                            TextFormField(
+                              style: TextStyle(color: Colors.white),
+                              decoration: InputDecoration(
+                                  prefixIcon:
+                                  Icon(Icons.height, color: Colors.white),
+                              hintStyle: TextStyle(color: Colors.white),
+                                  errorStyle:
+                                  TextStyle(color: Colors.redAccent),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide:
+                                      BorderSide(color: Colors.white)),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.white,
+                                      )),
+                                  labelText: 'Enter your height (cm)',
+                                  labelStyle: TextStyle(color: Colors.white)),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your height';
+                                }
+                                return null;
+                              },
+                              onChanged: (value) {
+                                height = value;
+                              }
+                            ),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(
-                                labeltext: 'Enter your weight (kg)',
-                                labeltextpls: 'Please enter your weight',
-                                title: weight,
-                                icon: Icon(Icons.monitor_weight_outlined,
-                                    color: Colors.white)),
+                            TextFormField(
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                    prefixIcon:
+                                    Icon(Icons.monitor_weight_outlined,
+                                        color: Colors.white),
+                                    hintStyle: TextStyle(color: Colors.white),
+                                    errorStyle:
+                                    TextStyle(color: Colors.redAccent),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                        BorderSide(color: Colors.white)),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        )),
+                                    labelText: 'Enter your weight (kg)',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your weight';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  weight = value;
+                                }
+                            ),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(
-                                labeltext: 'Enter your phone number',
-                                labeltextpls: 'Please enter your phone number',
-                                title: phone,
-                                icon: Icon(Icons.phone, color: Colors.white)),
+                            TextFormField(
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                    prefixIcon:
+                                    Icon(Icons.phone, color: Colors.white),
+                                    hintStyle: TextStyle(color: Colors.white),
+                                    errorStyle:
+                                    TextStyle(color: Colors.redAccent),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                        BorderSide(color: Colors.white)),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        )),
+                                    labelText: 'Enter your phone number',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your phone number';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  phone = value;
+                                }
+                            ),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(
-                                labeltext:
-                                    'Enter your emergency contact person',
-                                labeltextpls:
-                                    'Please enter your emergency contact person',
-                                title: ecp,
-                                icon: Icon(Icons.person, color: Colors.white)),
+                            TextFormField(
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                    prefixIcon:
+                                    Icon(Icons.person, color: Colors.white),
+                                    hintStyle: TextStyle(color: Colors.white),
+                                    errorStyle:
+                                    TextStyle(color: Colors.redAccent),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                        BorderSide(color: Colors.white)),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        )),
+                                    labelText: 'Enter your emergency contact person',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your emergency contact person';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  ecp = value;
+                                }
+                            ),
                             const SizedBox(height: 30),
-                            ProfileEditInfo(
-                                labeltext:
-                                    'Enter your emergency contact number',
-                                labeltextpls:
-                                    'Please enter your emergency contact number',
-                                title: ec,
-                                icon: const Icon(Icons.phone_android,
-                                    color: Colors.white)),
+                            TextFormField(
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                    prefixIcon:
+                                    Icon(Icons.phone_android,
+                                        color: Colors.white),
+                                    hintStyle: TextStyle(color: Colors.white),
+                                    errorStyle:
+                                    TextStyle(color: Colors.redAccent),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                        BorderSide(color: Colors.white)),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        )),
+                                    labelText: 'Enter your emergency contact number',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your emergency contact number';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  ec = value;
+                                }
+                            ),
                             const SizedBox(height: 30),
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 8,

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
-import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 import '../Utilities/button.dart';
 import '../Utilities/pixel.dart';
@@ -21,7 +20,9 @@ class _GamePage extends State<GamePage> {
   bool _isPlaying = false, _gameOver = false;
   int tryCounter = 0;
 
+  bool _isGameStart = false;
   void startGame() {
+    _isGameStart = true;
     _isPlaying = true;
     level = 0;
     landed = [100000];
@@ -35,6 +36,7 @@ class _GamePage extends State<GamePage> {
     Timer.periodic(const Duration(milliseconds: 150), (timer) {
       if (checkWinner()) {
         _isPlaying = false;
+        _isGameStart = false;
         _showDialog();
         timer.cancel();
       }
@@ -42,12 +44,14 @@ class _GamePage extends State<GamePage> {
       if (_gameOver && tryCounter == 0) {
         _gameOver = false;
         _isPlaying = false;
+        _isGameStart = false;
         _restartDialog();
         timer.cancel();
         tryCounter += 1;
       } else if (_gameOver && tryCounter == 1) {
         _gameOver = false;
         _isPlaying = false;
+        _isGameStart = false;
         _notSoberDialog();
         timer.cancel();
         tryCounter = 0;
@@ -86,13 +90,13 @@ class _GamePage extends State<GamePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("You are sober!"),
+            title: const Text("You are sober!"),
             actions: [
               MaterialButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               )
             ],
           );
@@ -101,79 +105,85 @@ class _GamePage extends State<GamePage> {
 
   void _restartDialog() {
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-              title: InkWell(
-                onTap: () {
-                  startGame();
-                  Navigator.of(context).pop();
-                },
-                child: const Text("Try again"),
-              ),
-              actions: [
-                MaterialButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('OK'),
-                )
-              ]);
-        });
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: InkWell(
+            onTap: () {
+              startGame();
+              Navigator.of(context).pop();
+            },
+            child: const Text("Try again"),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('OK'),
+            )
+          ],
+        );
+      },
+    );
   }
 
   void _notSoberDialog() {
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: InkWell(
-              onTap: () {
-                startGame();
-                Navigator.of(context).pop();
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: InkWell(
+            onTap: () {
+              startGame();
+              Navigator.of(context).pop();
+            },
+            child: const Text("You should not be driving."),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: () {
+                Navigator.pop(context);
               },
-              child: const Text("You should not be driving."),
-            ),
-            actions: [
-              MaterialButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  },
-                child: Text('OK'),
-                )
-              ]);
-        });
+              child: const Text('OK'),
+            )
+          ],
+        );
+      },
+    );
   }
 
   void stack() {
     level++;
-    setState(() {
-      for (int i = 0; i < piece.length; i++) {
-        landed.add(piece[i]);
-      }
-
-      if (level < 2) {
-        piece = [
-          numberOfSquares - 4 - level * 10,
-          numberOfSquares - 3 - level * 10,
-          numberOfSquares - 2 - level * 10,
-          numberOfSquares - 1 - level * 10
-        ];
-      } else if (level >= 2 && level < 7) {
-        piece = [
-          numberOfSquares - 3 - level * 10,
-          numberOfSquares - 2 - level * 10,
-          numberOfSquares - 1 - level * 10
-        ];
-      } else if (level >= 7) {
-        piece = [
-          numberOfSquares - 2 - level * 10,
-          numberOfSquares - 1 - level * 10
-        ];
-      }
-
-      checkStack();
-    });
+    if (_isGameStart == true) {
+      setState(
+        () {
+          for (int i = 0; i < piece.length; i++) {
+            landed.add(piece[i]);
+          }
+          if (level < 2) {
+            piece = [
+              numberOfSquares - 4 - level * 10,
+              numberOfSquares - 3 - level * 10,
+              numberOfSquares - 2 - level * 10,
+              numberOfSquares - 1 - level * 10
+            ];
+          } else if (level >= 2 && level < 7) {
+            piece = [
+              numberOfSquares - 3 - level * 10,
+              numberOfSquares - 2 - level * 10,
+              numberOfSquares - 1 - level * 10
+            ];
+          } else if (level >= 7) {
+            piece = [
+              numberOfSquares - 2 - level * 10,
+              numberOfSquares - 1 - level * 10
+            ];
+          }
+          checkStack();
+        },
+      );
+    }
   }
 
   void checkStack() {

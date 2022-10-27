@@ -165,7 +165,6 @@ class _TestResultViewState extends State<TestResultView> {
       disconnectFromDevice();
     } else {
       startScan();
-      connectToDevice();
     }
     setState(() {
       _isBlueToothConnected = !_isBlueToothConnected;
@@ -184,14 +183,14 @@ class _TestResultViewState extends State<TestResultView> {
             textOff: 'Slide to connect',
             colorOn: Colors.blue,
             colorOff: Colors.red,
-            iconOn: Icons.bluetooth_disabled,
-            iconOff: Icons.bluetooth_connected,
+            iconOn: Icons.bluetooth_connected,
+            iconOff: Icons.bluetooth_disabled,
             textSize: 16.0,
-            onChanged: (bool state) {},
-            onDoubleTap: () {},
-            onSwipe: () {
+            onChanged: (bool state) {
               toggleBlueTooth();
             },
+            onDoubleTap: () {},
+            onSwipe: () {},
             onTap: () {},
           ),
         ),
@@ -528,7 +527,7 @@ class _TestResultViewState extends State<TestResultView> {
     SizeConfig().init(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
-      drawer: const customDrawer(),
+      drawer: const CustomDrawer(),
       appBar: const CustomAppbar(
         title: 'Test Result',
         fontSize: 25,
@@ -572,6 +571,13 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    disconnectFromDevice();
+    stopScan();
+    super.dispose();
   }
 }
 
