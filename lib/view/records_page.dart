@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
 class Recordpage extends StatefulWidget {
   const Recordpage({super.key});
 
@@ -13,7 +14,7 @@ class Recordpage extends StatefulWidget {
 class _RecordpageState extends State<Recordpage> {
   final firebaseUser = FirebaseAuth.instance.currentUser;
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final CollectionReference _results = FirebaseFirestore.instance.collection('_Results');
+  final CollectionReference _results = FirebaseFirestore.instance.collection('Results');
   @override
   // TODO: implement widget
   Widget build(BuildContext context){
@@ -30,7 +31,7 @@ class _RecordpageState extends State<Recordpage> {
                 return Card(
                   margin: const EdgeInsets.all(10),
                   child: ListTile(
-                    title: Text(documentSnapshot['Date/Time']),
+                    title: Text(documentSnapshot['DatenTime']),
                     subtitle: Text(documentSnapshot['Result']),
 
                   ),

@@ -48,7 +48,7 @@ class _SignupScreenState extends State<SignupScreen> {
             size: 30,
           ),
           onPressed: () => Navigator.of(context).pushNamed(
-            homePageRoute,
+            loginRoute,
           ),
         ),
       ),

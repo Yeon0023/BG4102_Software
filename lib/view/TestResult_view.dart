@@ -11,6 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
@@ -59,6 +60,11 @@ class _TestResultViewState extends State<TestResultView> {
   String ecp = '';
   get value => readData(startTestCharacteristic!);
 
+  // String timestamp = FieldValue.serverTimestamp().toString();
+  String testresults = '';
+  final formkey = GlobalKey<FormState>();
+  final userCollections = FirebaseFirestore.instance.collection("Results");
+
   @override
   void initState() {
     twilioFlutter = TwilioFlutter(
@@ -69,6 +75,16 @@ class _TestResultViewState extends State<TestResultView> {
     _getCurrentLocation();
     super.initState();
     _getdata();
+  }
+
+  //* Add entry to firestore for records.
+  Future<void> addEntry() {
+    var now = DateTime.now();
+    var formatter = DateFormat('\ndd-MM-yyyy – HH:mm');
+    final String formattedDate = formatter.format(now);
+    return FirebaseFirestore.instance
+        .collection('Results')
+        .add({'DatenTime': formattedDate, 'Result': testresults});
   }
 
   //?--------------------------------THIS IS SMS SYSTEM----------------------------------------------------------------
@@ -155,6 +171,31 @@ class _TestResultViewState extends State<TestResultView> {
       _isBlueToothConnected = !_isBlueToothConnected;
     });
   }
+
+  Widget _blueToothToogleSlide() => Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.blockSizeHorizontal * 30),
+          child: LiteRollingSwitch(
+            //initial value
+            value: false,
+            width: 200,
+            textOn: 'Slide to disconnect',
+            textOff: 'Slide to connect',
+            colorOn: Colors.blue,
+            colorOff: Colors.red,
+            iconOn: Icons.bluetooth_disabled,
+            iconOff: Icons.bluetooth_connected,
+            textSize: 16.0,
+            onChanged: (bool state) {},
+            onDoubleTap: () {},
+            onSwipe: () {
+              toggleBlueTooth();
+            },
+            onTap: () {},
+          ),
+        ),
+      );
 
   discoverServices() async {
     if (targetDevice == null) return;
@@ -384,10 +425,11 @@ class _TestResultViewState extends State<TestResultView> {
                 BAC =
                     relativeToAlcohol(_value); //!BAC is Blood Alcohol Content.
                 _indicatorText = _value.toString();
+                testresults = _indicatorText;
+                addEntry();
                 Timer(const Duration(seconds: 3), () {
                   resultDialog(BAC);
                 });
-
                 setState(() {});
               } else {
                 print("Error, try again...");
@@ -455,27 +497,7 @@ class _TestResultViewState extends State<TestResultView> {
   }
 
   //* BlueTooth Connection.
-  final connectedText = const Text.rich(
-    TextSpan(
-      children: [
-        WidgetSpan(child: Icon(Icons.bluetooth_connected)),
-        TextSpan(
-            text: ' Connected',
-            style: TextStyle(
-              fontSize: 18,
-            )),
-      ],
-    ),
-  );
-  final disconnectedText = const Text.rich(
-    TextSpan(
-      children: [
-        WidgetSpan(child: Icon(Icons.bluetooth_disabled)),
-        TextSpan(text: ' Disconnected', style: TextStyle(fontSize: 18)),
-      ],
-    ),
-  );
-  Widget _status() => Container(
+  Widget _connectionStatus() => Container(
         width: 180,
         height: 50,
         child: StreamBuilder<BluetoothDeviceState>(
@@ -483,28 +505,18 @@ class _TestResultViewState extends State<TestResultView> {
           initialData: BluetoothDeviceState.disconnected,
           builder: (c, snapshot) {
             if (snapshot.data == BluetoothDeviceState.connected) {
-              return ElevatedButton(
-                // ignore: unrelated_type_equality_checks
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue[700],
-                ),
-                onPressed: () {
-                  toggleBlueTooth();
-                },
-                child: connectedText,
+              return Container(
+                height: 10,
+                width: 100,
+                color: Colors.blue,
+                child: const Text('Device Is Connected'),
               );
             }
-            return ElevatedButton(
-              // ignore: unrelated_type_equality_checks
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.red[700],
-              ),
-              onPressed: () {
-                toggleBlueTooth();
-              },
-              child: disconnectedText,
+            return Container(
+              height: 10,
+              width: 100,
+              color: Colors.red,
+              child: const Text('Device Is Disconnected'),
             );
           },
         ),
@@ -534,11 +546,15 @@ class _TestResultViewState extends State<TestResultView> {
                 alignment: Alignment.center,
                 children: [
                   Positioned(
-                    top: 10,
-                    child: _status(),
+                    top: 60,
+                    child: _blueToothToogleSlide(),
                   ),
                   Positioned(
-                    top: 85,
+                    top: 0,
+                    child: _connectionStatus(),
+                  ),
+                  Positioned(
+                    top: 95,
                     child: _drawIndicator(),
                   ),
                   Positioned(
@@ -560,32 +576,74 @@ class _TestResultViewState extends State<TestResultView> {
 }
 
 
-
 //!-------------------------------------END----------------------------------------------------------------------------
 
 
+//  SlideAction(
+//             borderRadius: 10,
+//             elevation: 0,
+//             innerColor: Colors.white,
+//             outerColor: Colors.red,
+//             text: "Slide To Connect",
+//             textStyle: const TextStyle(fontSize: 20),
+//             sliderButtonIcon: const Icon(
+//               Icons.bluetooth_connected,
+//               color: Colors.black,
+//             ),
+//             onSubmit: () {
+//               // toggleBlueTooth();
+//             },
+//           ),
 
-  // SizedBox(
-  //       height: 230,
-  //       width: 230,
-  //       child: LiquidCircularProgressIndicator(
-  //         value: BAC, // Defaults to 0.5.
-  //         valueColor: AlwaysStoppedAnimation(
-  //           BAC >= 0.8
-  //               ? Colors.red
-  //               : BAC > 0.2 && BAC < 0.8
-  //                   ? Colors.orange
-  //                   : Colors.green,
-  //         ), // Defaults to the current Theme's accentColor.
-  //         backgroundColor:
-  //             Colors.white, // Defaults to the current Theme's backgroundColor.
-  //         borderColor: Colors.grey[500],
-  //         borderWidth: 5.0,
-  //         direction: Axis
-  //             .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-  //         center: Text(
-  //           _indicatorText,
-  //           style: const TextStyle(color: Colors.black),
-  //         ),
-  //       ),
-  //     );
+
+//  child: StreamBuilder<BluetoothDeviceState>(
+//           stream: targetDevice?.state,
+//           initialData: BluetoothDeviceState.disconnected,
+//           builder: (c, snapshot) {
+//             if (snapshot.data == BluetoothDeviceState.connected) {
+//               return ElevatedButton(
+//                 // ignore: unrelated_type_equality_checks
+//                 style: ElevatedButton.styleFrom(
+//                   foregroundColor: Colors.white,
+//                   backgroundColor: Colors.blue[700],
+//                 ),
+//                 onPressed: () {
+//                   // toggleBlueTooth();
+//                 },
+//                 child: connectedText,
+//               );
+//             }
+//             return ElevatedButton(
+//               // ignore: unrelated_type_equality_checks
+//               style: ElevatedButton.styleFrom(
+//                 foregroundColor: Colors.white,
+//                 backgroundColor: Colors.red[700],
+//               ),
+//               onPressed: () {
+//                 toggleBlueTooth();
+//               },
+//               child: disconnectedText,
+//             );
+//           },
+//         ),
+
+  // final connectedText = const Text.rich(
+  //   TextSpan(
+  //     children: [
+  //       WidgetSpan(child: Icon(Icons.bluetooth_connected)),
+  //       TextSpan(
+  //           text: ' Connected',
+  //           style: TextStyle(
+  //             fontSize: 18,
+  //           )),
+  //     ],
+  //   ),
+  // );
+  // final disconnectedText = const Text.rich(
+  //   TextSpan(
+  //     children: [
+  //       WidgetSpan(child: Icon(Icons.bluetooth_disabled)),
+  //       TextSpan(text: ' Disconnected', style: TextStyle(fontSize: 18)),
+  //     ],
+  //   ),
+  // );
