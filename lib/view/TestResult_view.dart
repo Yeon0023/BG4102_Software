@@ -58,13 +58,14 @@ class _TestResultViewState extends State<TestResultView> {
   String name = '';
   String ec = '';
   String ecp = '';
-  String drinkingstatus =''; 
+  String drinkingstatus = '';
   //* BAC level from: https://beta.mountelizabeth.com.sg/healthplus/article/festive-drinking-driving
   String dialogContent = '';
   String testresults = '';
   get value => readData(startTestCharacteristic!);
   final formkey = GlobalKey<FormState>();
   final userCollections = FirebaseFirestore.instance.collection("Results");
+  bool _isloading = false;
 
   @override
   void initState() {
@@ -410,14 +411,20 @@ class _TestResultViewState extends State<TestResultView> {
               Colors.white, // Defaults to the current Theme's backgroundColor.
           direction: Axis
               .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-          center: Text(
-            _indicatorText,
-            style: GoogleFonts.bebasNeue(
-              color: Colors.black,
-              fontSize: 18,
-              // fontWeight: FontWeight.bold,
-            ),
-          ),
+          center: _isloading
+              ? CircularProgressIndicator(
+                  color: Colors.teal[800],
+                  backgroundColor: Colors.teal[100],
+                  strokeWidth: 6.0,
+                )
+              : Text(
+                  _indicatorText,
+                  style: GoogleFonts.bebasNeue(
+                    color: Colors.black,
+                    fontSize: 18,
+                    // fontWeight: FontWeight.bold,
+                  ),
+                ),
           shapePath: _buildBoatPath(),
         ),
       );
@@ -445,6 +452,7 @@ class _TestResultViewState extends State<TestResultView> {
               ),
             ),
             onPressed: () async {
+              _isloading = true;
               await Fluttertoast.showToast(
                 msg: "Starting Test Now !",
                 toastLength: Toast.LENGTH_LONG,
@@ -458,10 +466,8 @@ class _TestResultViewState extends State<TestResultView> {
               int data = 1;
               await startTest(data);
               List<int> result = await readData(startTestCharacteristic!);
-              setState(() {
-                _indicatorText = "Loading...";
-              });
               if (result.first == 1) {
+                _isloading = false;
                 List<int> result =
                     await readData(retrieveResultCharacteristic!);
                 // ignore: no_leading_underscores_for_local_identifiers
