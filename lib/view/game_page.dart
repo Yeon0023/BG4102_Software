@@ -85,8 +85,16 @@ class _GamePage extends State<GamePage> {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return const AlertDialog(
+          return AlertDialog(
             title: Text("You are sober!"),
+            actions: [
+              MaterialButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('OK'),
+              )
+            ],
           );
         });
   }
@@ -96,14 +104,21 @@ class _GamePage extends State<GamePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: InkWell(
-              onTap: () {
-                startGame();
-                Navigator.of(context).pop();
-              },
-              child: const Text("Try again"),
-            ),
-          );
+              title: InkWell(
+                onTap: () {
+                  startGame();
+                  Navigator.of(context).pop();
+                },
+                child: const Text("Try again"),
+              ),
+              actions: [
+                MaterialButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('OK'),
+                )
+              ]);
         });
   }
 
@@ -119,7 +134,14 @@ class _GamePage extends State<GamePage> {
               },
               child: const Text("You should not be driving."),
             ),
-          );
+            actions: [
+              MaterialButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  },
+                child: Text('OK'),
+                )
+              ]);
         });
   }
 
