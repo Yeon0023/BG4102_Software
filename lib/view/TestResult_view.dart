@@ -58,10 +58,11 @@ class _TestResultViewState extends State<TestResultView> {
   String name = '';
   String ec = '';
   String ecp = '';
-  get value => readData(startTestCharacteristic!);
-
-  // String timestamp = FieldValue.serverTimestamp().toString();
+  String drinkingstatus =
+      ''; //* BAC level from: https://beta.mountelizabeth.com.sg/healthplus/article/festive-drinking-driving
+  String dialogContent = '';
   String testresults = '';
+  get value => readData(startTestCharacteristic!);
   final formkey = GlobalKey<FormState>();
   final userCollections = FirebaseFirestore.instance.collection("Results");
 
@@ -105,7 +106,7 @@ class _TestResultViewState extends State<TestResultView> {
 
   Future<void> _sendSms(String Address) async {
     twilioFlutter?.sendSMS(
-        toNumber: ec,
+        toNumber: "+65$ec",
         messageBody:
             'Hi $ecp, $name is drunk currently. Please come and get $name at $Address.');
   }
@@ -171,6 +172,53 @@ class _TestResultViewState extends State<TestResultView> {
     });
   }
 
+  //* BlueTooth Connection indicator.
+  final connectedText = Text.rich(
+    TextSpan(
+      children: [
+        const WidgetSpan(child: Icon(Icons.bluetooth_connected_rounded)),
+        TextSpan(
+          text: ' BlueTooth Connected',
+          style: GoogleFonts.bebasNeue(
+            color: Colors.blue[700],
+            fontSize: 20,
+          ),
+        ),
+      ],
+    ),
+  );
+  final disconnectedText = Text.rich(
+    TextSpan(
+      children: [
+        const WidgetSpan(child: Icon(Icons.bluetooth_disabled_rounded)),
+        TextSpan(
+          text: ' BlueTooth Disconnected',
+          style: GoogleFonts.bebasNeue(
+            color: Colors.red[700],
+            fontSize: 20,
+          ),
+        ),
+      ],
+    ),
+  );
+  Widget _connectionStatus() => StreamBuilder<BluetoothDeviceState>(
+        stream: targetDevice?.state,
+        initialData: BluetoothDeviceState.disconnected,
+        builder: (c, snapshot) {
+          if (snapshot.data == BluetoothDeviceState.connected) {
+            return Container(
+              child: connectedText,
+            );
+          } else {
+            const CircularProgressIndicator();
+          }
+          return Container(
+            child: disconnectedText,
+          );
+        },
+      );
+
+  //* Connect BlueTooth slider.
   Widget _blueToothToogleSlide() => Center(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -178,14 +226,14 @@ class _TestResultViewState extends State<TestResultView> {
           child: LiteRollingSwitch(
             //initial value
             value: false,
-            width: 200,
+            width: SizeConfig.blockSizeHorizontal * 50,
             textOn: 'Slide to disconnect',
             textOff: 'Slide to connect',
             colorOn: Colors.blue,
             colorOff: Colors.red,
-            iconOn: Icons.bluetooth_connected,
-            iconOff: Icons.bluetooth_disabled,
-            textSize: 16.0,
+            iconOn: Icons.arrow_circle_left_sharp,
+            iconOff: Icons.arrow_circle_right_sharp,
+            textSize: 15,
             onChanged: (bool state) {
               toggleBlueTooth();
             },
@@ -351,7 +399,6 @@ class _TestResultViewState extends State<TestResultView> {
         width: 230,
         child: LiquidCustomProgressIndicator(
           value: BAC, // Defaults to 0.5.
-          // value: _testValue, //!Testing
           valueColor: AlwaysStoppedAnimation(
             BAC >= 0.8
                 ? Colors.red
@@ -365,7 +412,11 @@ class _TestResultViewState extends State<TestResultView> {
               .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
           center: Text(
             _indicatorText,
-            style: const TextStyle(color: Colors.black),
+            style: GoogleFonts.bebasNeue(
+              color: Colors.black,
+              fontSize: 18,
+              // fontWeight: FontWeight.bold,
+            ),
           ),
           shapePath: _buildBoatPath(),
         ),
@@ -386,10 +437,10 @@ class _TestResultViewState extends State<TestResultView> {
             ),
             child: Text(
               'Check Alcohol Level',
-              style: GoogleFonts.lobster(
+              style: GoogleFonts.bebasNeue(
                 textStyle: const TextStyle(
                   color: Colors.black,
-                  fontSize: 18,
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -404,12 +455,6 @@ class _TestResultViewState extends State<TestResultView> {
                 fontSize: 17,
               );
 
-              //! For Testing only.
-              // BAC = 0.01;
-              // Timer(const Duration(seconds: 3), () {
-              //   resultDialog(BAC);
-              // });
-
               int data = 1;
               await startTest(data);
               List<int> result = await readData(startTestCharacteristic!);
@@ -423,7 +468,8 @@ class _TestResultViewState extends State<TestResultView> {
                 double _value = convertByteArray(result);
                 BAC =
                     relativeToAlcohol(_value); //!BAC is Blood Alcohol Content.
-                _indicatorText = _value.toString();
+                String resultIndicatorText = _value.toString();
+                _indicatorText = "$resultIndicatorText%";
                 testresults = _indicatorText;
                 addEntry();
                 Timer(const Duration(seconds: 3), () {
@@ -438,9 +484,6 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
-  //* BAC level from: https://beta.mountelizabeth.com.sg/healthplus/article/festive-drinking-driving
-  String drinkingstatus = '';
-  String dialogContent = '';
   // ignore: non_constant_identifier_names
   void resultDialog(BAC) {
     if (BAC >= 0.8) {
@@ -468,7 +511,7 @@ class _TestResultViewState extends State<TestResultView> {
           textAlign: TextAlign.center,
         ),
         actions: <Widget>[
-          BAC < 0.08
+          BAC < 0.8
               ? TextButton(
                   onPressed: () {
                     Navigator.of(ctx).pushNamed(gamePageRoute);
@@ -495,32 +538,6 @@ class _TestResultViewState extends State<TestResultView> {
     );
   }
 
-  //* BlueTooth Connection.
-  Widget _connectionStatus() => Container(
-        width: 180,
-        height: 50,
-        child: StreamBuilder<BluetoothDeviceState>(
-          stream: targetDevice?.state,
-          initialData: BluetoothDeviceState.disconnected,
-          builder: (c, snapshot) {
-            if (snapshot.data == BluetoothDeviceState.connected) {
-              return Container(
-                height: 10,
-                width: 100,
-                color: Colors.blue,
-                child: const Text('Device Is Connected'),
-              );
-            }
-            return Container(
-              height: 10,
-              width: 100,
-              color: Colors.red,
-              child: const Text('Device Is Disconnected'),
-            );
-          },
-        ),
-      );
-
   //*Final View of Test Result page.
   @override
   Widget build(BuildContext context) {
@@ -528,29 +545,47 @@ class _TestResultViewState extends State<TestResultView> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       drawer: const CustomDrawer(),
-      appBar: const CustomAppbar(
+      appBar: CustomAppbar(
         title: 'Test Result',
         fontSize: 25,
-        actions: null,
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.exit_to_app),
+              onPressed: () {
+                Navigator.of(context).pushNamed(homePageRoute);
+              }),
+        ],
         leading: null,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
+            SizedBox(
               height: SizeConfig.blockSizeVertical * 85,
               // color: Colors.blue,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
                   Positioned(
-                    top: 60,
+                    top: 5,
+                    child: _connectionStatus(),
+                  ),
+                  Positioned(
+                    top: 40,
                     child: _blueToothToogleSlide(),
                   ),
                   Positioned(
-                    top: 0,
-                    child: _connectionStatus(),
+                    top: 125,
+                    child: Container(
+                      width: SizeConfig.safeBlockHorizontal * 100,
+                      height: SizeConfig.blockSizeVertical * 32,
+                      // color: Colors.amber,
+                      child: Image.asset(
+                        "assets/images/pic1.png",
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
                   Positioned(
                     top: 95,
@@ -577,29 +612,16 @@ class _TestResultViewState extends State<TestResultView> {
   void dispose() {
     disconnectFromDevice();
     stopScan();
+    _drawGoogleMap();
+    _getCurrentLocation();
     super.dispose();
   }
 }
 
-
 //!-------------------------------------END----------------------------------------------------------------------------
 
 
-//  SlideAction(
-//             borderRadius: 10,
-//             elevation: 0,
-//             innerColor: Colors.white,
-//             outerColor: Colors.red,
-//             text: "Slide To Connect",
-//             textStyle: const TextStyle(fontSize: 20),
-//             sliderButtonIcon: const Icon(
-//               Icons.bluetooth_connected,
-//               color: Colors.black,
-//             ),
-//             onSubmit: () {
-//               // toggleBlueTooth();
-//             },
-//           ),
+
 
 
 //  child: StreamBuilder<BluetoothDeviceState>(

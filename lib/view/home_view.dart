@@ -8,7 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bg4102_software/Utilities/profilewidget.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
@@ -18,10 +18,9 @@ class HomePage extends StatefulWidget{
 class _HomePageState extends State<HomePage> {
   final firebaseUser = FirebaseAuth.instance.currentUser;
   final FirebaseAuth auth = FirebaseAuth.instance;
+  String fp = '';
 
-    String fp = '';
-
-    void _getdata1() async {
+  void _getdata1() async {
     FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseUser!.uid)
@@ -33,20 +32,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // Future<void> updateUser() {
-  //   return FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(firebaseUser!.uid)
-  //       .update({'Image Path': fp})
-  //       .then((value) => print("User Updated"))
-  //       .catchError((error) => print("Failed to update user: $error"));
-  // }
   @override
   void initState() {
     super.initState();
     _getdata1();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +67,8 @@ class _HomePageState extends State<HomePage> {
                     left: 25,
                     child: Stack(
                       children: [
-                        ProfileWidget(imagePath: fp, onClicked: (){}).buildImage(),
+                        ProfileWidget(imagePath: fp, onClicked: () {})
+                            .buildImage(),
                       ],
                     ),
                   ),
@@ -123,6 +114,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamed(testResultRoute);
+                    _videoOverlayDialog(context);
                   },
                   child: SizedBox(
                     height: SizeConfig.blockSizeVertical * 15,
@@ -135,14 +127,14 @@ class _HomePageState extends State<HomePage> {
                             width: SizeConfig.blockSizeHorizontal * 40,
                             // color: Colors.amber,
                             child: Image.asset(
-                              'assets/images/BeerIcon.png',
+                              'assets/images/test.png',
                               fit: BoxFit.contain,
                             ),
                           ),
                         ),
                         Positioned(
                           top: 10,
-                          right: 20,
+                          right: 5,
                           // ignore: sized_box_for_whitespace
                           child: Container(
                             height: SizeConfig.blockSizeVertical * 10,
@@ -151,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                             child: Align(
                               alignment: Alignment.center,
                               child: Text(
-                                'Am I Drunk?',
+                                'Am I Drunk ?',
                                 style: GoogleFonts.lobster(
                                     color: Colors.white, fontSize: 30),
                               ),
@@ -199,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                             width: SizeConfig.blockSizeHorizontal * 25,
                             height: SizeConfig.blockSizeVertical * 15,
                             child: Image.asset(
-                              'assets/images/BeerIcon.png',
+                              'assets/images/profile.png',
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -229,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                             width: SizeConfig.blockSizeHorizontal * 25,
                             height: SizeConfig.blockSizeVertical * 15,
                             child: Image.asset(
-                              'assets/images/BeerIcon.png',
+                              'assets/images/game.png',
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -264,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                             width: SizeConfig.blockSizeHorizontal * 25,
                             height: SizeConfig.blockSizeVertical * 15,
                             child: Image.asset(
-                              'assets/images/BeerIcon.png',
+                              'assets/images/records.png',
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -310,33 +302,81 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+//! Instruction pop up for test view
+const String instructionText = "1. Ensure your mobile Bluetooth is ON.\n\n"
+    "2. Pair BreathX App with the device.\n\n"
+    "3. Place breathlyzer tube in your mouth and blow through the tube.\n\n"
+    "4. Your alcohol level will appear when the test is completed.\n\n"
+    "5. Disconnect the device after testing.";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Future<void> _videoOverlayDialog(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        contentPadding: const EdgeInsets.all(0.5),
+        backgroundColor: Colors.white.withOpacity(0.8),
+        elevation: 3,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(32.0))),
+        title: const Text(
+          'Instruction',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 25,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        // ignore: sized_box_for_whitespace
+        content: Container(
+          width: SizeConfig.blockSizeHorizontal * 95,
+          height: SizeConfig.blockSizeVertical * 55,
+          // color: Colors.blue,
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/instruction.png',
+                fit: BoxFit.contain,
+              ),
+              Positioned(
+                top: 15,
+                child: Container(
+                  width: 300,
+                  // color: Colors.orange,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    child: Text(
+                      instructionText,
+                      softWrap: true,
+                      style: GoogleFonts.bebasNeue(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+              child: const Text(
+                "Let's Begin!",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+                textAlign: TextAlign.center,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}

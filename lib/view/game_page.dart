@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
+import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 import '../Utilities/button.dart';
 import '../Utilities/pixel.dart';
@@ -263,7 +264,7 @@ class _GamePage extends State<GamePage> {
                     ),
                     MyButton(
                       function: () {
-                        Navigator.of(context).pop();
+                        Navigator.of(context).pushNamed(homePageRoute);
                       },
                       child: const Text(
                         "H O M E",

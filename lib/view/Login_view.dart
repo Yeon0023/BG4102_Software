@@ -6,7 +6,6 @@ import 'package:bg4102_software/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utilities/Show_error_dialog.dart';
-import '../Utilities/customAppbar.dart'; //This is to replace print()
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);

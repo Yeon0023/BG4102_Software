@@ -180,8 +180,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             ),
                             const SizedBox(height: 30),
                             TextFormField(
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
                                   prefixIcon:
                                   Icon(Icons.height, color: Colors.white),
                               hintStyle: TextStyle(color: Colors.white),
@@ -208,8 +208,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             ),
                             const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
+                                style: const TextStyle(color: Colors.white),
+                                decoration: const InputDecoration(
                                     prefixIcon:
                                     Icon(Icons.monitor_weight_outlined,
                                         color: Colors.white),
@@ -237,8 +237,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             ),
                             const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
+                                style: const TextStyle(color: Colors.white),
+                                decoration: const InputDecoration(
                                     prefixIcon:
                                     Icon(Icons.phone, color: Colors.white),
                                     hintStyle: TextStyle(color: Colors.white),
@@ -265,8 +265,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             ),
                             const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
+                                style: const TextStyle(color: Colors.white),
+                                decoration: const InputDecoration(
                                     prefixIcon:
                                     Icon(Icons.person, color: Colors.white),
                                     hintStyle: TextStyle(color: Colors.white),
@@ -293,8 +293,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             ),
                             const SizedBox(height: 30),
                             TextFormField(
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
+                                style: const TextStyle(color: Colors.white),
+                                decoration: const InputDecoration(
                                     prefixIcon:
                                     Icon(Icons.phone_android,
                                         color: Colors.white),
