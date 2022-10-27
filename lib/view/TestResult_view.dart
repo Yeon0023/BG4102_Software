@@ -58,8 +58,8 @@ class _TestResultViewState extends State<TestResultView> {
   String name = '';
   String ec = '';
   String ecp = '';
-  String drinkingstatus =
-      ''; //* BAC level from: https://beta.mountelizabeth.com.sg/healthplus/article/festive-drinking-driving
+  String drinkingstatus =''; 
+  //* BAC level from: https://beta.mountelizabeth.com.sg/healthplus/article/festive-drinking-driving
   String dialogContent = '';
   String testresults = '';
   get value => readData(startTestCharacteristic!);
