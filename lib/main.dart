@@ -5,6 +5,7 @@ import 'package:bg4102_software/view/Verify_email_view.dart';
 import 'package:bg4102_software/view/forget_pw.dart';
 import 'package:bg4102_software/view/game_page.dart';
 import 'package:bg4102_software/view/home_view.dart';
+import 'package:bg4102_software/view/learn_list_screen.dart';
 import 'package:bg4102_software/view/main_view.dart';
 import 'package:bg4102_software/view/profileEdit_view.dart';
 import 'package:bg4102_software/view/profileGet_view.dart';
@@ -21,7 +22,7 @@ void main(context) async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const MainPage(),
+      home: const LoginView(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.teal[900],
         primaryColor: Colors.teal[900],
@@ -39,6 +40,7 @@ void main(context) async {
         testResultRoute: (context) => const TestResultView(),
         gamePageRoute: (context) => const GamePage(),
         recordpageRoute: (context) => const Recordpage(),
+        learnpageRoute: (context) => const LearnListScreen(),
       },
     ),
   );

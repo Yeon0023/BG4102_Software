@@ -556,10 +556,11 @@ class _TestResultViewState extends State<TestResultView> {
         fontSize: 25,
         actions: [
           IconButton(
-              icon: const Icon(Icons.exit_to_app),
-              onPressed: () {
-                Navigator.of(context).pushNamed(homePageRoute);
-              }),
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () {
+              Navigator.of(context).pushNamed(homePageRoute);
+            },
+          ),
         ],
         leading: null,
       ),

@@ -65,6 +65,15 @@ class CustomDrawer extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text('Tips'),
+            onTap: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                learnpageRoute,
+                (route) => false,
+              );
+            },
+          ),
         ],
       ),
     );

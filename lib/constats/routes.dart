@@ -9,3 +9,5 @@ const profileGet = '/profileGet/';
 const profileEdit = '/profileEdit/';
 const gamePageRoute = '/gamePage/';
 const recordpageRoute = '/Recordpage/';
+const learnpageRoute = '/learnpage/';
+

@@ -160,16 +160,17 @@ class _HomePageState extends State<HomePage> {
               height: SizeConfig.blockSizeVertical * 2,
             ),
             SizedBox(
-              height: SizeConfig.blockSizeVertical * 40,
+              height: SizeConfig.blockSizeVertical * 47,
               width: SizeConfig.blockSizeHorizontal * 95,
               // color: Colors.red,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 padding: const EdgeInsets.all(8),
                 scrollDirection: Axis.vertical,
-                crossAxisCount: 3,
+                crossAxisCount: 2,
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 20,
-                childAspectRatio: 0.5,
+                childAspectRatio: 1,
                 children: [
                   GlassMorphism(
                     borderThickness: 0,
@@ -227,6 +228,39 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "Games!",
+                            overflow: TextOverflow.visible,
+                            softWrap: false,
+                            style: GoogleFonts.lobster(
+                                fontSize: 20, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GlassMorphism(
+                    borderThickness: 0,
+                    cornerRadius: 20,
+                    blur: 0,
+                    opacity: 0,
+                    child: TextButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(learnpageRoute);
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            width: SizeConfig.blockSizeHorizontal * 25,
+                            height: SizeConfig.blockSizeVertical * 15,
+                            child: Image.asset(
+                              'assets/images/learnlist.png',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          Text(
+                            "Tips",
                             overflow: TextOverflow.visible,
                             softWrap: false,
                             style: GoogleFonts.lobster(
