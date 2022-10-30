@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'package:bg4102_software/Utilities/customDrawer.dart';
 import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
 import 'package:bg4102_software/constats/routes.dart';
 import 'package:flutter/material.dart';
 import '../Utilities/button.dart';
+import '../Utilities/customAppbar.dart';
 import '../Utilities/pixel.dart';
 
 class GamePage extends StatefulWidget {
@@ -214,8 +216,22 @@ class _GamePage extends State<GamePage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      drawer: const CustomDrawer(),
+      appBar: CustomAppbar(
+        title: 'STACK IT !',
+        fontSize: 25,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () {
+              Navigator.of(context).pushNamed(testResultRoute);
+            },
+          ),
+        ],
+        leading: null,
+      ),
       body: Container(
-        height: 800,
+        height: SizeConfig.blockSizeVertical,
         // color: Color,
         child: Column(
           children: [
