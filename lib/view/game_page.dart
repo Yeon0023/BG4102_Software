@@ -231,7 +231,7 @@ class _GamePage extends State<GamePage> {
         leading: null,
       ),
       body: Container(
-        height: SizeConfig.blockSizeVertical,
+        height: SizeConfig.blockSizeVertical * 100,
         // color: Color,
         child: Column(
           children: [
