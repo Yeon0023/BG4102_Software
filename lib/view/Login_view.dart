@@ -151,7 +151,7 @@ class _LoginViewState extends State<LoginView> {
                         },
                         child: Text(
                           'Forgot Password ?',
-                          style: GoogleFonts.lobster(
+                          style: GoogleFonts.merriweather(
                             textStyle: const TextStyle(
                               color: Colors.white,
                               fontSize: 15,
@@ -227,7 +227,7 @@ class _LoginViewState extends State<LoginView> {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.lobster(
                             color: Colors.white,
-                            fontSize: 17,
+                            fontSize: 20,
                           ),
                         ),
                       ),
@@ -245,7 +245,7 @@ class _LoginViewState extends State<LoginView> {
                   },
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.white,
-                    textStyle: GoogleFonts.lobster(fontSize: 16),
+                    textStyle: GoogleFonts.merriweather(fontSize: 15),
                   ),
                   child: const Text('Not registered yet? Register here!'),
                 ),

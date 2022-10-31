@@ -144,8 +144,8 @@ class _HomePageState extends State<HomePage> {
                               alignment: Alignment.center,
                               child: Text(
                                 'Am I Drunk ?',
-                                style: GoogleFonts.lobster(
-                                    color: Colors.white, fontSize: 30),
+                                style: GoogleFonts.merriweather(
+                                    color: Colors.white, fontSize: 28),
                               ),
                             ),
                           ),
@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "My Profile",
-                            style: GoogleFonts.lobster(fontSize: 20),
+                            style: GoogleFonts.merriweather(fontSize: 20),
                           ),
                         ],
                       ),
@@ -230,7 +230,7 @@ class _HomePageState extends State<HomePage> {
                             "Games!",
                             overflow: TextOverflow.visible,
                             softWrap: false,
-                            style: GoogleFonts.lobster(
+                            style: GoogleFonts.merriweather(
                                 fontSize: 20, color: Colors.black),
                           ),
                         ],
@@ -263,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                             "Tips",
                             overflow: TextOverflow.visible,
                             softWrap: false,
-                            style: GoogleFonts.lobster(
+                            style: GoogleFonts.merriweather(
                                 fontSize: 20, color: Colors.black),
                           ),
                         ],
@@ -296,7 +296,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "Records",
-                            style: GoogleFonts.lobster(fontSize: 20),
+                            style: GoogleFonts.merriweather(fontSize: 20),
                           ),
                         ],
                       ),
