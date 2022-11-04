@@ -1,4 +1,5 @@
 import 'package:bg4102_software/constats/routes.dart';
+import 'package:bg4102_software/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -74,8 +75,48 @@ class CustomDrawer extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text(
+              'Logout',
+            ),
+            onTap: () async {
+              final shouldLogout = await showLogOutDialog(context);
+              if (shouldLogout) {
+                await AuthService.firebase().logOut();
+                // ignore: use_build_context_synchronously
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  loginRoute,
+                  (_) => false,
+                );
+              }
+            },
+          ),
         ],
       ),
     );
+  }
+
+  Future<bool> showLogOutDialog(BuildContext context) {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Logout'),
+          content: const Text('Are you sure you want to Logout?'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+                child: const Text('Cancel')),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+                child: const Text('Log out')),
+          ],
+        );
+      },
+    ).then((value) => value ?? false);
   }
 }

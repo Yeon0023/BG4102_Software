@@ -65,7 +65,7 @@ class _TestResultViewState extends State<TestResultView> {
   String testresults = '';
   get value => readData(startTestCharacteristic!);
   final formkey = GlobalKey<FormState>();
-  final userCollections = FirebaseFirestore.instance.collection("Results");
+  final userCollections = FirebaseFirestore.instance.collection("users");
   bool _isloading = false;
   TextToSpeech tts = TextToSpeech();
 
@@ -87,8 +87,9 @@ class _TestResultViewState extends State<TestResultView> {
     var formatter = DateFormat('\ndd-MM-yyyy – HH:mm');
     final String formattedDate = formatter.format(now);
     return FirebaseFirestore.instance
-        .collection('Results')
-        .add({'DatenTime': formattedDate, 'Result': testresults});
+        .collection('users')
+        .doc(firebaseUser!.uid)
+        .update({'DatenTime': formattedDate, 'Result': testresults, 'Location':Address , 'Status':drinkingstatus});
   }
 
   //?--------------------------------THIS IS SMS SYSTEM----------------------------------------------------------------
@@ -316,7 +317,6 @@ class _TestResultViewState extends State<TestResultView> {
         currentCoordinate
             .addAll([currentLocation!.latitude!, currentLocation!.longitude!]);
         await GetCurrentAddress(currentCoordinate);
-        // await _sendSms(Address); //!This is for testing only.
         if (!mounted) return;
         setState(() {});
       },
@@ -488,6 +488,7 @@ class _TestResultViewState extends State<TestResultView> {
                 Timer(const Duration(seconds: 3), () {
                   resultDialog(BAC);
                 });
+                addEntry();
                 setState(() {});
               } else {
                 print("Error, try again...");

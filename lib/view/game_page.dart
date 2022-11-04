@@ -224,13 +224,13 @@ class _GamePage extends State<GamePage> {
           IconButton(
             icon: const Icon(Icons.exit_to_app),
             onPressed: () {
-              Navigator.of(context).pushNamed(testResultRoute);
+              Navigator.of(context).pushNamed(homePageRoute);
             },
           ),
         ],
         leading: null,
       ),
-      body: Container(
+      body: SizedBox(
         height: SizeConfig.blockSizeVertical * 100,
         // color: Color,
         child: Column(
