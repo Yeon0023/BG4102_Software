@@ -14,6 +14,7 @@ import 'package:intl/intl.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:location/location.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
 import '../Utilities/customAppbar.dart';
 import '../Utilities/customDrawer.dart';
@@ -66,6 +67,7 @@ class _TestResultViewState extends State<TestResultView> {
   final formkey = GlobalKey<FormState>();
   final userCollections = FirebaseFirestore.instance.collection("Results");
   bool _isloading = false;
+  TextToSpeech tts = TextToSpeech();
 
   @override
   void initState() {
@@ -144,6 +146,7 @@ class _TestResultViewState extends State<TestResultView> {
     });
     await targetDevice!.connect();
     print('DEVICE CONNECTED');
+    tts.speak('DEVICE CONNECTED');
     setState(() {
       connectionText = "Device Connected";
     });
@@ -157,6 +160,7 @@ class _TestResultViewState extends State<TestResultView> {
     setState(
       () {
         connectionText = "Device Disconnected";
+        tts.speak('DEVICE DISCONNECTED');
       },
     );
   }
@@ -453,6 +457,7 @@ class _TestResultViewState extends State<TestResultView> {
             ),
             onPressed: () async {
               _isloading = true;
+              tts.speak('Starting test now');
               await Fluttertoast.showToast(
                 msg: "Starting Test Now !",
                 toastLength: Toast.LENGTH_LONG,
@@ -476,6 +481,8 @@ class _TestResultViewState extends State<TestResultView> {
                     relativeToAlcohol(_value); //!BAC is Blood Alcohol Content.
                 String resultIndicatorText = _value.toString();
                 _indicatorText = "$resultIndicatorText%";
+                tts.speak(
+                    "your alcolhol level is $_indicatorText"); //! To be tested
                 testresults = _indicatorText;
                 addEntry();
                 Timer(const Duration(seconds: 3), () {
@@ -498,7 +505,7 @@ class _TestResultViewState extends State<TestResultView> {
           "\n\nPLEASE DO NOT DRIVE ! \n\nBreathX have contacted your emergency contact about your location.";
       _sendSms(Address);
     } else if (BAC > 0.2 && BAC < 0.8) {
-      drinkingstatus = "Drinking status: Within limit";
+      drinkingstatus = "Drinking Status: Within Limit";
       dialogContent =
           "\n\nYou are within limit, Ensure you are Sober by playing a GAME to test your focus.";
     } else {
@@ -626,59 +633,3 @@ class _TestResultViewState extends State<TestResultView> {
 }
 
 //!-------------------------------------END----------------------------------------------------------------------------
-
-
-
-
-
-//  child: StreamBuilder<BluetoothDeviceState>(
-//           stream: targetDevice?.state,
-//           initialData: BluetoothDeviceState.disconnected,
-//           builder: (c, snapshot) {
-//             if (snapshot.data == BluetoothDeviceState.connected) {
-//               return ElevatedButton(
-//                 // ignore: unrelated_type_equality_checks
-//                 style: ElevatedButton.styleFrom(
-//                   foregroundColor: Colors.white,
-//                   backgroundColor: Colors.blue[700],
-//                 ),
-//                 onPressed: () {
-//                   // toggleBlueTooth();
-//                 },
-//                 child: connectedText,
-//               );
-//             }
-//             return ElevatedButton(
-//               // ignore: unrelated_type_equality_checks
-//               style: ElevatedButton.styleFrom(
-//                 foregroundColor: Colors.white,
-//                 backgroundColor: Colors.red[700],
-//               ),
-//               onPressed: () {
-//                 toggleBlueTooth();
-//               },
-//               child: disconnectedText,
-//             );
-//           },
-//         ),
-
-  // final connectedText = const Text.rich(
-  //   TextSpan(
-  //     children: [
-  //       WidgetSpan(child: Icon(Icons.bluetooth_connected)),
-  //       TextSpan(
-  //           text: ' Connected',
-  //           style: TextStyle(
-  //             fontSize: 18,
-  //           )),
-  //     ],
-  //   ),
-  // );
-  // final disconnectedText = const Text.rich(
-  //   TextSpan(
-  //     children: [
-  //       WidgetSpan(child: Icon(Icons.bluetooth_disabled)),
-  //       TextSpan(text: ' Disconnected', style: TextStyle(fontSize: 18)),
-  //     ],
-  //   ),
-  // );

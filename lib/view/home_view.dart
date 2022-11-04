@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bg4102_software/Utilities/profilewidget.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   final firebaseUser = FirebaseAuth.instance.currentUser;
   final FirebaseAuth auth = FirebaseAuth.instance;
   String fp = '';
+  TextToSpeech tts = TextToSpeech();
 
   void _getdata1() async {
     FirebaseFirestore.instance
@@ -115,6 +117,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.of(context).pushNamed(testResultRoute);
                     _videoOverlayDialog(context);
+                    tts.speak('Please ensure your device is connected');
                   },
                   child: SizedBox(
                     height: SizeConfig.blockSizeVertical * 15,
