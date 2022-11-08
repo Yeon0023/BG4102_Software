@@ -89,7 +89,12 @@ class _TestResultViewState extends State<TestResultView> {
     return FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseUser!.uid)
-        .update({'DatenTime': formattedDate, 'Result': testresults, 'Location':Address , 'Status':drinkingstatus});
+        .update({
+      'DatenTime': formattedDate,
+      'Result': testresults,
+      'Location': Address,
+      'Status': drinkingstatus
+    });
   }
 
   //?--------------------------------THIS IS SMS SYSTEM----------------------------------------------------------------
@@ -142,9 +147,11 @@ class _TestResultViewState extends State<TestResultView> {
 
   connectToDevice() async {
     if (targetDevice == null) return;
-    setState(() {
-      connectionText = "Device Connecting";
-    });
+    setState(
+      () {
+        connectionText = "Device Connecting";
+      },
+    );
     await targetDevice!.connect();
     print('DEVICE CONNECTED');
     tts.speak('DEVICE CONNECTED');
@@ -505,7 +512,7 @@ class _TestResultViewState extends State<TestResultView> {
       dialogContent =
           "\n\nPLEASE DO NOT DRIVE ! \n\nBreathX have contacted your emergency contact about your location.";
       _sendSms(Address);
-    } else if (BAC > 0.2 && BAC < 0.8) {
+    } else if (BAC > 0.0 && BAC < 0.8) {
       drinkingstatus = "Drinking Status: Within Limit";
       dialogContent =
           "\n\nYou are within limit, Ensure you are Sober by playing a GAME to test your focus.";
