@@ -94,7 +94,7 @@ class _GamePage extends State<GamePage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("You are sober!"
-              "\n\n Read about AUD to learn more tips on keeping sober"),
+              "\n\n Read about AUD to learn more tips on keeping yourself sober"),
           actions: [
             MaterialButton(
               onPressed: () {
