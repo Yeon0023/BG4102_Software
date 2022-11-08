@@ -87,11 +87,7 @@ class _TestResultViewState extends State<TestResultView> {
     var now = DateTime.now();
     var formatter = DateFormat('dd-MM-yyyy – HH:mm');
     final String formattedDate = formatter.format(now);
-    return FirebaseFirestore.instance
-        .collection(firebaseUser!.uid)
-        // .collection('users')
-        // .doc(firebaseUser!.uid)
-        .add(
+    return FirebaseFirestore.instance.collection(firebaseUser!.uid).add(
       {
         'DatenTime': formattedDate,
         'Result': testresults,
@@ -444,6 +440,7 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
+
   //* This is to activate the process of recoding the test.
   Widget _toastmaker() => Padding(
         padding: const EdgeInsets.symmetric(vertical: 18.0),
@@ -527,19 +524,6 @@ class _TestResultViewState extends State<TestResultView> {
   // ignore: non_constant_identifier_names
   void resultDialog() {
     resultCondition(BAC);
-    // if (BAC >= 0.8) {
-    //   drinkingstatus = "Drinking Status: Drunk";
-    //   dialogContent =
-    //       "\n\nPLEASE DO NOT DRIVE ! \n\nBreathX have contacted your emergency contact about your location.";
-    //   _sendSms(Address);
-    // } else if (BAC > 0.0 && BAC < 0.8) {
-    //   drinkingstatus = "Drinking Status: Within Limit";
-    //   dialogContent =
-    //       "\n\nYou are within limit, Ensure you are Sober by playing a GAME to test your focus.";
-    // } else {
-    //   drinkingstatus = "Drinking Status: Sober";
-    //   dialogContent = "\n\nYou are Sober, reward yourself by playing a GAME!";
-    // }
     var now = DateTime.now();
     var formatter = DateFormat('\ndd-MM-yyyy – HH:mm');
     final String formattedDate = formatter.format(now);

@@ -37,6 +37,7 @@ class _RecordpageState extends State<Recordpage> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection(firebaseUser!.uid)
+            .orderBy("DatenTime", descending: true)
             .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
           if (streamSnapshot.hasData) {
