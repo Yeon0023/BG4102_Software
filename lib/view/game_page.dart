@@ -90,20 +90,28 @@ class _GamePage extends State<GamePage> {
 
   void _showDialog() {
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text("You are sober!"),
-            actions: [
-              MaterialButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('OK'),
-              )
-            ],
-          );
-        });
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("You are sober!"
+              "\n\n Read about AUD to learn more tips on keeping sober"),
+          actions: [
+            MaterialButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('OK'),
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(learnpageRoute);
+              },
+              child: const Text('Tips'),
+            )
+          ],
+        );
+      },
+    );
   }
 
   void _restartDialog() {
@@ -141,7 +149,7 @@ class _GamePage extends State<GamePage> {
               startGame();
               Navigator.of(context).pop();
             },
-            child: const Text("You should not be driving."),
+            child: const Text("You should not be driving!"),
           ),
           actions: [
             MaterialButton(

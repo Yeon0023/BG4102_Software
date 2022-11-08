@@ -165,10 +165,10 @@ class _TestResultViewState extends State<TestResultView> {
     if (targetDevice == null) return;
     targetDevice!.disconnect();
     deviceState = BluetoothDeviceState.disconnected;
+    tts.speak('DEVICE DISCONNECTED');
     setState(
       () {
         connectionText = "Device Disconnected";
-        tts.speak('DEVICE DISCONNECTED');
       },
     );
   }

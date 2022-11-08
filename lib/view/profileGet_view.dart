@@ -101,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Container(
             width: 500,
             padding: const EdgeInsets.only(top: 25, bottom: 25),
-            color: Colors.teal[200],
+            color: Colors.teal[500],
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
