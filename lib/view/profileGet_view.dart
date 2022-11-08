@@ -75,17 +75,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
         fontSize: 25,
         actions: [
           IconButton(
-              icon: const Icon(Icons.mode_edit),
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  profileEdit,
-                );
-              }),
+            icon: const Icon(Icons.mode_edit),
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                profileEdit,
+              );
+            },
+          ),
         ],
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
-            color: Colors.black,
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () => Navigator.of(context).pushNamed(
@@ -107,28 +108,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Stack(
                   children: [
                     ProfileWidget(
-                    imagePath: fp,
-                    onClicked: () async {
-                      final image = await ImagePicker()
-                          .pickImage(source: ImageSource.camera);
+                      imagePath: fp,
+                      onClicked: () async {
+                        final image = await ImagePicker()
+                            .pickImage(source: ImageSource.camera);
 
-                      if (image == null) return;
+                        if (image == null) return;
 
-                      final directory = await getApplicationDocumentsDirectory();
-                      final name = basename(image.path);
-                      final imageFile = File('${directory.path}/$name');
-                      final newImage =
-                          await File(image.path).copy(imageFile.path);
-                      fp = newImage.path;
-                      // fp = faceprofile.toString();
-                      updateUser();
-                      setState(() {});
-                    },
-                  ),
+                        final directory =
+                            await getApplicationDocumentsDirectory();
+                        final name = basename(image.path);
+                        final imageFile = File('${directory.path}/$name');
+                        final newImage =
+                            await File(image.path).copy(imageFile.path);
+                        fp = newImage.path;
+                        // fp = faceprofile.toString();
+                        updateUser();
+                        setState(() {});
+                      },
+                    ),
                     Positioned(
                       bottom: 0,
                       right: 4,
-                      child: ProfileWidget(imagePath: fp, onClicked: (){}).buildEditIcon(Colors.white),
+                      child: ProfileWidget(imagePath: fp, onClicked: () {})
+                          .buildEditIcon(Colors.white),
                     ),
                   ],
                 ),

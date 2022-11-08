@@ -8,12 +8,13 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.teal[900],
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.teal[700],
+              color: Colors.teal[900],
             ),
             child: const Text(
               'Breathalyzer',
