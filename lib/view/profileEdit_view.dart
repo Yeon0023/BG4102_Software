@@ -35,15 +35,6 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   var formatter = DateFormat('dd-MM-yyyy');
   bool isloading = false;
 
-  Future<void> updateUserName() {
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(firebaseUser!.uid)
-        .update({'Name': name})
-        .then((value) => print("User Updated"))
-        .catchError((error) => print("Failed to update user: $error"));
-  }
-
   Future<void> updateUserDoB() {
     return FirebaseFirestore.instance
         .collection('users')
@@ -180,49 +171,48 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             ),
                             const SizedBox(height: 30),
                             TextFormField(
-                              style: const TextStyle(color: Colors.white),
-                              decoration: const InputDecoration(
-                                  prefixIcon:
-                                  Icon(Icons.height, color: Colors.white),
-                              hintStyle: TextStyle(color: Colors.white),
-                                  errorStyle:
-                                  TextStyle(color: Colors.redAccent),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Colors.white)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.white,
-                                      )),
-                                  labelText: 'Enter your height (cm)',
-                                  labelStyle: TextStyle(color: Colors.white)),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your height';
-                                }
-                                return null;
-                              },
-                              onChanged: (value) {
-                                height = value;
-                              }
-                            ),
+                                style: const TextStyle(color: Colors.white),
+                                decoration: const InputDecoration(
+                                    prefixIcon:
+                                        Icon(Icons.height, color: Colors.white),
+                                    hintStyle: TextStyle(color: Colors.white),
+                                    errorStyle:
+                                        TextStyle(color: Colors.redAccent),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.white)),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white,
+                                    )),
+                                    labelText: 'Enter your height (cm)',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your height';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  height = value;
+                                }),
                             const SizedBox(height: 30),
                             TextFormField(
                                 style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
-                                    prefixIcon:
-                                    Icon(Icons.monitor_weight_outlined,
+                                    prefixIcon: Icon(
+                                        Icons.monitor_weight_outlined,
                                         color: Colors.white),
                                     hintStyle: TextStyle(color: Colors.white),
                                     errorStyle:
-                                    TextStyle(color: Colors.redAccent),
+                                        TextStyle(color: Colors.redAccent),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide:
-                                        BorderSide(color: Colors.white)),
+                                            BorderSide(color: Colors.white)),
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Colors.white,
-                                        )),
+                                      color: Colors.white,
+                                    )),
                                     labelText: 'Enter your weight (kg)',
                                     labelStyle: TextStyle(color: Colors.white)),
                                 validator: (value) {
@@ -233,24 +223,23 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 },
                                 onChanged: (value) {
                                   weight = value;
-                                }
-                            ),
+                                }),
                             const SizedBox(height: 30),
                             TextFormField(
                                 style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
                                     prefixIcon:
-                                    Icon(Icons.phone, color: Colors.white),
+                                        Icon(Icons.phone, color: Colors.white),
                                     hintStyle: TextStyle(color: Colors.white),
                                     errorStyle:
-                                    TextStyle(color: Colors.redAccent),
+                                        TextStyle(color: Colors.redAccent),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide:
-                                        BorderSide(color: Colors.white)),
+                                            BorderSide(color: Colors.white)),
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Colors.white,
-                                        )),
+                                      color: Colors.white,
+                                    )),
                                     labelText: 'Enter your phone number',
                                     labelStyle: TextStyle(color: Colors.white)),
                                 validator: (value) {
@@ -261,25 +250,25 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 },
                                 onChanged: (value) {
                                   phone = value;
-                                }
-                            ),
+                                }),
                             const SizedBox(height: 30),
                             TextFormField(
                                 style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
                                     prefixIcon:
-                                    Icon(Icons.person, color: Colors.white),
+                                        Icon(Icons.person, color: Colors.white),
                                     hintStyle: TextStyle(color: Colors.white),
                                     errorStyle:
-                                    TextStyle(color: Colors.redAccent),
+                                        TextStyle(color: Colors.redAccent),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide:
-                                        BorderSide(color: Colors.white)),
+                                            BorderSide(color: Colors.white)),
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Colors.white,
-                                        )),
-                                    labelText: 'Enter your emergency contact person',
+                                      color: Colors.white,
+                                    )),
+                                    labelText:
+                                        'Enter your emergency contact person',
                                     labelStyle: TextStyle(color: Colors.white)),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -289,26 +278,25 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 },
                                 onChanged: (value) {
                                   ecp = value;
-                                }
-                            ),
+                                }),
                             const SizedBox(height: 30),
                             TextFormField(
                                 style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
-                                    prefixIcon:
-                                    Icon(Icons.phone_android,
+                                    prefixIcon: Icon(Icons.phone_android,
                                         color: Colors.white),
                                     hintStyle: TextStyle(color: Colors.white),
                                     errorStyle:
-                                    TextStyle(color: Colors.redAccent),
+                                        TextStyle(color: Colors.redAccent),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide:
-                                        BorderSide(color: Colors.white)),
+                                            BorderSide(color: Colors.white)),
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Colors.white,
-                                        )),
-                                    labelText: 'Enter your emergency contact number',
+                                      color: Colors.white,
+                                    )),
+                                    labelText:
+                                        'Enter your emergency contact number',
                                     labelStyle: TextStyle(color: Colors.white)),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -318,15 +306,13 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 },
                                 onChanged: (value) {
                                   ec = value;
-                                }
-                            ),
+                                }),
                             const SizedBox(height: 30),
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 8,
                               child: LoginSignupButton(
                                   title: 'Update',
                                   ontapp: () async {
-                                    updateUserName();
                                     updateUserDoB();
                                     updateUserEmergencyContact();
                                     updateUserEcp();

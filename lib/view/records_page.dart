@@ -16,8 +16,7 @@ class Recordpage extends StatefulWidget {
 class _RecordpageState extends State<Recordpage> {
   final firebaseUser = FirebaseAuth.instance.currentUser;
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final CollectionReference _results =
-      FirebaseFirestore.instance.collection('Results');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +35,9 @@ class _RecordpageState extends State<Recordpage> {
         leading: null,
       ),
       body: StreamBuilder(
-        stream: _results.snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection(firebaseUser!.uid)
+            .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
           if (streamSnapshot.hasData) {
             return ListView.builder(
@@ -45,16 +46,36 @@ class _RecordpageState extends State<Recordpage> {
                 final DocumentSnapshot documentSnapshot =
                     streamSnapshot.data!.docs[index];
                 return Card(
+                  shape: const RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(12),
+                    ),
+                  ),
                   margin: const EdgeInsets.all(10),
                   child: ListTile(
-                    title: Text(documentSnapshot['DatenTime']),
-                    subtitle: Text(documentSnapshot['Result']),
+                    tileColor: Colors.white,
+                    textColor: Colors.black,
+                    shape: const RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(12),
+                      ),
+                    ),
+                    title: Text(documentSnapshot['Status'] +
+                        "\n" +
+                        "Result: " +
+                        documentSnapshot['Result']),
+                    // ignore: prefer_interpolation_to_compose_strings
+                    subtitle: Text(
+                        // ignore: prefer_interpolation_to_compose_strings
+                        "${"Date/Time: " + documentSnapshot['DatenTime']}\nLocation: " +
+                            documentSnapshot['Location']),
                   ),
                 );
               },
             );
           }
-          // ignore: dead_code
           return const Center(
             child: CircularProgressIndicator(),
           );

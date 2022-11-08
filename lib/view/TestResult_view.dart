@@ -83,18 +83,22 @@ class _TestResultViewState extends State<TestResultView> {
 
   //* Add entry to firestore for records.
   Future<void> addEntry() {
+    resultCondition(BAC);
     var now = DateTime.now();
-    var formatter = DateFormat('\ndd-MM-yyyy – HH:mm');
+    var formatter = DateFormat('dd-MM-yyyy – HH:mm');
     final String formattedDate = formatter.format(now);
     return FirebaseFirestore.instance
-        .collection('users')
-        .doc(firebaseUser!.uid)
-        .update({
-      'DatenTime': formattedDate,
-      'Result': testresults,
-      'Location': Address,
-      'Status': drinkingstatus
-    });
+        .collection(firebaseUser!.uid)
+        // .collection('users')
+        // .doc(firebaseUser!.uid)
+        .add(
+      {
+        'DatenTime': formattedDate,
+        'Result': testresults,
+        'Location': Address,
+        'Status': drinkingstatus
+      },
+    );
   }
 
   //?--------------------------------THIS IS SMS SYSTEM----------------------------------------------------------------
@@ -491,9 +495,8 @@ class _TestResultViewState extends State<TestResultView> {
                 tts.speak(
                     "your alcolhol level is $_indicatorText"); //! To be tested
                 testresults = _indicatorText;
-                addEntry();
                 Timer(const Duration(seconds: 3), () {
-                  resultDialog(BAC);
+                  resultDialog();
                 });
                 addEntry();
                 setState(() {});
@@ -505,8 +508,7 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
-  // ignore: non_constant_identifier_names
-  void resultDialog(BAC) {
+  void resultCondition(double BAC) {
     if (BAC >= 0.8) {
       drinkingstatus = "Drinking Status: Drunk";
       dialogContent =
@@ -520,6 +522,24 @@ class _TestResultViewState extends State<TestResultView> {
       drinkingstatus = "Drinking Status: Sober";
       dialogContent = "\n\nYou are Sober, reward yourself by playing a GAME!";
     }
+  }
+
+  // ignore: non_constant_identifier_names
+  void resultDialog() {
+    resultCondition(BAC);
+    // if (BAC >= 0.8) {
+    //   drinkingstatus = "Drinking Status: Drunk";
+    //   dialogContent =
+    //       "\n\nPLEASE DO NOT DRIVE ! \n\nBreathX have contacted your emergency contact about your location.";
+    //   _sendSms(Address);
+    // } else if (BAC > 0.0 && BAC < 0.8) {
+    //   drinkingstatus = "Drinking Status: Within Limit";
+    //   dialogContent =
+    //       "\n\nYou are within limit, Ensure you are Sober by playing a GAME to test your focus.";
+    // } else {
+    //   drinkingstatus = "Drinking Status: Sober";
+    //   dialogContent = "\n\nYou are Sober, reward yourself by playing a GAME!";
+    // }
     var now = DateTime.now();
     var formatter = DateFormat('\ndd-MM-yyyy – HH:mm');
     final String formattedDate = formatter.format(now);
@@ -573,6 +593,7 @@ class _TestResultViewState extends State<TestResultView> {
           IconButton(
             icon: const Icon(Icons.exit_to_app),
             onPressed: () {
+              disconnectFromDevice();
               Navigator.of(context).pushNamed(homePageRoute);
             },
           ),
