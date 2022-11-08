@@ -16,6 +16,7 @@ List<Learn> learnList = [
       title: 'What is Alcohol Use Disorder(AUD)?',
       author: 'National Institute on Alcohol Abuse and Alcoholism',
       description:
+          // ignore: prefer_interpolation_to_compose_strings
           'Alcohol use disorder (AUD) is a medical condition characterized by an impaired ability to stop or control alcohol use despite adverse social, occupational or health consequences. It encompasses the conditions that some people refer to as alcohol abuse, alcohol dependence, alcohol addiction, and the colloquial term, alcoholism. Considered a brain disorder, AUD can be mild, moderate, or severe.' +
               '\n\n' +
               'Lasting changes in the brain caused by alcohol misuse perpetuate AUD and make individuals vulnerable to relapse. The good news is that no matter how severe the problem may seem, evidence-based treatment with behavioral therapies, mutual-support groups, and/or medications can help people with AUD achieve and maintain recovery. According to a national survey, 14.1 million adults ages 18 and older (5.6 percent of this age group) had AUD in 2019. Among youth, an estimated 414,000 adolescents ages 12–17 (1.7 percent of this age group2) had AUD during this timeframe.',
