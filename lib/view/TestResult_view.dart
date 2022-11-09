@@ -60,13 +60,13 @@ class _TestResultViewState extends State<TestResultView> {
   String ec = '';
   String ecp = '';
   String drinkingstatus = '';
-  //* BAC level from: https://beta.mountelizabeth.com.sg/healthplus/article/festive-drinking-driving
   String dialogContent = '';
   String testresults = '';
   get value => readData(startTestCharacteristic!);
   final formkey = GlobalKey<FormState>();
   final userCollections = FirebaseFirestore.instance.collection("users");
   bool _isloading = false;
+  bool _isBTConnected = false;
   TextToSpeech tts = TextToSpeech();
 
   @override
@@ -180,9 +180,11 @@ class _TestResultViewState extends State<TestResultView> {
     } else {
       startScan();
     }
-    setState(() {
-      _isBlueToothConnected = !_isBlueToothConnected;
-    });
+    setState(
+      () {
+        _isBlueToothConnected = !_isBlueToothConnected;
+      },
+    );
   }
 
   //* BlueTooth Connection indicator.
@@ -219,6 +221,7 @@ class _TestResultViewState extends State<TestResultView> {
         initialData: BluetoothDeviceState.disconnected,
         builder: (c, snapshot) {
           if (snapshot.data == BluetoothDeviceState.connected) {
+            _isBTConnected = true;
             return Container(
               child: connectedText,
             );
@@ -440,8 +443,7 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
-
-  //* This is to activate the process of recoding the test.
+  //* Start Test Button.
   Widget _toastmaker() => Padding(
         padding: const EdgeInsets.symmetric(vertical: 18.0),
         child: SizedBox(
@@ -485,16 +487,17 @@ class _TestResultViewState extends State<TestResultView> {
                     await readData(retrieveResultCharacteristic!);
                 // ignore: no_leading_underscores_for_local_identifiers
                 double _value = convertByteArray(result);
-                BAC =
-                    relativeToAlcohol(_value); //!BAC is Blood Alcohol Content.
+                BAC = relativeToAlcohol(_value);
                 String resultIndicatorText = _value.toString();
                 _indicatorText = "$resultIndicatorText%";
-                tts.speak(
-                    "your alcolhol level is $_indicatorText"); //! To be tested
+                tts.speak("your alcolhol level is $_indicatorText");
                 testresults = _indicatorText;
-                Timer(const Duration(seconds: 3), () {
-                  resultDialog();
-                });
+                Timer(
+                  const Duration(seconds: 3),
+                  () {
+                    resultDialog();
+                  },
+                );
                 addEntry();
                 setState(() {});
               } else {
@@ -511,13 +514,16 @@ class _TestResultViewState extends State<TestResultView> {
       dialogContent =
           "\n\nPLEASE DO NOT DRIVE ! \n\nBreathX have contacted your emergency contact about your location.";
       _sendSms(Address);
+      tts.speak("You are Drunk, please do not drive");
     } else if (BAC > 0.0 && BAC < 0.8) {
       drinkingstatus = "Drinking Status: Within Limit";
       dialogContent =
           "\n\nYou are within limit, Ensure you are Sober by playing a GAME to test your focus.";
+      tts.speak("You are within limit, play a game to ensure you are sober");
     } else {
       drinkingstatus = "Drinking Status: Sober";
       dialogContent = "\n\nYou are Sober, reward yourself by playing a GAME!";
+      tts.speak("You are sober, play a game to reward yourself");
     }
   }
 
@@ -637,7 +643,9 @@ class _TestResultViewState extends State<TestResultView> {
 
   @override
   void dispose() {
-    disconnectFromDevice();
+    if (_isBTConnected == true) {
+      disconnectFromDevice();
+    }
     stopScan();
     _drawGoogleMap();
     _getCurrentLocation();
