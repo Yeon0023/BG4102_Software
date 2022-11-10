@@ -1,4 +1,4 @@
-import 'package:bg4102_software/constats/routes.dart';
+ import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/view/Login_view.dart';
 import 'package:bg4102_software/view/TestResult_view.dart';
 import 'package:bg4102_software/view/Verify_email_view.dart';
