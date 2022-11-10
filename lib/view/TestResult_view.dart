@@ -545,6 +545,7 @@ class _TestResultViewState extends State<TestResultView> {
     var formatter = DateFormat('\ndd-MM-yyyy – HH:mm');
     final String formattedDate = formatter.format(now);
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text("BreathX Result"),
@@ -557,6 +558,7 @@ class _TestResultViewState extends State<TestResultView> {
               ? BAC == 0.0
                   ? TextButton(
                       onPressed: () {
+                        disconnectFromDevice();
                         Navigator.of(ctx).pushNamed(learnpageRoute);
                       },
                       child: Container(
@@ -567,6 +569,7 @@ class _TestResultViewState extends State<TestResultView> {
                     )
                   : TextButton(
                       onPressed: () {
+                        disconnectFromDevice();
                         Navigator.of(ctx).pushNamed(gamePageRoute);
                       },
                       child: Container(

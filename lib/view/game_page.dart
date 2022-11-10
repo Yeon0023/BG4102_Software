@@ -90,6 +90,7 @@ class _GamePage extends State<GamePage> {
 
   void _showDialog() {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -116,6 +117,7 @@ class _GamePage extends State<GamePage> {
 
   void _restartDialog() {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -141,6 +143,7 @@ class _GamePage extends State<GamePage> {
 
   void _notSoberDialog() {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(

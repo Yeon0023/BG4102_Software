@@ -1,6 +1,8 @@
 import 'package:bg4102_software/Utilities/customAppbar.dart';
+import 'package:bg4102_software/Utilities/customDrawer.dart';
 import 'package:bg4102_software/Utilities/learnpages.dart';
 import 'package:bg4102_software/Utilities/sizeConfiguration.dart';
+import 'package:bg4102_software/constats/routes.dart';
 import 'package:bg4102_software/view/learn_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,10 +14,18 @@ class LearnListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: const CustomAppbar(
-        title: 'Learn More About AUD',
+      drawer: const CustomDrawer(),
+      appBar: CustomAppbar(
+        title: 'STACK IT !',
         fontSize: 25,
-        actions: null,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () {
+              Navigator.of(context).pushNamed(homePageRoute);
+            },
+          ),
+        ],
         leading: null,
       ),
       body: ListView.builder(
