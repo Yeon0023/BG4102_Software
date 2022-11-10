@@ -77,6 +77,7 @@ class _TestResultViewState extends State<TestResultView> {
         twilioNumber: '+13854062421');
     _getPermission();
     _getCurrentLocation();
+
     super.initState();
     _getdata();
   }
@@ -90,7 +91,7 @@ class _TestResultViewState extends State<TestResultView> {
     return FirebaseFirestore.instance.collection(firebaseUser!.uid).add(
       {
         'DatenTime': formattedDate,
-        'Result': testresults,
+        'Result': _indicatorText,
         'Location': Address,
         'Status': drinkingstatus
       },
@@ -113,6 +114,7 @@ class _TestResultViewState extends State<TestResultView> {
     });
   }
 
+  // ignore: non_constant_identifier_names
   Future<void> _sendSms(String Address) async {
     twilioFlutter?.sendSMS(
         toNumber: "+65$ec",
@@ -165,10 +167,10 @@ class _TestResultViewState extends State<TestResultView> {
     if (targetDevice == null) return;
     targetDevice!.disconnect();
     deviceState = BluetoothDeviceState.disconnected;
-    tts.speak('DEVICE DISCONNECTED');
     setState(
       () {
         connectionText = "Device Disconnected";
+        tts.speak('DEVICE DISCONNECTED');
       },
     );
   }
@@ -221,7 +223,6 @@ class _TestResultViewState extends State<TestResultView> {
         initialData: BluetoothDeviceState.disconnected,
         builder: (c, snapshot) {
           if (snapshot.data == BluetoothDeviceState.connected) {
-            _isBTConnected = true;
             return Container(
               child: connectedText,
             );
@@ -477,7 +478,6 @@ class _TestResultViewState extends State<TestResultView> {
                 textColor: Colors.white,
                 fontSize: 17,
               );
-
               int data = 1;
               await startTest(data);
               List<int> result = await readData(startTestCharacteristic!);
@@ -487,13 +487,13 @@ class _TestResultViewState extends State<TestResultView> {
                     await readData(retrieveResultCharacteristic!);
                 // ignore: no_leading_underscores_for_local_identifiers
                 double _value = convertByteArray(result);
+
                 BAC = relativeToAlcohol(_value);
                 String resultIndicatorText = _value.toString();
                 _indicatorText = "$resultIndicatorText%";
-                tts.speak("your alcolhol level is $_indicatorText");
-                testresults = _indicatorText;
+                _statusReader(BAC, _indicatorText);
                 Timer(
-                  const Duration(seconds: 3),
+                  const Duration(seconds: 4),
                   () {
                     resultDialog();
                   },
@@ -508,22 +508,33 @@ class _TestResultViewState extends State<TestResultView> {
         ),
       );
 
+  void _statusReader(double BAC, String _indicatorText) {
+    if (BAC >= 0.8) {
+      tts.speak("your alcolhol level is $_indicatorText"
+          "You are Drunk, please do not drive");
+    } else if (BAC > 0.0 && BAC < 0.8) {
+      tts.speak("your alcolhol level is $_indicatorText"
+          "You are within limit, play a game to ensure you are sober");
+    } else {
+      tts.speak("your alcolhol level is $_indicatorText"
+          "You are sober, Go to Tips to learn more about alcohol use disorder");
+    }
+  }
+
   void resultCondition(double BAC) {
     if (BAC >= 0.8) {
       drinkingstatus = "Drinking Status: Drunk";
       dialogContent =
           "\n\nPLEASE DO NOT DRIVE ! \n\nBreathX have contacted your emergency contact about your location.";
       _sendSms(Address);
-      tts.speak("You are Drunk, please do not drive");
     } else if (BAC > 0.0 && BAC < 0.8) {
       drinkingstatus = "Drinking Status: Within Limit";
       dialogContent =
           "\n\nYou are within limit, Ensure you are Sober by playing a GAME to test your focus.";
-      tts.speak("You are within limit, play a game to ensure you are sober");
     } else {
       drinkingstatus = "Drinking Status: Sober";
-      dialogContent = "\n\nYou are Sober, reward yourself by playing a GAME!";
-      tts.speak("You are sober, play a game to reward yourself");
+      dialogContent =
+          "\n\nYou are Sober, Go to Tips to learn more about alcohol use disorder (AUD)!";
     }
   }
 
@@ -543,16 +554,27 @@ class _TestResultViewState extends State<TestResultView> {
         ),
         actions: <Widget>[
           BAC < 0.8
-              ? TextButton(
-                  onPressed: () {
-                    Navigator.of(ctx).pushNamed(gamePageRoute);
-                  },
-                  child: Container(
-                    color: Colors.teal[500],
-                    padding: const EdgeInsets.all(14),
-                    child: const Text("Play Game"),
-                  ),
-                )
+              ? BAC == 0.0
+                  ? TextButton(
+                      onPressed: () {
+                        Navigator.of(ctx).pushNamed(learnpageRoute);
+                      },
+                      child: Container(
+                        color: Colors.teal[500],
+                        padding: const EdgeInsets.all(14),
+                        child: const Text("Tips"),
+                      ),
+                    )
+                  : TextButton(
+                      onPressed: () {
+                        Navigator.of(ctx).pushNamed(gamePageRoute);
+                      },
+                      child: Container(
+                        color: Colors.teal[500],
+                        padding: const EdgeInsets.all(14),
+                        child: const Text("Play Game"),
+                      ),
+                    )
               : Container(),
           TextButton(
             onPressed: () {
@@ -583,7 +605,9 @@ class _TestResultViewState extends State<TestResultView> {
           IconButton(
             icon: const Icon(Icons.exit_to_app),
             onPressed: () {
-              disconnectFromDevice();
+              if (_isBlueToothConnected == true) {
+                disconnectFromDevice();
+              }
               Navigator.of(context).pushNamed(homePageRoute);
             },
           ),
@@ -643,12 +667,11 @@ class _TestResultViewState extends State<TestResultView> {
 
   @override
   void dispose() {
-    if (_isBTConnected == true) {
+    if (_isBlueToothConnected == true) {
       disconnectFromDevice();
     }
     stopScan();
     _drawGoogleMap();
-    _getCurrentLocation();
     super.dispose();
   }
 }
